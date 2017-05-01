@@ -133,6 +133,31 @@ body{
     text-decoration: none;
     border-bottom: 1px dashed #E92322;
 }
+/*产品推荐*/
+#products{
+    padding: 40px 0;
+    background-color: #f0f0f0;
+}
+
+#products  >.container >.nav-tabs>li.active>a{
+    background-color: transparent;
+    border: 0;
+    border-bottom: 3px solid #E92322;
+}
+
+#products  >.container >.nav-tabs>li>a{
+    border: 0;
+    color: #555;
+    font-size: 16px;
+}
+
+#products  >.container >.nav-tabs>li>a:hover{
+    background-color: transparent;
+}
+
+#products >.container>.tab-content{
+    padding: 20px 0;
+}
 
 /*bootstrap扩展样式*/
 
