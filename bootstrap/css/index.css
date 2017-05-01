@@ -1,0 +1,245 @@
+
+body{
+    font-family:'Microsoft YaHei';
+}
+
+@font-face {
+    font-family: 'itcast';
+    src: url(../fonts/MiFie-Web-Font.eot) format("embedded-opentype"), url(../fonts/MiFie-Web-Font.ttf) format("truetype"), url(../fonts/MiFie-Web-Font.svg) format("svg"), url(../fonts/MiFie-Web-Font.woff) format("woff");
+}
+
+[class^="icon-"],[class*=" icon-"]{
+    font-family: 'itcast';
+    font-style: normal;
+}
+
+.icon-mobilephone::before{
+    content: "\e908";
+}
+
+.icon-telephone::before{
+    content: "\e909";
+}
+
+.icon-icon::before{
+    content: "\e920";
+    font-size: 50px;
+    color: #e92322;
+    vertical-align: middle;
+    line-height: 50px;
+}
+.icon-logo::before{
+    content: "\e93e";
+    font-size: 28px;
+    color: #333;
+    vertical-align: middle;
+}
+
+
+#header{
+    /*border-bottom: 1px solid #c0c0c0;*/
+}
+
+#header > .topbar{
+    border-bottom: 1px solid #c0c0c0;
+}
+
+#header > .topbar >.container{
+
+}
+
+#header > .topbar >.container >.row{
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+}
+
+#header > .topbar >.container >.row >div{
+    height: 40px;
+    border-left: 1px solid #c0c0c0;
+}
+
+#header > .topbar >.container >.row >div:first-child{
+    border-left: 0;
+}
+
+#header > .topbar >.container >.row >div>a{
+    color: #666;
+}
+
+#header > .topbar >.container >.row >div>a >img{
+    display: none;
+    position: absolute;
+    left: 50%;
+    margin-left: -60px;
+    top: 27px;
+    z-index: 1;
+}
+
+#header > .topbar >.container >.row >div>.mobile-link:hover>img{
+    display: block;
+}
+
+/*轮播图*/
+.slide >.carousel-inner >.item{
+
+    height: 410px;
+    background-position: center center;
+}
+/*特色介绍板块*/
+.icon-uniE907::before{
+    content: "\e907";
+    font-size: 30px;
+}
+#feature{
+    padding: 40px 0;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+#feature .media{
+    margin-top: 20px;
+}
+
+#feature .media >a{
+    color: #666;
+    text-decoration: none;
+}
+
+
+#feature .media >a:hover{
+    color: #E92322;
+}
+/*立即预约*/
+.icon-uniE906::before{
+    content: "\e906";
+    /*font-size: 30px;*/
+}
+.icon-uniE905::before{
+    content: "\e905";
+    /*font-size: 30px;*/
+}
+#booking{
+    padding: 20px 0;
+    border-bottom: 1px solid #c0c0c0;
+}
+#booking>.container>p{
+    margin-bottom: 0;
+}
+#booking>.container>p>span{
+    color: #E92322;
+}
+#booking>.container>p.pull-left >a{
+    color: #E92322;
+    text-decoration: none;
+    border-bottom: 1px dashed #E92322;
+}
+
+/*bootstrap扩展样式*/
+
+/* 自定义导航条 */
+.navbar-itcast {
+    /*background-color: #f8f8f8;*/
+    border-color: #e7e7e7;
+    line-height: 80px;
+    height: 80px;
+    border: 0;
+    margin-bottom: 0;
+}
+.navbar-itcast .navbar-brand {
+    color: #777;
+    /*line-height: 50px;*/
+}
+.navbar-itcast .navbar-brand:hover,
+.navbar-itcast .navbar-brand:focus {
+    color: #5e5e5e;
+    background-color: transparent;
+}
+.navbar-itcast .navbar-text {
+    color: #777;
+}
+.navbar-itcast .navbar-nav > li > a {
+    color: #777;
+    line-height: 48px;
+    border-bottom: 2px solid transparent;
+}
+.navbar-itcast .navbar-nav > li > a:hover,
+.navbar-itcast .navbar-nav > li > a:focus {
+    color: #333;
+    background-color: transparent;
+    border-bottom: 2px solid #e92322;
+}
+.navbar-itcast .navbar-nav > .active > a,
+.navbar-itcast .navbar-nav > .active > a:hover,
+.navbar-itcast .navbar-nav > .active > a:focus {
+    color: #555;
+}
+.navbar-itcast .navbar-nav > .disabled > a,
+.navbar-itcast .navbar-nav > .disabled > a:hover,
+.navbar-itcast .navbar-nav > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+}
+.navbar-itcast .navbar-toggle {
+    border-color: #ddd;
+}
+.navbar-itcast .navbar-toggle:hover,
+.navbar-itcast .navbar-toggle:focus {
+    background-color: #ddd;
+}
+.navbar-itcast .navbar-toggle .icon-bar {
+    background-color: #888;
+}
+.navbar-itcast .navbar-collapse,
+.navbar-itcast .navbar-form {
+    border-color: #e7e7e7;
+}
+.navbar-itcast .navbar-nav > .open > a,
+.navbar-itcast .navbar-nav > .open > a:hover,
+.navbar-itcast .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+}
+@media (max-width: 767px) {
+    .navbar-itcast .navbar-nav .open .dropdown-menu > li > a {
+        color: #777;
+    }
+    .navbar-itcast .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-itcast .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+        background-color: transparent;
+    }
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #555;
+        background-color: #e7e7e7;
+    }
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .disabled > a,
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+        color: #ccc;
+        background-color: transparent;
+    }
+}
+.navbar-itcast .navbar-link {
+    color: #777;
+}
+.navbar-itcast .navbar-link:hover {
+    color: #333;
+}
+.navbar-itcast .btn-link {
+    color: #777;
+}
+.navbar-itcast .btn-link:hover,
+.navbar-itcast .btn-link:focus {
+    color: #333;
+}
+.navbar-itcast .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-itcast .btn-link:hover,
+.navbar-itcast .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-itcast .btn-link:focus {
+    color: #ccc;
+}
+
+
+

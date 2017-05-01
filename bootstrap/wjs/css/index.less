@@ -1,0 +1,710 @@
+@mainColor: #e92322; // Appears 22 times
+@color1: #666666; // Appears 14 times
+@color2: #c0c0c0; // Appears 9 times
+@color3: #ffffff; // Appears 8 times
+@color4: #e7e7e7; // Appears 8 times
+@color5: #555555; // Appears 7 times
+@color6: #cccccc; // Appears 7 times
+@color7: #333333; // Appears 6 times
+@color8: #eaeaea; // Appears 4 times
+@color9: #dddddd; // Appears 3 times
+@color10: #f0f0f0; // Appears 3 times
+@color11: #5e5e5e; // Appears 2 times
+html {
+    font-size: 100px;
+}
+@media (max-width:768px) {
+	html{
+		font-size: 90px;
+	}
+}
+body {
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+}
+
+
+/**
+* 字体图标
+*/
+
+
+/*定义字体*/
+
+@font-face {
+    font-family: 'itcast';
+    src: url(../fonts/MiFie-Web-Font.eot) format("embedded-opentype"), url(../fonts/MiFie-Web-Font.ttf) format("truetype"), url(../fonts/MiFie-Web-Font.svg) format("svg"), url(../fonts/MiFie-Web-Font.woff) format("woff");
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: 'itcast';
+    font-style: normal;
+}
+
+.icon-mobilephone:before {
+    content: "\e908";
+    font-size: 13px;
+}
+
+.icon-telephone:before {
+    content: "\e909";
+    font-size: 13px;
+}
+
+.icon-logo::before {
+    font-size: 0.32rem;
+    content: "\e93e";
+    color: #333;
+    vertical-align: middle;
+}
+
+.icon-icon::before {
+    font-size: 0.5rem;
+    content: "\e920";
+    color: @mainColor;
+    vertical-align: middle;
+}
+
+.icon-uniE906:before {
+    content: "\e906";
+}
+
+.icon-uniE905:before {
+    content: "\e905";
+}
+
+.icon-news01:before {
+    content: "\e90e";
+    font-size: 28px;
+    color: @color8;
+}
+
+.icon-news02:before {
+    content: "\e90f";
+    font-size: 28px;
+    color: @color8;
+}
+
+.icon-news03:before {
+    content: "\e910";
+    font-size: 28px;
+    color: @color8;
+}
+
+.icon-news04:before {
+    content: "\e911";
+    font-size: 28px;
+    color: @color8;
+}
+
+.icon-uniE907:before {
+    content: "\e907";
+    font-size: 0.3rem;
+}
+
+.icon-uniE930:hover {
+    color: #df3232;
+}
+
+.icon-uniE930:before {
+    content: "\e946";
+}
+
+.icon-uniE92F:hover {
+    color: #e8380d;
+}
+
+.icon-uniE92F:before {
+    content: "\e92f";
+}
+
+.icon-uniE92E:hover {
+    color: #ed6f00;
+}
+
+.icon-uniE92E:before {
+    content: "\e92e";
+}
+
+.icon-uniE92A:hover {
+    color: #159f69;
+}
+
+.icon-uniE92A:before {
+    content: "\e92a";
+}
+
+.icon-uniE929:hover {
+    color: #07569e;
+}
+
+.icon-uniE929:before {
+    content: "\e929";
+}
+
+.icon-uniE931:hover {
+    color: #004098;
+}
+
+.icon-uniE931:before {
+    content: "\e931";
+}
+
+.icon-uniE92C:hover {
+    color: #d32019;
+}
+
+.icon-uniE92C:before {
+    content: "\e92c";
+}
+
+.icon-uniE92B:hover {
+    color: #3eac4a;
+}
+
+.icon-uniE92B:before {
+    content: "\e92b";
+}
+
+.icon-uniE92D:hover {
+    color: #2bb289;
+}
+
+.icon-uniE92D:before {
+    content: "\e92d";
+}
+
+
+/* 头部区域 */
+
+#header {
+    >.topbar {
+        line-height: 0.4rem;
+        border-bottom: 0.01rem solid @color2;
+        font-size: 0.12rem;
+        >.container {
+            >.row {
+                >div {
+                    height: 0.4rem;
+                    >a {
+                        color: @color1;
+                        >img {
+                            display: none;
+                        }
+                        &.btn-register {
+                            color: #fff;
+                        }
+                        &:hover {
+                            img {
+                                position: absolute;
+                                left: 50%;
+                                margin-left: -0.6rem;
+                                top: 0.26rem;
+                                display: block;
+                                z-index: 1001;
+                            }
+                        }
+                    }
+                }
+                >div+div {
+                    border-left: 0.01rem solid @color2;
+                }
+            }
+        }
+    }
+}
+
+
+/* 轮播图区域 */
+
+#slide_home {
+    .carousel-inner {
+        >.item {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            >img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+@media (min-width:768px) {
+    #slide_home {
+        .carousel-inner {
+            >.item {
+                height: 4.1rem;
+            }
+        }
+    }
+}
+
+
+/* 特色介绍板块 */
+
+#tese {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid @color2;
+    .row {
+        >div {
+            margin: 0.2rem 0;
+            a {
+                color: @color1;
+                text-decoration: none;
+                &:hover {
+                    color: @mainColor;
+                }
+                p {
+                    font-size: 0.13rem;
+                }
+            }
+        }
+    }
+}
+
+
+/* 立即预约 */
+
+#ljyy {
+    padding: 0.2rem 0;
+    border-bottom: 1px solid @color2;
+    >.container {
+        >p {
+            margin-bottom: 0;
+            font-size: 0.14rem;
+        }
+        >.pull-left {
+            >span {
+                color: @mainColor;
+            }
+            >a {
+                color: @mainColor;
+                text-decoration: none;
+                border-bottom: 1px dashed @mainColor;
+            }
+        }
+    }
+}
+
+
+/* 产品推荐 */
+
+#products {
+    padding: 0.4rem 0px;
+    background-color: @color10;
+    >.container {
+        >.ul-wapper {
+            width: 100%;
+            >.nav-tabs {
+                /* 把ul的宽度设置成所有Li的和然后让ul在div里面横向滚动 
+    	那么这个宽度也不能定死这个值我们应该动态的获取所有li的宽度
+    	然后给ul设置上
+    	*/
+                /* width: 6.4rem; */
+                border-bottom: 1px solid @color2;
+                >li {
+                    >a {
+                        border: 0 none;
+                        color: #555;
+                        &:hover {
+                            color: #111;
+                            background-color: transparent;
+                        }
+                        &:focus {
+                            background-color: transparent;
+                        }
+                    }
+                    &.active {
+                        >a {
+                            background-color: transparent;
+                            border-bottom: 3px solid @mainColor;
+                        }
+                    }
+                }
+            }
+        }
+        >.tab-content {
+            padding: 0.2rem 0;
+            >.tab-pane {
+                .panel {
+                    >.panel-heading {
+                        width: 1.2rem;
+                        height: 1.6rem;
+                        padding: 45px 0;
+                        border: 0;
+                        border-left: 1px dashed @color2;
+                        position: relative;
+                        background-color: #fff;
+                        >p {
+                            text-align: center;
+                            margin-bottom: 0;
+                            font-size: 0.13rem;
+                            >strong {
+                                font-size: 0.3rem;
+                            }
+                        }
+                        &::before,
+                        &::after {
+                            content: "";
+                            width: 0.16rem;
+                            height: 0.16rem;
+                            border-radius: 0.08rem;
+                            background-color: @color10;
+                            position: absolute;
+                            left: -0.08rem;
+                        }
+                        &::before {
+                            top: -0.08rem;
+                        }
+                        &::after {
+                            bottom: -0.08rem;
+                        }
+                        >p.tooltips {
+                            position: absolute;
+                            width: 100%;
+                            top: 0.25rem;
+                            >.tool {
+                                display: inline-block;
+                                width: 0.2rem;
+                                height: 0.2rem;
+                                text-decoration: none;
+                                font-size: 0.13rem;
+                                font-weight: 600;
+                            }
+                            >.tool-one {
+                                border: 1px solid @mainColor;
+                                color: @mainColor;
+                            }
+                            >.tool-two {
+                                border: 1px solid green;
+                                color: green;
+                            }
+                        }
+                    }
+                    >.panel-body {
+                        margin-right: 1.2rem;
+                        height: 1.6rem;
+                        >.row {
+                            >div {
+                                margin: 5px 0px;
+                                >p {
+                                    margin-bottom: 0;
+                                    font-size: 0.14rem;
+                                }
+                            }
+                        }
+                    }
+                    &.actived {
+                        color: #fff;
+                        background-color: @mainColor;
+                        >.panel-heading {
+                            color: #fff;
+                            background-color: @mainColor;
+                        }
+                        &::before {
+                            content: "\e915";
+                            font-family: 'itcast';
+                            font-size: 40px;
+                            position: absolute;
+                            left: 0.16rem;
+                            top: -0.1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .ul-wapper {
+        overflow-x: scroll;
+    }
+}
+
+
+/* 新闻版块 */
+
+#news {
+    padding: 0.4rem 0;
+    >.container {
+        >.row {
+            >div {
+                >.news-title {
+                    padding: 0.15rem 0;
+                    text-align: center;
+                    font-size: 0.18rem;
+                    border-bottom: 0.01rem dashed @color2;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 0.1rem;
+                        height: 0.1rem;
+                        border-radius: 0.05rem;
+                        border: 0.01rem solid @color2;
+                        right: 0.05rem;
+                        bottom: -0.05rem;
+                    }
+                }
+                >.nav-tabs {
+                    border-bottom: 0;
+                    >li {
+                        margin-bottom: 0.1rem;
+                        >a {
+                            border-radius: 0.3rem;
+                            border: 0;
+                            >i {}
+                            &:hover {
+                                background-color: @mainColor;
+                            }
+                        }
+                        &.active {
+                            a {
+                                background-color: @mainColor;
+                            }
+                        }
+                    }
+                }
+                >.tab-content {
+                    >.tab-pane {
+                        >ul {
+                            >li {
+                                list-style: none;
+                                margin-bottom: 0.1rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* @media (max-width:768px) {
+    #news {
+        .nav-tabs {
+            >li {
+                margin-right: 0.2rem;
+            }
+        }
+    }
+} */
+
+
+/* 合作伙伴 */
+
+#partner {
+    >.container {
+        >h3 {}
+        >ul {
+            margin: 0;
+            padding: 0;
+            font-size: 0px;
+            >li {
+                list-style: none;
+                display: inline-block;
+                font-size: 0.5rem;
+                width: calc(100%/9);
+                text-align: center;
+                height: 0.6rem;
+                >a {
+                    text-decoration: none;
+                    color: #666;
+                    &:hover {
+                        >i {
+                            color: @mainColor;
+                        }
+                    }
+                }
+            }
+            >li+li {
+                border-left: 1px dashed @color2;
+            }
+        }
+    }
+}
+
+
+/*Bootstrap扩展样式*/
+
+
+/* 自定义按钮 */
+
+.btn-register {
+    color: @color3;
+    background-color: @mainColor;
+    border-color: @mainColor;
+}
+
+.btn-register:hover,
+.btn-register:focus,
+.btn-register:active,
+.btn-register.active,
+.open .dropdown-toggle.btn-register {
+    color: @color3;
+    background-color: @mainColor;
+    border-color: @mainColor;
+}
+
+.btn-register:active,
+.btn-register.active,
+.open .dropdown-toggle.btn-register {
+    background-image: none;
+}
+
+.btn-register.disabled,
+.btn-register[disabled],
+fieldset[disabled] .btn-register,
+.btn-register.disabled:hover,
+.btn-register[disabled]:hover,
+fieldset[disabled] .btn-register:hover,
+.btn-register.disabled:focus,
+.btn-register[disabled]:focus,
+fieldset[disabled] .btn-register:focus,
+.btn-register.disabled:active,
+.btn-register[disabled]:active,
+fieldset[disabled] .btn-register:active,
+.btn-register.disabled.active,
+.btn-register[disabled].active,
+fieldset[disabled] .btn-register.active {
+    background-color: @mainColor;
+    border-color: @mainColor;
+}
+
+.btn-register .badge {
+    color: @mainColor;
+    background-color: @color3;
+}
+
+
+/* 自定义导航条 */
+
+.navbar-itcast {
+    background-color: #fff;
+    border-color: #f5f5f5;
+    border-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+}
+
+.navbar-itcast .navbar-brand {
+    color: @color1;
+    line-height: 0.4rem;
+    height: 0.8rem;
+}
+
+.navbar-itcast .navbar-brand:hover,
+.navbar-itcast .navbar-brand:focus {
+    color: @color11;
+    background-color: transparent;
+}
+
+.navbar-itcast .navbar-text {
+    color: @color1;
+}
+
+.navbar-itcast .navbar-nav > li > a {
+    line-height: 0.48rem;
+    color: @color1;
+    font-size: 0.14rem;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar-itcast .navbar-nav > li > a:hover,
+.navbar-itcast .navbar-nav > li > a:focus {
+    color: @color1;
+    background-color: transparent;
+    border-bottom: 2px solid @mainColor;
+}
+
+.navbar-itcast .navbar-nav > .active > a,
+.navbar-itcast .navbar-nav > .active > a:hover,
+.navbar-itcast .navbar-nav > .active > a:focus {
+    color: @color1;
+    background-color: transparent;
+}
+
+.navbar-itcast .navbar-nav > .disabled > a,
+.navbar-itcast .navbar-nav > .disabled > a:hover,
+.navbar-itcast .navbar-nav > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+}
+
+.navbar-itcast .navbar-toggle {
+    margin-top: 23px;
+    border-color: #ddd;
+}
+
+.navbar-itcast .navbar-toggle:hover,
+.navbar-itcast .navbar-toggle:focus {
+    background-color: #ddd;
+}
+
+.navbar-itcast .navbar-toggle .icon-bar {
+    background-color: @color1;
+}
+
+.navbar-itcast .navbar-collapse,
+.navbar-itcast .navbar-form {
+    border-color: @color4;
+}
+
+.navbar-itcast .navbar-nav > .open > a,
+.navbar-itcast .navbar-nav > .open > a:hover,
+.navbar-itcast .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: @color4;
+}
+
+@media (max-width: 767px) {
+    .navbar-itcast .navbar-nav .open .dropdown-menu > li > a {
+        color: @color1;
+    }
+    .navbar-itcast .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-itcast .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+        background-color: transparent;
+    }
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #555;
+        background-color: @color4;
+    }
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .disabled > a,
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+    .navbar-itcast .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+        color: #ccc;
+        background-color: transparent;
+    }
+}
+
+.navbar-itcast .navbar-link {
+    color: @color1;
+}
+
+.navbar-itcast .navbar-link:hover {
+    color: #333;
+}
+
+.navbar-itcast .btn-link {
+    color: @color1;
+}
+
+.navbar-itcast .btn-link:hover,
+.navbar-itcast .btn-link:focus {
+    color: #333;
+}
+
+.navbar-itcast .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-itcast .btn-link:hover,
+.navbar-itcast .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-itcast .btn-link:focus {
+    color: #ccc;
+}
