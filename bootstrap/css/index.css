@@ -159,6 +159,62 @@ body{
     padding: 20px 0;
 }
 
+/*面板区域*/
+.panel-default>.panel-heading{
+    float: right;
+    width: 120px;
+    height: 160px;
+    border-left: 1px dashed #c0c0c0;
+    border-bottom: 0;
+    position: relative;
+    padding: 45px 0;
+}
+.panel-default.red{
+
+}
+.panel-default.red>.panel-heading{
+    background-color: #e92322;
+    color: #fff;
+
+}
+.panel-default.red>.panel-body{
+    background-color: #e92322;
+    color: #fff;
+
+}
+.panel-default>.panel-heading>h3>strong{
+    font-size: 30px;
+}
+
+.panel-default>.panel-heading::before,.panel-default>.panel-heading::after{
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    position: absolute;
+    left: -8px;
+    background-color: #f0f0f0;
+
+
+
+}
+
+.panel-default>.panel-heading::before{
+    top: -8px;
+}
+
+.panel-default>.panel-heading::after{
+    bottom: -8px;
+}
+
+
+
+.panel-default>.panel-body{
+    margin-right: 120px;
+    height: 160px;
+
+}
+
 /*bootstrap扩展样式*/
 
 /* 自定义导航条 */
