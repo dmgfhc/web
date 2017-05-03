@@ -180,8 +180,45 @@ body{
 .panel-default.red>.panel-body{
     background-color: #e92322;
     color: #fff;
+}
+
+.panel-default>.panel-body>.row>div{
+    margin-top: 10px;
 
 }
+
+.panel-default>.panel-body>.row>div>p{
+    margin-bottom: 0;
+}
+
+.panel-default.red::before{
+    content: "\e915";
+    font-family: "itcast";
+    position: absolute;
+    /*left: 0;*/
+    top:-9px;
+    font-size: 40px;
+    color: #fff;
+}
+
+.panel-default>.panel-heading>.tool{
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+.panel-default>.panel-heading>.tool>a:first-of-type{
+    border: 1px solid #e92322;
+    font-size: 13px;
+}
+
+.panel-default>.panel-heading>.tool>a:last-of-type{
+    border: 1px solid #0f0;
+    font-size: 13px;
+    margin-left: 10px;
+}
+
 .panel-default>.panel-heading>h3>strong{
     font-size: 30px;
 }
@@ -194,8 +231,6 @@ body{
     position: absolute;
     left: -8px;
     background-color: #f0f0f0;
-
-
 
 }
 
@@ -212,6 +247,135 @@ body{
 .panel-default>.panel-body{
     margin-right: 120px;
     height: 160px;
+
+}
+
+/*新闻板块*/
+#news{
+    padding: 40px 0;
+}
+
+.icon-news01:before {
+    content: "\e90e";
+    font-size: 28px;
+    color: #eaeaea;
+}
+.icon-news02:before {
+    content: "\e90f";
+    font-size: 28px;
+    color: #eaeaea;
+}
+.icon-news03:before {
+    content: "\e910";
+    font-size: 28px;
+    color: #eaeaea;
+}
+.icon-news04:before {
+    content: "\e911";
+    font-size: 28px;
+    color: #eaeaea;
+}
+
+#news .news-title{
+    padding: 20px 0;
+    border-bottom: 1px dashed #c0c0c0;
+}
+
+#news .news-title:after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: 1px solid #c0c0c0;
+    bottom: 5px;
+    right: 5px;
+}
+#news .nav-tabs{
+    border-bottom: 0;
+}
+#news .nav-tabs>li>a{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin-top:10px;
+}
+
+#news .nav-tabs>li.active>a{
+    background-color: #e92322;
+}
+
+#news .tab-content>.tab-pane>ul>li{
+    font-size: 14px;
+    list-style: none;
+    padding: 10px 0;
+}
+
+/*合作伙伴*/
+.icon-uniE931::before{
+    content: "\e931";
+}
+.icon-uniE932::before{
+    content: "\e932";
+}
+.icon-uniE933::before{
+    content: "\e933";
+}
+.icon-uniE934::before{
+    content: "\e934";
+}
+.icon-uniE935::before{
+    content: "\e935";
+}
+
+.icon-uniE936::before{
+    content: "\e936";
+}
+
+.icon-uniE937::before{
+    content: "\e937";
+}
+
+.icon-uniE938::before{
+    content: "\e938";
+}
+
+.icon-uniE939::before{
+    content: "\e939";
+}
+
+#partner{
+    padding: 20px 0;
+}
+
+#partner>.container>ul>li>a{
+    color: #666;
+    text-decoration: none;
+}
+
+#partner>.container>ul>li>a:hover{
+
+    color: #e92322;
+}
+
+#partner>.container>ul>li>a>i{
+    font-size: 50px;
+}
+#partner>.container>ul{
+    font-size: 0;
+}
+
+#partner>.container>ul>li{
+    list-style: none;
+    display: inline-block;
+    width: calc(100%/9);
+    height: 60px;
+    text-align: center;
+    border-left: 1px dashed #c0c0c0;
+}
+
+#partner>.container>ul>li:first-child{
+    border-left: 0;
 
 }
 
