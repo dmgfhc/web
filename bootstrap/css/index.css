@@ -386,12 +386,13 @@ body{
     /*background-color: #f8f8f8;*/
     border-color: #e7e7e7;
     line-height: 80px;
-    height: 80px;
+    /*height: 80px;*/
     border: 0;
     margin-bottom: 0;
 }
 .navbar-itcast .navbar-brand {
     color: #777;
+    height: 80px;
     /*line-height: 50px;*/
 }
 .navbar-itcast .navbar-brand:hover,
@@ -426,6 +427,7 @@ body{
 }
 .navbar-itcast .navbar-toggle {
     border-color: #ddd;
+    margin-top: 24px;
 }
 .navbar-itcast .navbar-toggle:hover,
 .navbar-itcast .navbar-toggle:focus {
