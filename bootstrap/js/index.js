@@ -21,6 +21,14 @@ $(function () {
 
             });
         }
+
+        var tabs= $('#products .nav-tabs');
+        var lis = $('#products .nav-tabs li');
+        var width = 0;
+        lis.each(function (index,el) {
+            width+=$(el).width();
+        });
+        tabs.css('width',width);
     }).trigger('resize');
 
     var slide = document.querySelector('#slide');
@@ -40,6 +48,8 @@ $(function () {
             carousel.carousel('next');
         }
     });
+
+
 
 
 
