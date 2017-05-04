@@ -83,8 +83,15 @@ body{
 /*轮播图*/
 .slide >.carousel-inner >.item{
 
-    height: 410px;
     background-position: center center;
+}
+@media(min-width: 768px) {
+    .slide >.carousel-inner >.item{
+        height: 410px;
+    }
+    .slide >.carousel-inner >.item>img{
+        width: 100%;
+    }
 }
 /*特色介绍板块*/
 .icon-uniE907::before{
