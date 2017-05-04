@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 闭包要解决的是什么问题：
+		// 如何在函数外部访问到函数内部的变量
+		
+		/*function foo() {
+			var num = 123;
+			return num;
+		}
+
+		var n1 = foo();
+		console.log(n1);
+
+		var n2 = foo();
+		console.log(n2);*/
+
+
+		// function foo() {
+		// 	var num = Math.random();
+
+		// 	return num;
+		// }
+
+		// var n1 = foo();
+		// console.log(n1);
+
+		/*var n2 = n1;
+		console.log(n2);*/
+
+		/*var n2 = foo();
+		console.log(n2);*/
+
+		// 以上代码，调用多次，返回的结果每次都不同
+		// 
+		// 需求: 获取到的都是同一个值，只需要保证函数调用一次
+		
+		/*function foo() {
+			var num = Math.random();
+
+			return function() {
+				return num;
+			};
+		}*/
+		// 改造一：便于理解
+		/*function foo() {
+			var num = Math.random();
+
+			// f的作用域链：
+			// 函数f自身 -> foo的作用域 -> 全局作用域
+			function f() {
+				return num;
+			}
+			// 将内部函数f返回的目的是做什么？？
+			// 就是要在函数外部访问到这个函数
+			return f;
+
+			// return function() {
+			// 	return num;
+			// };
+		}*/
+
+		// 改造二：
+		function foo() {
+			var num = Math.random();
+
+			function f() {
+				// return num;
+				console.log(num);
+			}
+
+			// f();
+
+			return f;
+		}
+
+		var f = foo();
+		var num1 = f();
+		var num2 = f();
+		console.log(num1);
+		console.log(num2);
+	</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+			border: 1px solid red;
+		}
+		p {
+			border: 1px dotted green;
+		}
+	</style>
+	<script type="text/javascript">
+		// 问题：找出body里面的所有后代元素，给这些后代元素添加样式（边框）
+		// 层级不限
+		// 
+		// 简化问题：找body的子元素
+		// 通过DOM的 children 获取的是元素节点 / childNodes所有的节点
+		var list = [];
+		// 1 获取body的子元素
+		function getChild(element) {
+			// 给 list 添加元素
+			var elmChildren = element.childNodes; // 既包括元素节点也包括文本节点
+
+			// for循环成立的条件 和 元素节点判断条件，就是我们的临界条件
+			for(var i = 0; i < elmChildren.length; i++) {
+				// 判断下 当前节点是否是 元素节点 
+				// 如果是，就放到list中去
+				if(elmChildren[i].nodeType === 1) {
+					// nodeType === 1 说明是元素节点
+					list.push(elmChildren[i]);
+
+					// 递归在此处
+					// 在此处获取子元素的子元素
+					// 因为只可能元素节点中存在元素节点
+					getChild(elmChildren[i]);
+				}
+			}
+		}
+		
+		onload = function() {
+			getChild(document.body);
+
+			for(var i = 0; i < list.length; i++) {
+				list[i].style.border = "2px solid black";
+			}
+		};
+		
+
+		// 
+		// 
+		// jQuery
+		// find 的作用就是 找出 指定元素的后代元素
+		// $("body").find(selector)
+		// 
+	</script>
+</head>
+<body>
+	<div>
+		<p></p>
+		<p></p>
+		<p>
+			<ul>
+				<li>这是第<span>1</span>个li元素</li>
+				<li>这是第2个li元素</li>
+				<li>这是第3个li元素</li>
+			</ul>
+		</p>
+		<p></p>
+		<p></p>
+	</div>
+
+	<div>
+		<p></p>
+		<p></p>
+		<p></p>
+	</div>
+
+	<div>
+		<div><span>这是span</span></div>
+	</div>
+
+
+
+</body>
+</html>

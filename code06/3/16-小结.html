@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 把Object当作一个对象来看， Object.__proto__
+		// Object -> Function.prototpe -> Object.prototype -> null
+		console.log(Object instanceof Object);    // true
+		console.log(Object instanceof Function);  // true
+
+		console.log(Function instanceof Object);  // true
+		console.log(Function instanceof Function);// true
+	</script>
+</body>
+</html>

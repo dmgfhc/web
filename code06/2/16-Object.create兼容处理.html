@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 1 创建一个新的函数，在函数内部去处理
+		// 函数作用是什么？？？
+		// 1 创建一个新对象
+		// 2 这个新对象会继承自参数obj
+		function create(obj) {
+
+			if(!Object.create) {
+				// 没有这个方法
+				function F() {}
+				F.prototype = obj;
+
+				return new F();
+			} else {
+				return Object.create(obj);
+			}
+		}
+
+		var o1 = {
+			sayHi: function() {
+				alert("nihao");
+			}
+		};
+		var o2 = create(o1);
+
+		o2.sayHi();
+
+
+		// 2 在原来对象中修改（不推荐）
+		function create(obj) {
+			if(!Object.create) {
+				// 直接在原声对象中修改
+				Object.create = function() {
+					// 没有这个方法
+					function F() {}
+					F.prototype = obj;
+
+					return new F();
+				};
+			}
+		}
+	</script>
+</body>
+</html>

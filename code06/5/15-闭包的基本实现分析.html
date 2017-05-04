@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+	// 闭包的实现
+		function foo() {
+			var num = Math.random();
+
+			return function() {
+				return num;
+			};
+		}
+
+		var f = foo();
+		var num = f();
+		console.log(num);
+
+		// 因为后面没有对函数的引用了额，所以，函数（内部状态）就会被
+		// js引擎的垃圾回收机制回收了
+		// function bar() {
+		// 	var num = 123;
+		// }
+		// bar();
+
+		// console.log(num);
+	</script>
+</body>
+</html>

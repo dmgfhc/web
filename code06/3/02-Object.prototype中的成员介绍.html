@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 只看 Object.prototype 中没有__ 前缀的成员
+		// 
+		
+		/*var o = {
+			name1: "rose"
+		};*/
+
+		/*// 1 constructor 构造器
+		var o = {}; // 对象字面量
+		// console.log(o.__proto__ === Object.prototype);
+		console.log(o.constructor === Object); // true*/
+
+		// 2 hasOwnProperty
+		// 作用：判断属性是不是自己的，
+		// 如果是自己的就返回：true，否则，返回false
+		// has 有
+		// own 自己的
+		// property 属性
+
+		// var ret = o.hasOwnProperty("name1");
+		// console.log(ret); // true
+
+		// var ret = o.hasOwnProperty("constructor");
+		// console.log(ret); // false
+		
+		// var ret = o.hasOwnProperty("abcd");
+		// console.log(ret); // false
+		
+
+		// 3 isPrototypeOf
+		// 对象1.isPrototypeOf(对象2)
+		// 作用：看下对象1是不是对象2的原型对象，或者前者在后者的原型链上
+		// function Person() {}
+		// var p = new Person;
+		
+		// console.log(o.isPrototypeOf(Object.prototype)); // false
+		// console.log(Object.prototype.isPrototypeOf(o)); // true
+
+		// console.log(Object.prototype.isPrototypeOf(p)); // true
+		
+
+		// 4 propertyIsEnumerable
+		// property 属性
+		// is 是
+		// enumrable 是否可枚举
+		// var ret = o.propertyIsEnumerable("name1");
+		// console.log(ret); // true
+		
+		// var ret = o.propertyIsEnumerable("constructor");
+		// console.log(ret);
+		
+		// toString 和 toLocaleString
+		// 都是将内容转换为 string 类型
+		// var d = new Date;
+		// console.log(d.toString());
+		// console.log(d.toLocaleString());
+
+		// valueOf 求值
+		// console.log(o.valueOf()); // Object {name1: "rose"}
+		// console.log(o.toString()); // [object Object]
+		
+		// var o = {
+		// 	name1: "rose"
+		// };
+		// var ret = o + 1;
+		// console.log(ret); // [object Object]1
+
+		var o = {
+			valueOf: function() {
+				return 100;
+			},
+			toString: function() {
+				return "name 是 rose";
+			},
+			name: "rose"
+		};
+
+		// 如果一个对象和一个数字相加，此时，会先调用valueOf方法
+		// 看是否能转化为数值类型，如果可以，就直接用转化之后的值
+		// 如果转化失败，就会调用 toString 方法
+		var ret = o + 1;
+		console.log(ret); // 101
+		console.log(typeof ret); // 101
+	</script>
+</body>
+</html>

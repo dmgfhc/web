@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 1 name 获取到的是一个字符串类型，表示函数的名字
+		function PersON() {}
+		// console.log(PersON.name);
+		// console.log(typeof PersON.name);
+
+		// 2 length
+		// 表示是 形参的个数，即：函数定义的时候的参数形参
+		// 如果没有参数，怎length为0
+		// console.log(PersON.length); // 0
+		
+		// 3 func.caller（废弃）：获得调用函数的函数引用（函数在哪被调用）
+		// 废除的意思：还能用，但是不推荐使用了
+		// console.log(PersON.caller); // 如果实在全局环境中调用的函数，则为 null
+
+		// function foo() {
+		// 	function fn() {
+		// 		console.log(fn.caller);
+		// 		console.log(fn.caller === foo); // true
+		// 	}
+		// 	fn();
+		// }
+		// foo();
+		
+		// 4 arguments
+		// 作用：获取的是实参的列表
+		// 注意点：只能在函数体内部使用
+		/*function foo(a,b,c,d,e) {
+			// 获取到的是一个伪数组
+			console.log(arguments);
+
+			// arguments.length 获取的是实参参数的长度
+			// 
+			// 如何判断参数是否跟定义时的参数个数相同
+			if(arguments.length === foo.length) {
+				alert('个数相同');
+			} else {
+				alert("个数不同");
+			}
+
+			// console.log(arguments[3]);
+		}
+
+		foo(1, "string", true, [], {});*/
+
+		function foo() {
+			// arguments.callee
+			// 获取到当前函数的引用
+			// arguments.callee();
+			// foo();
+			console.log(foo === arguments.callee);
+		}
+
+		foo();
+
+		/* 这两种情况 使用哪种方式都可以
+		var f = function() {
+			f();
+		};
+		f();
+		
+		var f = new Function("f()");
+		f();
+		f();*/
+		
+		(function (){
+			// 此时，如果函数没有名字 只能通过 arguments.callee(); 来调用自己
+			// arguments.callee();
+		})();
+	</script>
+</body>
+</html>

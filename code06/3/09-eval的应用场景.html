@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// JSON格式的字符串
+		// JSON  对象字面量
+		
+		// 这是一个对象字面量
+		// 属性的名称可以带引号，也可以不带引号
+		/*var obj = {
+			name: "tom",
+			age: 8
+		};
+		var obj = { 'name': "tom" };
+		var obj = { "name": "tom" };*/
+
+		// JSON格式：属性名必须是双引号
+		// 假设这就是通过Ajax获取到的数据
+		var o = '{ "name": "Tom", "age": 19, "gender": "不详" }';
+
+		// 如果想通过以下方式来使用，则需要将这个字符串转化为对象
+		/*o.name
+		o.age
+		o.gender*/
+
+		// 1 JSON.parse()  / json2.js
+		// 方式一
+		// 小括号的作用：将代码转化为表达式
+		/*var obj = eval("(" + o + ")");
+		console.log(obj.name);
+		console.log(obj.age);
+		console.log(obj.gender);*/
+
+		// 第二种方式
+		eval("var o1 = " + o);
+		console.log(o1.name);
+		console.log(o1.age);
+		console.log(o1.gender);
+
+
+
+
+
+
+
+
+
+
+
+
+		// 自调用函数
+		// (function foo() {})();
+		// function foo(){} (); // 这样写会造成语法错误
+		
+		// !function() {}();
+
+		// var f = function foo(){} () ;
+	</script>
+</body>
+</html>

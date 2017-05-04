@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// - 1 缓存数量要在一定范围内，例如：100条
+		// - 2 缓存数据要可控，增删改查
+		// - 3 缓存需要被保护 
+		// var cache, arr;
+		var createCache = function() {
+			// 缓存，用来存储数据
+			var cache = {};
+			// 存储存入缓存中的key
+			var arr = [];
+
+			return function(key, value) {
+				// 怎么判断是读取还是设置？
+				// 判断 value 这个参数有没有传，
+				// 如果传了 就表示设置
+				// 如果没有传 就表示读取
+				if(value === undefined) {
+					// 没有传入，此处要读取数据
+					return cache[key];
+				} else {
+					// 表示传入，此处设置值或者是修改
+					// 如何判断是修改还是设置？
+					if(cache[key]) {
+						// 表示修改
+						cache[key] = value;
+					} else {
+						// 表示设置
+						// 考虑存入缓存的数据有没有超过限制的数量
+						// 只要缓存中存入一条数据，arr中就要添加一条
+						if(arr.length >= 3) {
+							// 此处，要把最旧（最先加入缓存）的数据 删除掉
+							var k = arr.shift(); // 会自动修改数组的长度
+							delete cache[k];
+						}
+
+						// 把最新的数据添加到缓存中
+						cache[key] = value;
+						// 将key值添加到数组中
+						arr.push(key);
+					}
+				}
+			};
+
+		};
+
+
+		// 创建了一个类型缓存
+		var typeCache = createCache();
+		// 设置缓存
+		typeCache("name", "jack");
+		typeCache("age", 19);
+		typeCache("gender", "男");
+
+		typeCache("scroe", 99);
+
+		// 读取缓存
+		var n = typeCache("name");
+
+		// 选择器的缓存
+		var selectorCache = createCache();
+		selectorCache("div", "多个div元素");
+		selectorCache("#dv", "一个div元素");
+		selectorCache(".cls", "多个具有类cls的元素");
+
+		selectorCache("*", "通配符选择器");
+
+		var s = selectorCache("div");
+
+
+		// 如何使用缓存？
+		// 使用
+		// var typeCache = createCache();
+		// 设置 {}
+		// typeCache("name", "jack"); // {name: "jack"}
+		// typeCache("name", "rose"); // {name: "rose"}
+		// 读取
+		// typeCache("name")
+		
+		// 参考jQuery的用法
+		// $("div").css("color"); 		 // 表示读取数据
+		// $("div").css("color", "red"); // 设置
+	</script>
+</body>
+</html>

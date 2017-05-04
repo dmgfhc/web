@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 值类型
+		/*var num1 = 1;
+		var num2 = num1;
+
+		console.log(num1); // 1
+		console.log(num2); // 1*/
+
+		
+		/*var num1 = 1;
+		var num2 = num1;
+
+		num2 = 2;
+
+		console.log(num1); // 1
+		console.log(num2); // 2*/
+
+		// 引用类型
+		/*var obj1 = { name: "chuanchuan" };
+		var obj2 = obj1;
+
+		console.log(obj1); // { name: "chuanchuan" };
+		console.log(obj2); // { name: "chuanchuan" };*/
+
+		var obj1 = { name: "chuanchuan" };
+		var obj2 = obj1;
+
+		obj2.name = "fj";
+
+		console.log(obj1); // { name: "fj" };
+		console.log(obj2); // { name: "fj" };		
+	</script>
+</body>
+</html>

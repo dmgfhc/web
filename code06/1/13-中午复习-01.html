@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// === 和 == 的区别
+		// 
+		// === 全等，判断两边值是否相同的时候更加严格
+		// 1 判断两边数据类型是否相同
+		// 2 再判断值是否相同
+		// 以上两个条件都满足才返回 true
+		
+		// == 相等，会根据两边类型的不同进行隐士转换
+		// 比较的是，转换的结果
+		
+
+		/*console.log(null === undefined);
+		console.log("1" === 1);*/
+
+		var obj1 = {}; // new Object();
+		var obj2 = {};
+		/*// console.log({} === {});
+		console.log(obj1 === obj2); // false*/
+
+		// console.log(obj1 == obj2);
+
+
+
+		// ----------------------------
+		// 这个位置，会把函数声明当作是函数表达式来解析
+		// 根据不同的浏览器，解析方式可能不同
+		// 
+		// f();
+		if(true) {
+			f(); // 此时可以把 这个 代码块 认为是一个独立的环境
+			function f() {
+				console.log(1);
+			}
+
+			// var f = function() {};
+		} else {
+			function f() {
+				console.log(2);
+			}
+			// var f = function() {};
+		}
+
+		f();
+	</script>
+</body>
+</html>

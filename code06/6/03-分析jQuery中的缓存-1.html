@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 缓存结构
+		// var obj = {};
+		// // 存值
+		// obj["n"] = 1;
+		// 取值
+		// console.log(obj["n"]);
+		
+		/*var cache = {};
+		// 1 写一个函数来对缓存进行设置
+		var getCache = function(key) {
+			return cache[key];
+		};
+
+		var setCache = function(key, value) {
+			cache[key] = value;
+		};*/
+
+		/*// 读取缓存中数据
+		var n = getCache("n");
+		console.log(n);
+		// 设置缓存
+		setCache("n", "jack");
+
+		n = getCache("n");
+		console.log(n);*/
+
+		var cache = (function cache() {
+			var cache = {};
+
+			// 1 写一个函数来对缓存进行设置
+			var getCache = function(key) {
+				return cache[key];
+			};
+
+			var setCache = function(key, value) {
+				cache[key] = value;
+			};
+
+			return {
+				get: getCache,
+				set: setCache
+			};
+		})();
+
+		// 读取缓存中数据
+		// var n = cache["get"]("n");
+		var n = cache.get("n");
+		console.log(n);
+		// 设置缓存
+		cache.set("n", "jack");
+
+		n = cache["get"]("n");
+		console.log(n);
+	</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 短路操作（逻辑中断）
+		// ||  &&
+		
+		// || 
+		// 基本使用： var c = a || b;
+		// 如果 a 为真，此时就返回 a
+		// 如果 a 为假，此时就返回 b
+		/*var c = 0 || 9;
+		console.log(c); // 9*/
+
+		/*var c = 1 || 9;
+		console.log(c); // 1*/
+
+		// &&
+		// 基本使用： var c = a && b;
+		// 如果a为真，此时就返回 b，
+		// 如果a为假，此时就返回 a
+		/*var c = 0 && 9;
+		console.log(c); // 0*/
+		/*var c = 1 && 9;
+		console.log(c); // 9*/
+
+
+		// 再来实现一个刚才的函数，用来判断函数参数有没有传
+		function foo(str) {
+			// 3
+			// 应用场景：用来初始化参数的默认值
+			var ret = str || "没有参数";
+			console.log(ret);
+		}
+
+		foo();
+		foo("参数");
+	</script>
+</body>
+</html>

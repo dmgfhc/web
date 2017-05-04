@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person() {}
+
+		var p = new Person();
+		// Person 和 Person.prototype
+		// 
+		// Person.prototype.constructor === Person
+		// 
+		// 与 Object.prototype、Object 之间的关系
+		// 
+		console.log(Person.prototype.__proto__ === Object.prototype);
+		console.log(p.__proto__ === Person.prototype);
+
+		// Object.prototype.constructor 是谁？
+		
+		var obj = new Object();
+	</script>
+</body>
+</html>

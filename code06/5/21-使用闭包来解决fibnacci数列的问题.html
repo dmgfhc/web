@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 因为程序不会自动保存每一步计算结果的值
+		// 只能由我们自己创建一个 容器 来保存每次计算的结果
+		// 
+		// 用什么容器可以保存多个结果的值？
+		// 1 数组
+		// 2 对象
+		
+		// 思路：
+		// 计算的时候，先去 容器 里面查询一下有没有这个数字对应的值
+		// 如果有，直接拿过来用
+		// 如果没有，先去计算，计算完成之后要存到 容器 里面去
+		// 
+		// 使用闭包来解决这个问题
+		var count = 0;
+		var fib = (function() {
+			// 缓存
+			// 1 1 2 3 5 8 13 
+			var cache = [];
+
+			return function(n) {
+				count++;
+				var temp;
+
+				// 临界条件
+				if(n === 0 || n === 1) {
+					cache[n] = 1;
+					return 1;
+				}
+				// [1, 1, 2, 3, 5, 8, 13]
+				// 1 判断缓存中有没有n对应的值
+				if(cache[n]) {
+					// 2 如果有，就直接返回
+					return cache[n];
+				} else {
+					// 3 如果没有，先去计算，然后将计算的结果放到缓存中
+					// 此处就是要 递归调用来获取到n对应的值
+					temp = 
+						arguments.callee(n - 1) + arguments.callee(n - 2);
+					cache[n] = temp;
+
+					return temp;
+				}
+
+			};
+		})();
+
+		fib(20);
+		console.log(count);
+
+	</script>
+</body>
+</html>

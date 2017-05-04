@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		var Person = function() {
+			// this.age = 19;
+		};
+
+		Person.prototype.age = 0;
+
+		var p = new Person();
+
+		// p.age = 1999;
+
+		console.log(p.age);
+		console.log(p.age1);
+
+		// 属性搜索原则：
+		// 1 首先在当前对象（本身）中查找有没有这个属性，如果有，就直接返回
+		// 2 如果没有，就去构造函数中查找有没有该属性，如果有，就直接返回
+		// 3 如果还没有，就去原型中查找，如果有，就直接返回
+		// 
+		// 如果还没有，就返回 undefined
+		// 
+		// 4 如果还没有，就去原型的原型中查找(暂时先不考虑，等后面讲了原型链再考虑)
+	</script>
+</body>
+</html>

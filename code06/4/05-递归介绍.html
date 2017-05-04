@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 什么叫 递归？
+		// 一个函数 自己调用自己
+		// 
+		// 如何写一个递归？
+		// 
+		// 1. 什么时候递归，即什么时候调用自己？
+		//     将问题归结为已经解决过的问题（化归思想）
+		// 2. 什么时候跳出递归？
+		//     临界条件，即：结束递归的条件
+		// 
+		// 
+		// 兔子数列（fibnacci数列）
+		// 索引：0 1 2 3 4 5 6  7  8  9 10 11 
+		// 数列：1 1 2 3 5 8 13 21 34 55 89 144 ....
+		// 
+		// 2 = 1 + 1
+		// 3 = 2 + 1
+		// 5 = 3 + 2
+		// 8 = 5 + 3
+		// 后面一个数的和 = 往前数一个数 + 往前面数两个数
+		// fib(n) = fib(n - 1) + fib(n - 2)
+		// fib(5) = fib(5 - 1) + fib(5 - 2)
+		// 8      = 5          + 3
+		
+		// 1 用化归的思想分析递归的实现
+		// 2 临界条件 就是：0和1对应的值都为1
+		/*function fib(n) {
+			if(n === 0 || n === 1) {
+				return 1;
+			}
+			return fib(n - 1) + fib(n - 2);
+		}
+
+		var num = fib(10);
+		console.log(num);*/
+
+
+		// 问题：怎么结束一个函数？ 使用 return
+		/*function f() {
+			var a = 1;
+			return;
+			alert(123);
+		}
+		f();*/
+
+		
+
+		// 阶乘
+		// n! = 1 * 2 * 3 * .... * (n - 1) * n
+		// 
+		// 2! = 2 * 1
+		// 3! = 3 * (2 * 1)      => 3! = 3 * 2!
+		// 4! = 4 * (3 * 2 * 1)  => 4! = 4 * 3!
+		// 
+		// n! = n * (n - 1)!
+		// 
+		// jc(n) = n * jc(n - 1);
+		// 
+		function jc(n) {
+			if(n === 1) {
+				return 1;
+			}
+			return n * jc(n - 1);
+		}
+
+		var n = jc(9);
+		console.log(n);
+
+
+		/*// 死递归
+		function foo() {
+			foo();
+		}
+		foo();*/
+	</script>
+</body>
+</html>

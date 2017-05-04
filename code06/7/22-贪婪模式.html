@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 贪婪模式
+		// var str = "abcdefgh";
+
+		// 匹配单个字母
+		// 
+		// 取消贪婪模式：
+		/*var r = /[a-z]+?/;
+		var m = r.exec(str)
+		console.log(m);*/
+
+		// 此处要使用 取消贪婪模式进行匹配
+		var str = "<div>sd9812_=+!@#$%^&*afasdfasdf</div><div>1111111</div>";
+		var r = /(<[a-z]+>.+?<\/[a-z]+>)/;
+		var m = r.exec(str);
+		console.log(m[1]);
+	</script>
+</body>
+</html>

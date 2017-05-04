@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person() {}
+		var p = new Person();
+
+		// p 是 Person 的实例
+		// p.__proto__ === Person.prototype 
+		// 如果这个结论成立，那么就说明p是继承自 Person.prototype
+		// 即：p 是 Person 的实例
+
+		var f = new Function();
+		// f 是 Function 的示例
+		
+		// 以下结果全部为 true
+		console.log(f.__proto__ === Function.prototype);
+
+		function foo() {}
+		console.log(foo.__proto__ === Function.prototype);
+
+		// 验证一下其他的函数
+		console.log(Person.__proto__ === Function.prototype);
+		console.log(Date.__proto__ === Function.prototype);
+		console.log(RegExp.__proto__ === Function.prototype);
+		console.log(Array.__proto__ === Function.prototype);
+		console.log(String.__proto__ === Function.prototype);
+		console.log(Boolean.__proto__ === Function.prototype);
+		console.log(Number.__proto__ === Function.prototype);
+
+
+		console.log(Object.__proto__ === Function.prototype);
+		// 最特殊也是最无法解释的
+		console.log(Function.__proto__ === Function.prototype);
+
+	</script>
+</body>
+</html>

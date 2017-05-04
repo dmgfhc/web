@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 从字符串 "abcdefgh" 中找出 "ef" 的位置
+		var str = "abcdefgh";
+
+		// 使用正则表达式
+		var r = new RegExp("ef");
+		var m = r.exec(str);
+		console.log(m.index);
+
+		// str.charAt(0) + str.charAt(1)
+		// 
+		// var ret = str.slice(0, 2);
+		// console.log(ret);
+		// 
+		// var index = str.indexOf("ef");
+		// console.log(index);
+	</script>
+</body>
+</html>

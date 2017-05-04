@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 通过对象来获取类型
+		function Person() {}
+		var p = new Person();
+
+		function Student() {}
+		var stu = new Student();
+
+		// 1 先获取到构造函数
+		var ctr = p.constructor;
+
+		/*function getName(fn) {
+			// 要求 fn 是一个函数
+			// if(typeof fn === "function") {
+			// 	// 这里面再去处理函数，获取名字
+				
+			// }
+
+			if(typeof fn !== "function") {
+				return "";
+			}
+
+			// 这里面再去处理函数，获取名字
+			if (fn.name) {
+				return fn.name;
+			} else {
+				// 自己实现
+				// 1 字符串截取
+				// 2 正则表达式
+				var r = /function (.+)\(/;
+				var m = r.exec(fn + "");
+
+				return m[1];
+			}
+		}
+
+		// var n = getName(ctr);
+		var n1 = getName(stu.constructor);
+
+		alert(n1);*/
+
+		// 优化1
+		/*function getName(fn) {
+			// 要求 fn 是一个函数
+
+			if(typeof fn !== "function") {
+				return "";
+			}
+
+			// 这里面再去处理函数，获取名字
+			var ret = fn.name || /function (.+)\(/.exec(fn + "")[1];
+			return ret;
+		}*/
+
+
+		// 优化2
+		function getName(fn) {
+			var ret = 
+				typeof fn !== "function" ? "" : (fn.name || /function (.+)\(/.exec(fn + "")[1]);
+
+			return ret;
+		}
+
+	</script>
+
+	<script type="text/javascript">
+		//                1
+		/*var r = /function (.+)\(/;
+		var m = r.exec(ctr + ""); // m 是一个数组
+		return m[1];*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+			height: 300px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="jquery-1.12.3.js"></script>
+	<script type="text/javascript">
+		// 动态创建一个元素出来，并添加到页面中去
+		// 
+		// 1 jQUery的实现方式
+		// $("<div></div>").appendTo("body");
+
+		// 面向对象的方式
+		// $("body").append("<div>这是div的内容</div>");
+
+
+
+		// 以下内容是使用面向过程的方式来组织代码
+		// 2 js来实现以上效果
+		// 1 创建一个 div元素
+		// 2 设置div内容
+		// 3 将div追加到页面中去
+		
+		var dv = document.createElement("div");
+		// dv.innerHTML = "这是div 的内容";
+		// 创建要给文本节点
+		var txt = document.createTextNode("这是div内容");
+		dv.appendChild(txt);
+
+		document.body.appendChild(dv);
+	</script>
+</body>
+</html>

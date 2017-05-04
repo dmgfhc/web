@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 静态成员 实例成员
+		// 
+		// 成员：包括 属性和方法
+		// 
+		// 静态：一般就是指构造函数本身
+		// 实例：由构造函数创建出来的对象
+		// 
+		// 称：p是Person的实例
+		// var Person = function() {};
+		// var p = new Person();
+		// 
+		// var Student = function() {};
+		// var stu = new Student();
+		// 
+		// 
+		// 实例成员：由构造函数创建出来的对象的成员
+		// 静态成员：构造函数成员
+		
+
+		// var Person = function (name1, age, gender) {
+		// 	this.name1 = name1;
+		// 	this.age = age;
+		// };
+		/*Person.prototype.sayHi = function() {}
+		var p = new Person("Jack", 19);
+		// 称 name 和 age  是 实例成员
+		// 实例成员是 跟 对象（实例）相关的
+		console.log(p.name1);
+		console.log(p.age);
+		p.sayHi();*/
+
+		// 静态成员是 跟 函数相关的
+		// console.log(Person.name);
+		// console.log(Person.length); // 2
+
+		// each 是一个 静态方法
+		// var obj = {};
+		// obj.each = func....
+		// obj.each();
+		// Person.each = function() {
+		// 	console.log("这是要给静态成员");
+		// };
+		// Person.each();
+
+
+		// 对象是无法直接获取到静态成员的
+		// 反之，函数也无法直接获取到实例成员
+		// 
+		// 属性搜索原则：
+		// 1 在对象本身找有没有属性
+		// 2 去对象的原型对象中找
+		// 3 ...
+		// var p = new Person();
+		// console.log(p.each);
+		// p.constructor.each(); // 一般情况下也不会这么做
+
+		// 什么时候用静态成员，什么时候用实例成员
+		// 
+		// 一般的做法是：给静态成员提供一个方法，如果实例成员也要用到
+		// 此时，只需要让实例成员调用静态成员的方法即可
+		// 
+		// jQuery -> each
+		// $.each         -> 此时是把each方法当作静态方法（成员）来调用
+		// $("div").each  -> 此时当作实例方法（成员）调用
+
+
+		// 例子：
+		// 推荐的做法
+		var Person = function() {
+
+		};
+
+		Person.sayHi = function(str) {
+			// 假设这个地方有很多代码
+			console.log(str);
+		};
+
+		Person.sayHi("这是静态成员调用");
+
+		/*Person.prototype.sayHi = function(str) {
+			// 此处是调用静态成员的方法
+			Person.sayHi(str);
+		};*/
+
+		Person.prototype.sayHi = Person.sayHi;
+
+		var p = new Person();
+		p.sayHi("这是实例成员调用");
+
+		// 不好的做法
+		/*// 实例方法
+		Person.prototype.sayHi = function() {
+			// 假设这个地方有很多代码
+			console.log("你好");
+		};
+
+		var p = new Person();
+		p.sayHi();
+
+		// 静态方法
+		Person.sayHi = function() {
+			var p = new Person();
+			p.sayHi();
+		};
+
+		Person.sayHi();*/
+
+		// var p = new Person();
+		// console.log(p.constructor);
+		// console.log(Person.prototype.constructor.name);
+	</script>
+</body>
+</html>

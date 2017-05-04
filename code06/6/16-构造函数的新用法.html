@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person() {
+			return {
+				name: "abd"
+			};
+		}
+
+		// 通过 Person 函数产生对象有两种方式：
+		// 1 new Person   寄生模式
+		// 2 Person    	  工厂模式
+		
+		// 寄生模式
+		// 期望的是 new出来的对象，但是实际上返回的是：return 的对象
+		// var p = new Person();
+
+		// 工厂模式
+		var p = Person();
+
+		// 应该使用哪种方式？
+		// 1 如果是自己使用，此时应该用 工厂模式
+		// 2 如果是对外提供的接口，此时应该使用 寄生模式
+		// 
+	</script>
+</body>
+</html>

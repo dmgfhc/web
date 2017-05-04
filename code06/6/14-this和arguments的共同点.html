@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>按钮</button>
+	<script type="text/javascript">
+		// 在任何一个函数内部都有一个 this 和 arguments
+		// this 具有动态性，只有当函数调用的时候，才会定下来 this 到底是谁
+		// 
+		// 所以，即便是同一个函数，调用方式不同，this的值也不同
+		
+		// this 和 arguments 的共同点
+		document.getElementsByTagName("button")[0].onclick = function() {
+			// console.log(this);
+			this.style.color = "pink";
+			var that = this;
+
+			function f() {
+				// 在这个位置，如何获取到 外部函数的 所有参数
+				// agruments
+				console.log(that);
+				// 如果想在内部函数去获取到 button，怎么做？
+				console.log(this); // window
+			}
+			f();
+		};
+	</script>
+</body>
+</html>

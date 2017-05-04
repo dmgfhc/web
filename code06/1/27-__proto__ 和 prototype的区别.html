@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// __proto__ 它是一个非标准的属性
+		function Person() {}
+		
+		Person.prototype.sayHi = function() {
+			alert(12);
+		};
+		var p = new Person();
+
+		// 由 构造函数 创建出来的对象 p ，
+		// 会默认链接到其构造函数的这个属性（prototype）上
+		// Person.prototype
+		// 
+		console.log(p.__proto__ === Person.prototype); // true
+
+		p.sayHi();
+		/*Person.prototype.sayHi();
+		p.__proto__.sayHi();*/
+
+
+	</script>
+</body>
+</html>

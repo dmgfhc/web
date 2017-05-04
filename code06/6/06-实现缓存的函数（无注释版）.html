@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 作用：创建缓存
+		var createCache = function() {
+			var cache = {};
+			var arr = [];
+
+			return function(key, value) {
+				if(value === undefined) {
+					return cache[key];
+				} else {
+					if(cache[key]) {
+						cache[key] = value;
+					} else {
+						if(arr.length >= 3) {
+							var k = arr.shift();
+							delete cache[k];
+						}
+
+						cache[key] = value;
+						arr.push(key);
+					}
+				}
+			};
+		};
+
+		createCache();
+		createCache();
+
+
+		function fn() {
+			var a = Math.random();
+			console.log(a);
+		}
+
+		fn();
+		fn();
+	</script>
+</body>
+</html>

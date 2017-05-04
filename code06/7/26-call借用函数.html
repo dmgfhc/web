@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// call 和 apply 唯一的不同就是，第二个参数类型不同
+		// 
+		// 函数.apply(对象, 数组或者是伪数组)
+		// 函数.call(对象, 参数1, 参数2, ... , 参数n)
+		// 
+		var num = 123;
+		function fn(x, y) {
+			var ret = this.num + x + y;
+			console.log(ret);
+		}
+
+		// fn.apply(null, [456]);
+		fn.call(null, 456, 789);
+		fn.apply(null, [456, 789]);
+	</script>
+</body>
+</html>

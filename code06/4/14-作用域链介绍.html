@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		var a = "abc";
+		function outer() {
+			// var num = 123;
+
+			function inner() {
+				// 此处能不能访问到num的值？ 能
+				// console.log(num);
+				console.log(a);
+
+				// inner 函数的作用链：
+				// 自身的作用域 -> outer函数的作用域 -> 全局作用域
+				// 
+				// 变量的搜索(访问)原则：
+				// 沿着当前函数的作用链进行的（只看有没有声明）
+				// 1 在函数自身内部找有没有声明该变量
+				// 2 如果没有声明，就去当前作用域的上一层作用找
+				// 3 如果还没有找到，就一直沿着当前的作用域链继续网上找
+				// 直到全局作用域
+				// 4 如果全局作用域中也没有，就会报错！
+				// 
+			}
+			inner();
+		}
+		outer();
+
+		// 在outer函数外部无法访问到 num
+	</script>
+</body>
+</html>

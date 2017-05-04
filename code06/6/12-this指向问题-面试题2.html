@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		var length = 10;
+		function fn(){
+		    console.log(this.length);
+		}
+
+		var obj = {
+		    length: 6,
+		    method: function (fn) {
+		        fn(); // ？？10
+		        
+		        // arguments[0](); // ？？2
+		        // var f = arguments[0];
+		        // f(); // 此时 this 就是window
+		        // arugments.0();
+
+
+		        // 10 / undefiend / 6 / 123 / 报错 / fn / null
+		    }
+		};
+
+		obj.method(fn, 123, true);
+
+
+		// 此时 this 就是数组
+		// var arr = [fn, 1, 2, 3];
+		// arr[0]();
+
+		// ------------
+		/*var obj = {
+		    age: 18,
+		    getAge: function() {
+		        console.log(this.age);
+		    }
+		};
+
+		obj.getAge();
+		obj["getAge"]();*/
+	</script>
+</body>
+</html>

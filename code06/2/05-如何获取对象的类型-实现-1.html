@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person() {}
+		var p = new Person();
+
+		// 通过对象获取到构造函数
+		var ctr = p.constructor; // function Person() {}
+		// 将获取到的值 转化为 字符串类型
+		var strCtr = ctr + "";
+		
+		// 1 将 function 替换为 "|"
+		strCtr = strCtr.replace("function", "|");
+		// 2 获取开始位置 和 结束位置的索引号
+		var startIndex = strCtr.indexOf('|');
+		// 获取的是结束位置的索引
+		var endIndex = strCtr.indexOf('(');
+		if(startIndex > -1 && endIndex > -1) {
+			// 3 根据开始和结束的索引号来截取
+			var ret = strCtr.slice(startIndex + 2, endIndex);
+			console.log("-" + ret + "-");
+			// 此时就获取到函数的名字了			
+		}
+	</script>
+</body>
+</html>

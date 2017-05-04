@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div, p {
+			height: 50px;
+			width: 400px;
+			border: 1px dotted green;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+
+	<script type="text/javascript">
+		// 要求：获取到页面中所有div和p元素，然后设置背景色
+		// 1 获取到div，然后遍历这个集合
+		var dvs = document.getElementsByTagName("div");
+		// for(var i = 0; i < dvs.length; i++) {
+		// 	dvs[i].style.backgroundColor = "pink";
+		// }
+
+		// 2 获取到p，  然后遍历这个集合
+		var ps = document.getElementsByTagName("p");
+		// for(var i = 0; i < ps.length; i++) {
+		// 	ps[i].style.backgroundColor = "#abc";
+		// }
+
+
+		// 问题：为什么要去遍历两次？
+		// 因为获取元素的时候，是不同的元素，需要分开获取
+		// 
+		// 如果想要去遍历一次，怎么做？
+		// 只需要保证数组只有一个即可
+		// 
+		// 创建要给数组，然后变量 dvs 和 ps 里面 元素添加到数组中
+		// 1 遍历dvs 然后再遍历ps
+		// 2 借用方法
+		
+
+		// 1 使用push
+		var list = [],
+			push = list.push,
+			concat = list.concat,
+			slice = list.slice;
+
+		// 将div和p元素分别添加到数组中去
+		push.apply(list, dvs);
+		push.apply(list, ps);
+
+		// 不做要求
+		// list = concat.apply(slice.apply(dvs), ps);
+
+		for(var i = 0; i < list.length; i++) {
+			list[i].style.backgroundColor = "#abcdef";
+		}
+
+		// 将伪数组转化为数组
+		// var list = [].slice.apply(dvs);
+		// console.log(list);
+	</script>
+</body>
+</html>

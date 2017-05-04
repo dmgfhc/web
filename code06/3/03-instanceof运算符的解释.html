@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// instanceof 运算符的作用：
+		// 作用：
+		// 判断 对象p 的原型链上有没有 构造函数Person的prototype
+		// 如果有，就返回true，如果没有就返回false
+		
+		/*function Person() {}
+		// p 是 构造函数Person 的实例
+		// p -> Person.prototype -> Object.prototype -> null
+		var p = new Person();
+		console.log(p instanceof Person); // true
+
+		// {} -> Object.prototype -> null
+		Person.prototype = {};
+		// 此时 Person.prototype 的值是一个 空对象
+		// 那就看下，空对象是否在p的原型链上
+		console.log(p instanceof Person); // false*/
+
+
+		// 案例
+		function Fn() {}
+
+		// 1
+		var f = new Fn();
+		console.log(f instanceof Fn); // ?  true
+
+		// 2
+		function Foo() {}
+		// 修改 Fn.prototype 的指向
+		var o = new Foo();
+		Fn.prototype = o;
+		// Fn.prototype = new Foo();
+		console.log(f instanceof Fn); // ?  false
+
+		// 3
+		var f1 = new Fn();
+		console.log(f1 instanceof Fn); // ? true
+
+
+		// 与Object之间的关系
+		// 思路：找出 f的原型链
+		// f -> f.prototype -> Object.prototype -> null
+		console.log(f instanceof Object); // true
+		// f1 -> o -> Foo.prototype -> Object.prototype -> null
+		console.log(f1 instanceof Object); // true
+
+		// 几乎所有的对象 instanceof Object 都是 true
+		console.log(Object.prototype instanceof Object); // false
+
+		
+	</script>
+</body>
+</html>

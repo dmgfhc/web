@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>以大多数人的努力程度之低根本轮不到拼天赋</h1>
+
+	<script type="text/javascript">
+		var arr = [	{name:"张三"}, 
+				{name:"李四"}, 
+				{name:"王五"}, 
+				{name:"赵钱"}, 
+				{name:"孙李"} ];
+
+		// var i = 0;
+		for (var i = 0; i < arr.length; i++) {
+			arr[i].show = function () {
+				console.log(arr[i].name);
+			};
+		}
+
+		// [
+		// {name:"", show: function() { console.log(arr[i].name); }}
+		// {name:"", show: func...}
+		// {name:"", show: func...}
+		// {name:"", show: func...}
+		// {name:"", show: func...}
+		// ]
+		
+		// 根据以上代码分析以下情况的结果：
+		// 情况一：
+		for (var i = 0; i < arr.length; i++) {
+			arr[i].show(); 
+			// 正确的结果
+		}
+		// 的执行结果是多少?
+
+		// 情况二：
+		// for (var j = 0; j < arr.length; j++) {
+		// 	arr[j].show(); 
+		// }
+		// 的执行结果是多少?  报错
+	</script>
+</body>
+</html>

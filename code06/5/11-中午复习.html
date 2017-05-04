@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		/*var a;
+		function a() {}*/
+		// 函数名和变量名冲突的问题
+		/*// 1 变量声明了，但是为赋值
+		function a() {}
+		var a;
+
+		console.log(a); // 这种情况下获取到a的值就是函数*/
+
+		// 2 变量声明了，同时也赋值了
+		// 	a. 如果是在赋值之前，获取a的值，此时结果是：函数
+		// 	b. 如果是在赋值之后，获取a的值，此时结果是：变量的值
+		// function a() {}
+		// var a = 123;
+
+		// console.log(a);
+		// 
+		
+		// 补充：函数名 和 参数重名
+		/*function foo(foo) {
+			// 此时按照 变量的搜索原则 来看 foo的值到底多少
+			console.log(foo);
+		}
+
+		foo();*/
+
+		// 函数的参数名和变量（函数）名冲突
+		function foo(a) {
+			// var a;
+			// console.log(a);
+			
+			// console.log(a); // 10
+			// var a = 100;
+			// console.log(a); // 100
+
+			// console.log(a);
+			// function a() {}
+			// console.log(a);
+
+			// 1 如果参数名和变量名冲突，如果a只声明没有赋值
+			// 		此时a的值就是：参数的值（10）
+			// 2 如果参数名和变量名冲突，如果a声明并且也赋值了
+			// 		此时a的值有两种情况:
+			// 		a. 如果是在 赋值之前访问a的值，此时a的值为：参数的值
+			// 		b. 如果是在 赋值之后访问a的值，此时a的值为：变量的值
+			// 3 如果参数名和函数名冲突（函数声明）
+			// 此时，a的值就是：函数的值	
+		}
+
+		foo(10);
+	</script>
+</body>
+</html>

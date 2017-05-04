@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 求最大值
+		var arr = [1, 11, 111, 22, 33, 44];
+		var maxNum = arr[0];
+		// 遍历数组，比较哪个大，哪个大把哪个返回
+		for(var i = 1; i < arr.length; i++) {
+			if(maxNum < arr[i]) {
+				maxNum = arr[i]
+			}
+		}
+
+		console.log(maxNum);
+
+		// 有一个函数：fn("a", "b", "c", "d");
+		function fn() {
+			// 函数体内部 打印： "a-b-c-d"
+			var str = "";
+			for(var i = 0; i < arguments.length; i++) {
+				if(i === arguments.length - 1) {
+					str += arguments[i];
+				} else {
+
+					str += arguments[i] + "-";
+				}
+			}
+
+			console.log(str);
+		}
+
+		fn("a", "b", "c", "d");
+	</script>
+</body>
+</html>

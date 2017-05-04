@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+	//	1
+		/*var num = 456;
+		function f() {
+		    num = 678;
+		    function foo() {
+		        var num = 999;
+		        console.log(num); // 
+		    }
+		    foo();
+		    console.log(num); // 
+		}
+		f();*/
+
+		/*var num;
+		function f() {
+			function foo() {
+				var num;
+
+		        num = 999;
+		        console.log(num); // 999
+		    }
+
+			num = 678;
+		    foo();
+		    console.log(num); // 678
+		}
+
+		num = 456;
+		f();*/
+
+
+		// 2
+		var num;
+		function f1(num) {
+			// 函数的参数可以看作是一个局部变量
+		    console.log(num); // 456
+		}
+
+		function f2() {
+			var num;
+		    num = 456;
+
+		    f1(num);
+		}
+
+		num = 123;
+		f2();
+	</script>
+</body>
+</html>

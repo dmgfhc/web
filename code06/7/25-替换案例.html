@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 去掉空格 "   #div,    .cls div ,   span  " 为："#div,.cls div,span"
+		
+		// 1 取出字符串两端的空格
+		// trim 存在兼容性问题
+		var str = "     #div,    .cls     div ,   span  ";
+
+		/*str = str.replace(/^\s+/, "");
+		str = str.replace(/\s+$/, "");
+		// console.log("|" + str + "|"); // |#div,    .cls div ,   span|
+		str = str.replace(/,\s+/g, ",");
+		str = str.replace(/\s+,/g, ",");
+		str = str.replace(/\s+/g, " ");*/
+
+		str = str.replace(/^\s+|\s+$/g, "")
+				 // .replace(/,\s+/g, ",")
+				 // .replace(/\s+,/g, ",")
+				 .replace(/\s*,\s*/g, ",")
+				 .replace(/\s+/g, " ");
+
+		console.log("|" + str + "|");
+	</script>
+</body>
+</html>

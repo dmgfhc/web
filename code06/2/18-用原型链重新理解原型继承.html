@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person() {}
+		function Student() {}
+
+		// stu1 -> Student.prototype -> Object.prototype -> null
+		var stu1 = new Student();
+
+
+
+		var p = new Person();
+		Student.prototype = p;
+
+		// stu2 -> p -> Person.prototype -> Object.prototype -> null
+		var stu2 = new Student();
+
+
+	</script>
+</body>
+</html>

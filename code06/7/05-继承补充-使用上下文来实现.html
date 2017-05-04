@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person(name, age, gender) {
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+		}
+
+		Person.prototype.sayHi = function() {
+			alert("划船不用桨全靠浪");
+		};
+		var p = new Person();
+
+		function Student(name, age, gender, score) {
+			// 此处 this  就是将来要创建出来的对象，
+			// 此处是做为上下文存在的
+			// 
+			// 调用 Person函数的时候，函数内部this 就是 此处的 this
+			// 
+			Person.apply(this, [name, age, gender]);
+
+			this.score = score;
+		}
+		Student.prototype = p;
+
+		/*// 让stu 能够使用 Person.prototype中的属性和方法
+		var stu = new Student("jack", 19, "男", 99);
+		stu.sayHi();
+
+		function Teacher(name, age, gender, no) {
+			Person.apply(this, [name, age, gender]);
+
+			this.no = no;
+		}
+
+		var t = new Teacher("jack", 19, "男", 99);*/
+	</script>
+</body>
+</html>

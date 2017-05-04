@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		/*function Foo() {
+		    getName = function(){ alert(1); };
+		    return this; 
+		}
+
+		Foo.getName = function() { alert(2); };
+		Foo.prototype.getName = function(){ alert(3); };
+		var getName = function() { alert(4); };
+		function getName(){ alert(5); }
+
+		Foo.getName();             // ?
+		getName();                 // ?
+		Foo().getName();           // ?
+		getName();                 // ?
+		new Foo.getName();         // ?
+		new Foo().getName();       // ?
+		new new Foo().getName();   // ?*/
+
+
+		// 作用域问题 变量搜索原则
+		// 原型链     属性搜索原则
+		// this
+		// new
+		// 
+		// 变量的搜索原则 和 属性的搜索原则没有关系
+		// 
+		function Foo() {
+		    getName = function(){ alert(1); };
+		    return this;  // this -> window
+		}
+		var getName;
+		function getName(){ alert(5); }
+
+		Foo.getName = function() { alert(2); };
+		Foo.prototype.getName = function(){ alert(3); };
+		getName = function() { alert(4); };
+
+		Foo.getName();             // ? 2
+		getName();                 // ? 4
+		Foo().getName();           // ? 1
+		getName();                 // ? 1
+		new Foo.getName();         // ? 2
+		new Foo().getName();       // ? 3
+		new new Foo().getName();   // ? 3
+
+
+		// 运算符优先级
+		// new Foo.getName(); // 此处是 new 的 Foo的属性getName的值
+		// new Foo().getName(); // 相当于：(new Foo()).getName();
+		// new new Foo().getName(); // 相当于：new (new Foo()).getName()
+
+
+		// 把 Foo.getName 看作 FoogetName
+		// Foo.getName = function() {};
+		// new Foo.getName();
+
+		// FoogetName = function() {};
+		// new FoogetName();
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 字符串.replace(被替换字符, 替换字符);
+		var str = "abc123def";
+
+		// 字符串的替换方式
+		/*var ret = str.replace("123", "-");
+		console.log(ret);*/
+
+		/*var ret = str.replace(/\d+/, "-");
+		console.log(ret);*/
+
+		// var ret = str.replace("123", "-");
+		var ret = str.replace(/\d/g, "-");
+		console.log(ret);
+	</script>
+</body>
+</html>

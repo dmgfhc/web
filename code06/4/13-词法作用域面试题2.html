@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 1
+		// if("b" in window) {
+		//     var a = 10;
+		// }
+		// alert(a); // ?undefined
+		// 
+		
+		// 2
+		// 函数声明不允许出现在其他语句中
+		// if(true) {
+		//     function f() { alert("true"); }
+		// } else {
+		//     function f() { alert("false"); }
+		// }
+		// f();// ? 
+		
+
+		// 3 重复的var声明无效
+		var f;
+		if(true) {
+		    f = function () { alert("true"); }
+		} else {
+		    f = function () { alert("false"); }
+		}
+		f();// ? true
+
+		// 推荐：使用函数表达式
+	</script>
+</body>
+</html>

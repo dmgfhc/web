@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person() {}
+
+		// 1 利用对象的动态特性
+		/*Person.prototype.sayHi = function() {
+			alert("萨瓦迪卡");
+		};*/
+
+		// 2 利用覆盖原型对象的方式
+		/*var obj = {
+			name: "rose",
+			age: 19,
+			gender: "female",
+			sayHi: function() {
+				alert("jack, where are you");
+			}
+		};
+
+		Person.prototype = obj;
+		// Person.prototype = {};*/
+
+
+		// 3 利用混入继承来给原型对象添加成员
+		Person.prototype.extend = function(obj) {
+			// this 就是 新创建出来的对象
+			for(var k in obj) {
+				this[k] = obj[k];
+			}
+		};
+		
+
+		var p = new Person();
+
+		var obj = {
+			name: "rose",
+			age: 19,
+			gender: "female",
+			sayHi: function() {
+				alert("jack, where are you");
+			}
+		};
+		
+		p.extend(obj);
+
+		p.sayHi();
+
+
+	</script>
+</body>
+</html>

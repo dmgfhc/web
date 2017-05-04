@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person() {}
+		var p = new Person();
+
+		var ctr = p.constructor; // function Person() {}
+
+		// constructor的类型是什么？
+		// console.log(typeof ctr); // function
+		
+		var strCtr = ctr + "";
+		// console.log(typeof strCtr);// "function Person() {}"
+		// 如何找到开始的位置和结束的位置？
+		
+		// 1 将 function 替换为 "|"
+		strCtr = strCtr.replace("function", "|");
+		// console.log(strCtr); | Person() {}
+
+		// 2 获取开始位置 和 结束位置的索引号
+		var startIndex = strCtr.indexOf('|');
+		if(startIndex > -1) {
+			var endIndex = strCtr.indexOf('(');
+			if(endIndex > -1) {
+				// 3 根据开始和结束的索引号来截取
+				var ret = strCtr.slice(startIndex + 2, endIndex);
+				console.log("-" + ret + "-");
+				// 此时就获取到函数的名字了
+			}
+		}
+
+		// strCtr.slice(start, end)
+
+
+
+		
+		// 如何截取字符串？
+		// str.slice(0, 4);
+		/*var str = "abcdef";
+		var ret = str.slice(0, 4); // 包左不包右 abcd
+		console.log(ret);*/
+
+
+	</script>
+</body>
+</html>

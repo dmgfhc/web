@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 1 函数调用
+		// 	如果一个函数，直接调用（作为函数调用）此时就是函数调用模式
+		// 	this 就是 window
+		// 	
+		// 2 方法调用
+		// 	如果一个函数作为对象的属性调用，此时就是方法调用模式
+		// 	this 就是：谁调用的方法，this就是谁
+		// 	
+		// 3 构造函数调用
+		// 	如果一个函数作为构造函数来使用，就是构造函数调用模式（new Person()）
+		// 	this 就是：new出来的新对象
+		// 	
+		// 4 上下文调用
+		
+
+		// 为什么要区分四种调用模式呢？
+		// 就是因为 this 指向不同
+		// 
+		// 学习函数的四种调用模式，就是要弄清楚：this到底是谁的问题！
+		// 
+		// 
+
+
+		// 1 函数调用模式示例
+		function f() {}
+		f();
+
+		// 2 方法调用模式
+		var obj = {
+			sayHi: function() {}
+		};
+		obj.sayHi();
+
+		// 3 构造函数调用模式
+		function Person() {}
+		var p = new Person();
+
+
+	</script>
+</body>
+</html>

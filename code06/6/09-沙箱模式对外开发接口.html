@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		/*(function() {
+			// 非常厉害的一段代码
+			var iQuery = function() {
+				console.log("非常厉害的一段代码");
+			};
+
+			// 对外暴露（开发）接口
+			window.I = window.iQuery = iQuery;
+		})();
+
+		window.iQuery();
+		I();
+		// window.alert();*/
+
+
+		// 1 有利于代码压缩
+		// 2 减少了变量搜索，提高了效率
+		(function(w, undefined) {
+			// 非常厉害的一段代码
+			var iQuery = function() {
+				console.log("非常厉害的一段代码");
+			};
+
+			// 对外暴露（开发）接口
+			w.I = w.iQuery = iQuery;
+
+		})(window);
+
+		// 传入 undefined 的目的就是：确保获取到的值 一定是 undefined
+		/*function fn(w, undefined) {
+			// console.log(w);
+			console.log(x);   // undefined
+			var a;
+			// 在跟 undefined 作比较的时候
+			if(a === undefined) {
+				console.log("a就是undefined");
+			} 
+		}
+
+		fn(window);*/
+
+		// 可以修改 内置方法的值(了解)
+		document.getElementsByTagName = 123;
+		console.log(document.getElementsByTagName);
+		document.getElementsByTagName();
+
+		// undefined = 123;
+		// console.log(undefined);
+	</script>
+</body>
+</html>

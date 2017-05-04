@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 从字符串 "abcdefghabcdefghabcdefgh" 中找出所有 "e" 的位置
+		//         012345678901234567890123
+		var str = "abcdefghabcdefghabcdefgh";
+		var indexArr = [];
+		// 存在的问题：有很多循环是不必要的
+		/*for(var i = 0; i < str.length; i++) {
+			if(str.charAt(i) === "e") {
+				indexArr.push(i);
+			}
+		}
+		console.log(indexArr); // 4 12 20*/
+
+		// indexOf("字符串", index)
+		// var index = str.indexOf("e", 0); // 4
+		// var index = str.indexOf("e", 5);    // 12
+		// var index = str.indexOf("e", 13);    // 20
+		// var index = str.indexOf("e", 21);    // -1
+		// console.log(index);
+		
+		// 假设index获取的就是从0开始找的第一个符合规则的位置
+		// 第一次：index = str.indexOf("e", -1 + 1) 
+		// 第二次：index = str.indexOf("e", index + 1) 
+		// 第三次：index = str.indexOf("e", index + 1) 
+		// 停止查找的条件：index === -1
+		/*var index = -1;
+		index = str.indexOf("e", index + 1);
+		index = str.indexOf("e", index + 1);
+		index = str.indexOf("e", index + 1);
+		index = str.indexOf("e", index + 1);*/
+		var index = -1;
+		var indexArr = [];
+		// 使用while
+		do {
+			index = str.indexOf("e", index + 1);
+			if(index !== -1) {
+				indexArr.push(index);
+			}
+		} while(index !== -1);
+
+		console.log(indexArr);
+	</script>
+</body>
+</html>

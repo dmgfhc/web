@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 沙箱模式 （沙盒 sandbox）
+		// 
+		// JS里面如何实现一个沙箱模式（独立的环境）？
+		// 只有函数才能创建一个独立的环境
+		// 
+		// (function() {
+		// 		// 逻辑代码 或者是 变量
+		// })();
+		
+
+		// 为什么要有沙箱模式？
+		// 如果没有沙箱模式，此时，声明的变量只能是全局变量
+		// 1 全局环境污染
+		// 2 数据安全也无法保证
+		// var num = 123;
+		// console.log(num);
+
+
+		// for 循环，里面声明的i是一个全局变量
+		// 所以，需要使用沙箱模式来替换，将这个全局变量”变为“ 局部变量
+		// 求 0 - 9 的和
+		var sum = 0;
+
+		(function(){
+			// let i = 0
+			for(var i = 0; i < 10; i++) {
+				sum += i;
+			}
+		})();
+
+		console.log(sum);
+
+
+		// 为什么是自调用函数？
+		// (function() {
+		// })();
+		// 
+		// var f = function() {
+		// 	// 代码
+		// }
+		// 
+		// f();
+	</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 创建一个人的对象
+		/*function Person(name, age, gender) {
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+
+			this.sayHi = function() {
+				alert("嘿嘿嘿");
+			};
+		}
+
+		// 原型
+		Person.prototype.sayHi = function() {
+			alert("嘿嘿嘿");
+		};
+
+		var p = new Person("老王", 50, "男");
+		p.sayHi();
+
+		var p1 = new Person("小明", 12, "男");
+		p1.sayHi();*/
+
+
+
+		// 验证
+		/*function Person() {
+			this.sayHi = function() {};
+		}
+
+		var p1 = new Person();
+		var p2 = new Person();
+
+		console.log(p1.sayHi === p2.sayHi); // false*/
+
+		// 使用原型的情况
+		function Person() {
+			// this.sayHi = function() {};
+		}
+
+		Person.prototype.sayHi = function() {
+
+		};
+
+		var p1 = new Person();
+		var p2 = new Person();
+
+		console.log(p1.sayHi === p2.sayHi); // true
+	</script>
+</body>
+</html>

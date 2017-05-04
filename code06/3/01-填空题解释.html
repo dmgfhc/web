@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		/*
+			function Fn() {}
+		   var f1 = new Fn();
+
+		   Fn.prototype = {};
+
+		 */
+		// 一般情况下，都是先修改原型再创建对象
+		function Fn() {}
+		Fn.prototype.name = "原型链确定了";
+
+		// f1的原型链结构：
+		// f1 -> Fn.prototype -> Object.prototype -> null
+	    var f1 = new Fn();
+	    Fn.prototype = {
+	    	constructor: Fn
+	    };
+
+	    // f2 -> {} -> Object.prototype -> null
+	    var f2 = new Fn();
+
+	    console.log(f1.name);
+	    console.log(f2.name);
+
+
+	    //-------------------------
+	    // 创建对象的两种方式
+	    // 1 var obj = {}; // 对象字面量的方式
+	    // 2 var obj = new Object(); // 通过构造函数创建对象
+	    var obj = {};
+	    console.log(obj.constructor); // 实际上 congstructor是 Object.prototype中的成员
+	</script>
+</body>
+</html>

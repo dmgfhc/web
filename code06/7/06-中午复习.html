@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 函数的四种调用模式
+		// 1 函数模式 					函数名();
+		// 2 方法模式				    对象.函数名(); / 对象["函数名"]();
+		// 3 构造函数模式				new 构造函数名();
+		// 
+		// 4 上下文模式（借用方法模式）
+		// fn.apply(上下文, 数组或者是伪数组)
+		// 
+		// 作用：实际上还是再调用 fn，只不过是为了 改变 this 的指向
+		// 
+		// var obj = {};
+		// function fn() {}
+		// fn.apply(obj); 就相当于
+		// obj.fn();
+		// 
+		// fn.apply(null/undefined/window) 就相当于
+		// fn();
+		// 
+		// 为什么要区分四种调用模式？ 就是要分清楚 this 指向问题
+		// 根据 this 来分的四种模式
+		// 
+
+		// 声明变量
+		var x = 99, 
+			y = 100, 
+			obj, fn, foo;
+
+		obj = {
+			x: 111,
+			y: 222
+		};
+
+		// 没有参数的函数
+		fn = function() {
+			var ret = this.x + this.y;
+			console.log(ret);
+		};
+
+		// 有参数的函数
+		foo = function(y) {
+			var ret = this.x + this.y;
+			ret += y;
+
+			console.log(ret);
+		};
+
+		// 无参数
+		fn.apply();		// 函数模式
+		fn.apply(null);	// 模拟函数模式, 此时函数内部的this指向window
+		fn.apply(obj);	// 模拟方法模式
+
+		// 有参数
+		foo.apply(null, [1000]); // 模式函数调用模式
+		foo.apply(obj, [1000]);
+	</script>
+</body>
+</html>

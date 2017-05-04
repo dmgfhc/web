@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 从字符串 "abcdefgh" 中找出 "e" 的位置
+		var str = "abcdefgh";
+		// 1 使用字符串的基本操作
+		// var index = -1;
+		// for(var i = 0; i < str.length; i++) {
+		// 	// 如何获取字符串中每一个字符
+		// 	if(str.charAt(i) === "e" ) {
+		// 		index = i;
+		// 		break;
+		// 	}
+		// }
+		
+		// 2 使用正则表达式
+		var r = new RegExp("e");
+		var m = r.exec(str);
+		console.log(m.index);
+
+		// console.log(index);
+
+		// var i = str.indexOf("e");
+		// console.log(i);
+		
+	</script>
+</body>
+</html>

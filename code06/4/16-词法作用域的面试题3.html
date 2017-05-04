@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		/*var num = 123;
+		function f1() {
+		    console.log(num);
+		}
+
+		function f2() {
+		    var num = 456;
+		    f1();
+		}
+
+		f2(); // ? */
+
+		// 提升
+		/*var num;
+		function f1() {
+		    console.log(num);
+		}
+
+		function f2() {
+			var num;
+		    num = 456;
+		    
+		    f1();
+		}
+
+		num = 123;
+		f2(); // ? 123*/
+
+		// 变式1
+		var num;
+		function f1() {
+		    console.log(num);
+		}
+
+		function f2() {
+		    num = 456;
+		    
+		    f1();
+		}
+
+		num = 123;
+		f2(); // ? 456
+	</script>
+</body>
+</html>

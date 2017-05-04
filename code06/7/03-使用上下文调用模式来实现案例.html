@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 上下文调用模式，很重要的一个作用就是 借用方法
+		
+		// 求最大值
+		// var arr = [1, 11, 111, 22, 33, 44];
+
+		/*// 无法直接将数组参数放到 Math.max 中
+		var m = Math.max(arr)
+		console.log(m);*/
+
+		// 使用 apply 来借用 Math.max
+		// var m = Math.max.apply(null, arr);
+		// console.log(m);
+
+		// 有一个函数：fn("a", "b", "c", "d");
+		function fn() {
+			var arr = [];
+			// arr.join("-")
+			// arguments.join
+			// 
+			// 以下几种方式都可以实现
+			// arr.join
+			// [].join
+			// Array.prototype.join 
+			// 这三个的目的都是为了获取到这个 join 方法
+			// 
+			// var ret = arr.join.apply(arguments, ["-"]);
+			// var ret = Array.prototype.join.apply(arguments, ["-"]);
+			// var ret = [].join.apply(arguments, ["-"]);
+			
+			var push = arr.push,
+				join = arr.join;
+
+			var ret = join.apply(arguments, ["-"]);
+			console.log(ret);
+		}
+
+		fn("a", "b", "c", "d");
+
+		// var arr = ["a", "b", "c", "d"];
+		// var str = arr.join("----");
+		// str = arr.join.apply(arr, ["-"]); // 模拟（可以这么用）
+
+		// console.log(str);
+	</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 实现只读
+		/*function foo() {
+			var num = 123;
+
+			return function() {
+				return num;
+			};
+		}
+
+		var f = foo();
+		var n = f();*/
+
+		// 要实现一个读写的功能
+		/*function foo() {
+			var num = 123;
+
+			return [
+				function() {
+					return num;
+				},
+				function(v) {
+					num = v;
+				}
+			];
+
+		}
+		var arr = foo();
+		// 获取值
+		var n = arr[0]();
+		console.log(n);
+		// 设置值
+		arr[1](1000);
+
+		n = arr[0]();
+		console.log(n);*/
+
+		// 使用对象
+		function foo() {
+			var num = 123;
+
+			return {
+				getNum: function() {
+					return num;
+				},
+				setNum: function(v) {
+					num = v;
+				}
+			};
+		}
+
+		var gsObj = foo();
+		// 读取值
+		var n = gsObj.getNum();
+		console.log(n);
+
+		// 设置值
+		gsObj.setNum(88);
+		n = gsObj.getNum();
+		console.log(n);
+
+
+
+		// 问题：到底是改用数组还是改用对象
+		// 对象：无序键值对的集合
+		// 数组：有序键值对的集合
+	</script>
+</body>
+</html>

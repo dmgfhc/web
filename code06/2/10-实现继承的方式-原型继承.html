@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person() {
+			
+		}
+
+		// 实现原型继承
+		// 方式一： 利用对象的动态特性
+		Person.prototype.run = function() {
+			console.log("come on ");
+		};
+
+		Person.prototype.sayHi = function() {
+			console.log("你好啊");
+		};
+
+		var p = new Person();
+		p.run();
+		p.sayHi();
+
+		/*var n1 = getName(p.constructor);
+		alert(n1);*/
+
+
+		// 方式二：利用覆盖原型对象 的方式
+		Person.prototype = {
+			// constructor: Person,
+
+			run: function() {},
+			sayHi: function() {},
+			sing: function() {},
+
+			coding: function() {
+				console.log("hello world");
+			}
+		};
+
+		var p1 = new Person();
+		p1.coding();
+
+
+		// 方式三：利用混入继承的方式
+		Person.prototype.extend = function(obj) {
+			for(var k in obj) {
+				this[k] = obj[k];
+			}
+		};
+
+		var p2 = new Person();
+		p2.extend({a:1});
+		p2.extend({"b": "fadsasd"});
+		
+		console.log(p2);
+
+		/*// 获取对象的类型
+		function getName(fn) {
+			var ret = 
+				typeof fn !== "function" ? "" : (fn.name || /function (.+)\(/.exec(fn + "")[1]);
+
+			return ret;
+		}
+
+		var n = getName(p1.constructor); // Object
+		alert(n);*/
+
+
+
+		// 对象的动态特性
+		/*var obj = {};
+		obj.name = "rose";
+		obj.name = 123;
+	
+
+		obj = {aa: function() {}};
+		*/
+
+	</script>
+</body>
+</html>

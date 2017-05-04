@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		var foo = {
+		    bar: function() {
+		        return this.baz;
+		    },
+		    baz: 1
+		};
+		var a = (function() {
+			// 是在arguments上面调用的方法，所以，this就指向了 arguments
+		    return arguments[0](); // undefined
+		})(foo.bar);
+
+		// var f = function() {
+		// 	return arguments[0]();
+		// };
+
+		// var a = f(foo.bar); // 
+		
+		// // f(function() {
+		// // 	return this.baz;
+		// // })
+
+		 
+
+		console.log(a);
+	</script>	
+</body>
+</html>

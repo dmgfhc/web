@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// getter 和 setter 语法糖
+		
+		/*function fn() {
+			var name;
+			return {
+				get name() {
+					return name;
+				},
+				set name(v) {
+					name = v;
+				}
+			};
+		}
+
+		var obj = fn();
+		console.log(obj.name);
+
+		obj.name = "jack1";
+		console.log(obj.name);*/
+
+		// 实现只读属性
+		function fn() {
+			var name = "rose";
+			var age = 19;
+			return {
+				get name() {
+					return name;
+				}
+				// name : name
+			};
+		}
+
+		var obj = fn();
+		console.log(obj.name);
+		console.log(obj.age);
+
+		obj.name = "jack1";
+		obj.age = 1900;
+		console.log(obj.name);
+		console.log(obj.age);
+
+
+		// function fn() {
+		// 	var name;
+		// 	return {
+		// 		getName: function() {
+		// 			return name;
+		// 		},
+		// 		setName: function(v) {
+		// 			name = v;
+		// 		}
+		// 	};
+		// }
+
+		// var f = fn();
+		// // 读取
+		// var n = f.getName();
+		// console.log(n);
+		// // 设置
+		// f.setName("jack");
+
+		// n = f.getName();
+		// console.log(n);
+	</script>
+</body>
+</html>

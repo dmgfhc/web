@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// new Function
+		// var foo = new Function(); // function foo() {}
+
+		// 1 所有的参数都可省略
+		// 2 如果提供了参数，除了最后一个参数之外，
+		// 其他的参数都是新创建的函数的参数
+		// 最后一个参数，是函数体
+		// 3 参数都是字符串类型的
+		
+		// var foo = new Function(arg1, arg2, argN, functionbody);
+		// 没有参数函数
+		// function foo() {
+		// 	console.log("哈哈");
+		// }
+
+		/*var foo = new Function('console.log("哈哈")');
+		foo();*/
+
+		/*function foo(str) {
+			console.log(str);
+		}*/
+
+		var foo = new Function("str", "console.log(str);");
+		foo("你是谁？");
+	</script>
+</body>
+</html>

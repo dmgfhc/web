@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function fn() {
+			var name;
+			return {
+				// get 和 set 后面的 “属性名” 的名字
+				// 可以不一样，如果不一样，操作属性的时候，
+				// 只要对应起来就可以
+				// 
+				// 一般情况下，还是要让两个名字相同
+
+				get name() {
+					return name;
+				},
+				set name(v) {
+					name = v;
+				}
+			};
+		}
+
+		var obj = fn();
+		console.log(obj.name1);
+
+		obj.name2 = "jack1";
+		console.log(obj.name1);
+	</script>
+</body>
+</html>

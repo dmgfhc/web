@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		//var str = "abc123def";
+
+		// 分组并且捕获内容
+		/*var r = /([a-z]+)([0-9]+)([a-z]+)/;
+		var m = r.exec(str);
+		console.log(m);
+
+		console.log(m[1]);
+		console.log(m[2]);
+		console.log(m[3]);*/
+
+		// 匹配 选择器
+		// #dv .cls  div *
+		function getElm(selector) {
+			// var r = //;
+			// var m = r.exec(selector)
+			// m[1] 就是 id
+		}
+		// id选择器
+		// #dv
+		// #d123
+		// #d_-123
+		// var rId = /#([a-zA-Z0-9_\-]+)/;
+
+		// 类选择器
+		// var rCls = /\.([a-zA-Z0-9_\-]+)/;
+
+		// var selr = /#([a-zA-Z0-9_\-]+)|\.([a-zA-Z0-9_\-]+)/;
+		var selr = /^(?:#|\.)([a-zA-Z0-9_\-]+)$/;
+
+		// var m = selr.exec("#dv-_123");
+		var m = selr.exec(".dv-_123");
+		console.log(m);
+
+
+		// 或 |
+		/*var str = "ab";
+		// var r = /a|b/;
+		// var r = /[ab]/;
+		var m = r.exec(str);
+		console.log(m);*/
+
+		/*// | 的优先级最低
+		var str = "foot"; // food  foot
+		// 此处加小括号的目的仅仅是为 匹配 food或者foot 而不是
+		// 通过 exec 来获取到分组的结果
+		// 
+		// 所以，此处只是需要分组而不需要捕获
+		// 
+		var r = /foo(?:d|t)/;
+		// var r = /[ab]/;
+		var m = r.exec(str);
+		console.log(m);*/
+	</script>
+</body>
+</html>

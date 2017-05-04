@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 从字符串 "abcdefghabcdefghabcdefgh" 中找出所有 "e" 的位置
+		//         012345678901234567890123
+		var str = "abcdefghabcdefghabcdefgh";
+		// var r = new RegExp("e", "g"); // 开启全局模式
+		var r = new RegExp(/e/g); // 开启全局模式
+		var m;
+		var arr = [];
+		while( (m = r.exec(str)) !== null ) {
+			arr.push(m.index);
+		}
+
+		console.log(arr);
+
+
+		/*var m = r.exec(str);
+		console.log(m);
+		m = r.exec(str);
+		console.log(m);
+
+		m = r.exec(str);
+		console.log(m);
+
+		m = r.exec(str);
+		console.log(m);*/
+	</script>
+</body>
+</html>

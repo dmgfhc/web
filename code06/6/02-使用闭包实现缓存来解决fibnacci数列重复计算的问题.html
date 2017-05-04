@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 使用递归再怎么实现一个fibnacci数列
+		/*function fib(n) {
+			if(n === 1 || n ===0) {
+				return 1;
+			}
+
+			// return fib(n - 1) + fib(n - 2);
+			return arguments.callee(n - 1) + arguments.callee(n - 2);
+		}
+
+		var n = fib(10);
+		console.log(n);*/
+
+		// fibnacci数列：1 1 2 3 5 8 13 21 34 55 89
+		// 
+		// 因为以上代码存在大量重复计算的问题，那么，下面就缓存来
+		// 解决大量重复计算的问题
+		// 
+		// 假设现在就有缓存
+		// 				   0  1  2  3  4  5   6.....
+ 		// var fibCache = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+		// 如果使用缓存计算 第 5 项的值：
+		// 因为缓存中直接就有5对应的值，所以直接拿来用：fibCache[5]
+		// 
+		// 此时如果计算 第11项的值，怎么做？
+		// 计算第11项的值就相当于：第十项的值 + 第九项的值
+		// 第11项的值 = fibCache[10] + fibCache[9];
+		// 最后，还要把第11项的值，放到缓存中去 fibCache[11] = 144
+		
+		// 缓存
+		var fibCache = [];
+
+		function fib(n) {
+			if(n === 1 || n ===0) {
+				fibCache[n] = 1;
+				return 1;
+			}
+			// 用来存放计算结果
+			var temp;
+			// 思路
+			// 1 判断一下缓存中有没有我们需要的数据
+			// 2 如果有，就直接从缓存中取出来
+			// 3 如果没有，先计算，然后，将计算的结果放到缓存
+			
+
+			// 1 判断一下缓存中有没有我们需要的数据
+			if (fibCache[n]) {
+				// 2 如果有，就直接从缓存中取出来
+				return fibCache[n];
+			} else {
+				// 3 如果没有，先计算，然后，将计算的结果放到缓存
+				temp = arguments.callee(n - 1) + arguments.callee(n - 2);
+				
+				// 问题：为什么此处不用push
+				// fibCache.push(1) => [1] => 
+				// 数组中只有一个元素，这个元素 的索引号是 0
+				// 
+				// 实际上应该是： 索引号为1的 值 为 1
+				// [undefined, 1];
+				// 
+				fibCache[n] = temp;
+
+				return temp;
+			}
+
+		}
+
+		var n = fib(2);
+		console.log(n);
+	</script>
+</body>
+</html>

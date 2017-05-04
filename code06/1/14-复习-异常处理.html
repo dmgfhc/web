@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 异常处理
+		// try {  			// try 尝试
+		// } catch( e ){    // catch 抓住 捕获
+		// } finally { 		// 最后
+		// }
+		
+		/*alert(1);
+		alert(a); // 这句话报错了，会阻挡后续代码的执行
+		alert(2);*/
+
+		/*alert(1);
+		// alert(a);
+		try {
+
+			alert(a); // 这句话报错了，会阻挡后续代码的执行
+			
+		} catch(e) {
+			// 如果try里面的代码有问题，这个位置才会执行
+			// alert("代码有问题");
+			console.log(e); 
+		} finally {
+			alert("这个代码不管有没有错误都会执行");
+		}
+
+
+		alert(2);*/
+
+
+		try {
+			// throw new Error("代码怎么都不报错！");
+			// throw "这都行？？";
+			// throw [12,34,56];
+		} catch(e) {
+			// error
+			console.log(e);
+		}
+	</script>
+</body>
+</html>

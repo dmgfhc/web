@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function foo() {
+
+			this.name = "";
+			// 模拟创建对象的过程
+			// 1 创建要给空对象
+			// var obj = {};
+			// 2 将空对象的引用赋值给 this
+			// this = obj;
+			// 3 使用 this.属性 = 值
+			// 4 返回新对象
+			
+			// 如果是一个基本类型，就会被忽略
+			// return 123;
+			
+			return {};
+		}
+
+
+		foo(); // 普通函数
+
+		var f = new foo;
+		var f = new foo();
+
+		// new Object()
+		
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 创建函数的三种方式
+		// 1 函数声明的方式
+		// 2 函数表达式
+		// 3 通过 new Function() 创建 (后面单独详细介绍)
+		// 
+		// 
+		// 函数声明和函数表达式的区别
+		// 1 函数表达式中的名字 可以省略
+		// 		如果没有省略，那么这个名字可以是任何的值
+		// 		还有注意：这个名字只能函数体内部使用
+		// 2 提升
+		// 	 	函数声明的方式，整个函数体都会被提升
+		// 	 	函数表达式，提升的是变量
+		// 3 函数声明 不能出现在其他语句中
+
+		// 不推荐
+		/*if(true) {
+			function f() {console.log("11111");}
+		} else {
+			function f() {console.log("222222");}
+		}
+
+		f();*/
+
+		// 推荐使用这种方式
+		if(true) {
+			var f = function () {console.log("11111");}
+		} else {
+			var f = function () {console.log("222222");}
+		}
+
+		f();
+
+
+		/*function f() {
+			console.log("11111");
+		}
+
+		function f() {
+			console.log("222222");
+		}
+
+		f();*/
+
+
+		// 变量命名规则：数字 字母 下划线 和 $
+
+		/*foo1();
+		// 1
+		function foo1() {
+			function f() {}
+		}
+
+		foo2();
+		// 2
+		var foo2 = function() {
+
+		};
+
+		// var foo2;
+		// foo2 = function() {};
+
+
+
+		// 3
+		var foo3 = new Function();
+
+		foo1();
+		foo2();
+		foo3();*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// constructor : 构造器（构造函数）
+		function Person() {}
+		var p = new Person();
+
+		// 获取 p 的类型
+		// 
+		// 对象里面有个属性叫做：constructor
+		//console.log(p.constructor); // function Person() {}
+
+		// constructor就是创建该对象的构造函数
+		// console.log(p.constructor === Person); // true
+
+		var p1 = new Person();
+		console.log(p1.constructor);
+
+		// constructor 是哪来的？
+		// constructor是原型提供的属性
+		// 
+		// 
+		// 原型是一个对象类型的，默认情况下只有一个属性叫做：constructor
+		// constructor 又指向了 个构造函数
+	</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 上下文调用模式
+		// 
+		// 其他的三种调用模式，this都是固定的
+		// 1 函数模式 this -> window
+		// 2 方法模式 this -> 调用方法的对象
+		// 3 构造函数模式 this -> 新创建出来对象
+		// 
+		// 上下文调用模式中，this 是可以指定，即：
+		// 想让this是谁，this就是谁
+		// 
+		// 
+		// 上下文：就是内容的上面和下面，即当前内容所处的环境
+		
+		// 有两种使用方式
+		// 函数fn.apply(context, [参数1, 参数2, ... , 参数n])
+		// 	第一个参数：表示要指定的上下文（即，让谁来调用这个方法）
+		// 	第二个参数：是一个数组（或者是伪数组）类型的，
+		// 			数组里面的每个元素，都会作为 函数fn 的参数来使用
+		// 使用这种方式来调用，实际上还是在调用 函数fn
+		// fn(1, 2)
+		// fn.apply(obj, [1, 2])
+		// 
+		// 
+		// 函数.call() 
+		function foo(str) {
+			console.log(str);
+		}
+
+
+
+		// 作为函数模式来调用
+		// fn();
+		// 以下三种方式都可以来模式 函数调用模式
+		// 此时 this 就是 window
+		// fn.apply(window)
+		// fn.apply(null)       // 一般使用null就行
+		// fn.apply(undefined)
+		
+		// 作为 方法模式来调用
+		/*var obj = {
+			name: "jack"
+		};
+		// obj.f = fn;
+		// obj.f();
+		fn.apply(obj);*/
+
+
+		// 练习：写一个函数，要求传入什么参数就打印什么参数
+		function foo(str, a) {
+			console.log(str, a);
+		}
+		// 使用 apply 来 分别模拟 函数调用模式 和 方法调用模式
+		// 1 模拟函数调用模式
+		// foo.apply(null, ["abc"]);
+
+		// 2 模式方法调用模式
+		var obj = {};
+		foo.apply(obj, ["def", 123]);
+	</script>
+</body>
+</html>

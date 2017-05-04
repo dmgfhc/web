@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 作为方法调用 this 就是对象
+		/*var age = 38;
+		var obj = {
+		    age: 18,
+		    getAge: function() {
+		        console.log(this.age);
+		    }
+		};
+
+		// this 指向 obj
+		var a = obj.getAge();*/
+
+		/*var age = 38;
+		var obj = {
+		    age: 18,
+		    getAge: function() {
+		        console.log(this.age); // ？？
+		    }
+		};
+
+		var f = obj.getAge;
+		// this 指向 window
+		f();*/
+
+
+		var age = 38;
+		var obj = {
+		    age: 18,
+		    getAge: function() {
+		        function f() {
+		        	console.log(this.age); // ？？38
+		        }
+
+		        f();
+		    }
+		};
+
+		obj.getAge();
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		var obj = {};
+		// 原型
+		// 任何一个函数都有一个 prototype 的属性
+		// 这个属性是对象类型的
+		// 这个属性所指向的对象，就是构造函数函数的原型
+		// 
+		// Person.prototype
+		function Person() {}
+		// console.log(typeof Person.prototype);
+		
+		Person.prototype.leg = 2;
+
+		var p1 = new Person();
+		var p2 = new Person();
+
+		console.log(p1.leg);
+		console.log(p2.leg);
+
+		/*function aa() {}
+		console.log(aa.prototype);*/
+
+	</script>
+</body>
+</html>

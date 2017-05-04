@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+			border: 1px solid red;
+		}
+		p {
+			border: 1px dotted green;
+		}
+	</style>
+	<script type="text/javascript">
+		// 问题：找出body里面的所有后代元素，给这些后代元素添加样式（边框）
+		// 层级不限
+		// 
+		// 转化为：获取body的子元素
+		var list = [];
+		function getChild(element) {
+			// 获取element中的子元素
+			// children / childNodes
+			
+			for(var i = 0; i < element.childNodes.length; i++) {
+				// 所有的操作
+				// 获取的只是 元素节点
+				if(element.childNodes[i].nodeType === 1) {
+					list.push(element.childNodes[i]);
+
+					// 递归
+					getChild(element.childNodes[i]);
+				}
+			}
+
+		}
+
+		window.onload = function() {
+			getChild(document.body);
+
+			for(var i = 0; i < list.length; i++) {
+				list[i].style.border = "2px solid #abcdef";
+			}
+
+		}
+		
+	</script>
+</head>
+<body>
+	<div>
+		<p></p>
+		<p></p>
+		<p>
+			<ul>
+				<li>这是第<span>1</span>个li元素</li>
+				<li>这是第2个li元素</li>
+				<li>这是第3个li元素</li>
+			</ul>
+		</p>
+		<p></p>
+		<p></p>
+	</div>
+
+	<div>
+		<p></p>
+		<p></p>
+		<p></p>
+	</div>
+
+	<div>
+		<div><span>这是span</span></div>
+	</div>
+</body>
+</html>

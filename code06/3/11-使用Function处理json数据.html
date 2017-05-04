@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 以下两种写法作用相同
+		/*var foo = new Function();
+		function foo() {}*/
+
+		/*var foo = new Function("var a = 1; return a;");
+		// function foo() {
+		// 	var a = 1;
+		// 	return a;
+		// }
+		var b = foo();
+
+		console.log(b);*/
+
+
+		var o = :'{ "name" "Tom", "age": 19, "gender": "不详" }';
+		// 使用new Function 将字符串转化为对象
+		
+		// function foo() {
+		// 	return { "name": "Tom", "age": 19, "gender": "不详" };
+		// }
+		/*var fn = new Function("return " + o);
+		var obj = fn();*/
+		
+		var obj = ( new Function("return " + o) )();
+		console.log(obj);
+	</script>
+</body>
+</html>

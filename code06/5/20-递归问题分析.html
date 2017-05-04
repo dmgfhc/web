@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 计数
+		var count = 0;
+		// 递归
+		function fib(n) {
+		    count++;
+
+		    if(n === 0 || n === 1) {
+		        return 1;
+		    }
+		    return fib(n - 1) + fib(n - 2);
+		}
+
+		fib(5);
+		// 计算哪个数的值 次数
+		// 1				1
+		// 2				3
+		// 3				5
+		// 4				9
+		// 5				15
+		// 6				25
+		// 7				41
+		// ...
+		// 10				177
+		// 11				287
+		// ...
+		// 20				21891
+		// 21				35421
+		// 
+		console.log(count);
+	</script>
+</body>
+</html>

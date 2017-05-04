@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// ES -> ECMAScript
+		// 
+		// ES3 / ES5 / ES6(ES2015)
+		// 
+		// ES5: 
+		// document.querySelector
+		// document.querySelectorAll
+		
+		
+		// 1 严格模式
+		// 开启严格模式的语法
+		// 
+		// "use strict";
+		// var num = 123;
+		// console.log(num);
+		
+		// var num = 123;
+		// delete num;
+		// console.log(num);
+		
+		// if(true) {
+		// 	function fn() {}
+		// }
+		// fn();
+		
+		// eval("var a = 1;");
+		// console.log(a);
+		
+		/*function fn() {
+			console.log(this);
+		}
+		fn();*/
+
+		// 一般在使用严格模式的时候，是在函数内部使用
+		function fn() {
+			"use strict";
+
+			// 函数内部代码才会遵循严格模式的限制
+		}
+
+		// 了解（width）
+		// var obj = {
+		// 	name: "jack",
+		// 	age: 19
+		// };
+		// console.log(obj.name);
+		// console.log(obj.age);
+		// with(obj) {
+		// 	console.log(name);
+		// 	console.log(age);
+		// }
+	</script>
+</body>
+</html>

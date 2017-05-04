@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 不行
+		function foo() {
+			var num1 = Math.random();
+			var num2 = Math.random();
+
+			return function() {
+				return num1,num2;
+			}
+		}
+
+		var f = foo();	
+		var num1 = f();
+		var num2 = f();
+		console.log(num1,num2);
+	</script>
+</body>
+</html>

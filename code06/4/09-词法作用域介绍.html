@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 词法作用域
+		// 
+		// 什么叫做 作用域 ？
+		// 变量定义后，起作用的区域就是作用域
+		// 
+		// 有两种作用域：
+		// 1 块级作用域 （js不支持）
+		// 2 词法作用域
+		// 	 变量被定义的同时，作用域就定下来了
+		// 
+		// 函数作用域：在js里面能形成作用域的只能是函数
+		// 并且函数内部会形成一个独立的作用域
+		// function foo() {
+		// 	var num = 123;
+		// 	// num 只能在函数内部使用
+		// }
+		// 
+		// 全局作用域：
+		// var num = 123;
+		// num在全局环境中都有效
+		// 
+		
+		// var i = 0;
+		/*for(var i = 0; i < 10; i++) {
+			
+		}
+		// 在支持块级作用域的语言里面，i只能在for循环内部使用
+		// 在for外部无法使用
+		console.log(i); // 能不能获取到i的值？能， 10*/
+
+		/*// ES6 添加的一个let关键字 --了解
+		for(let i = 0; i < 10; i++) {
+			
+		}
+		console.log(i); // 此时会报错*/
+
+
+		/*var num = 123;
+		function f() {
+			var str = "abc";
+		}*/
+	</script>
+
+	<script type="text/javascript">
+		// console.log(num);
+	</script>
+</body>
+</html>

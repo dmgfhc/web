@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person() {}
+		var p = new Person();
+
+		/*function PERSON1o23120930jaodkfjoa() {}
+		var p = new PERSON1o23120930jaodkfjoa();*/
+
+		// 通过对象获取到构造函数
+		var ctr = p.constructor; // function Person() {}
+
+		/*function getName(ctr) {
+			// 判断ctr是否支持name属性
+			if(ctr.name) {
+				return ctr.name;
+			} else {
+				// 不支持name属性
+				
+				var r = /function (.+)\(/;
+				var m = r.exec(ctr + "");
+				return m[1];
+				// return /function (.+)\(/.exec(ctr + "")[1];
+			}
+		}*/
+
+		// 使用三元表达式
+		/*function getName(ctr) {
+			// 判断ctr是否支持name属性
+			var ret = ctr.name ? ctr.name : /function (.+)\(/.exec(ctr + "")[1];
+			return ret;
+
+		}*/
+		// var n = getName(p.constructor);
+		// console.log("-" + n + "-");
+
+
+		// 判断下传进来的参数是否是一个函数
+		/*function getName (ctr) {
+			// 如果要更加严谨，需要判断一下ctr是否是一个函数
+			// if(typeof ctr === "function") {
+				
+			// 	// 再判断 是否支持name属性
+			// 	if(ctr.name) {
+			// 		return ctr.name;
+			// 	} else {
+			// 		return /function (.+)\(/.exec(ctr + "")[1];
+			// 	}
+			// }
+
+			if(typeof ctr !== "function") {
+				
+				return "";
+			}
+
+			// 再判断 是否支持name属性
+			if(ctr.name) {
+				return ctr.name;
+			} else {
+				return /function (.+)\(/.exec(ctr + "")[1];
+			}
+		}*/
+
+		// 使用 逻辑中断
+		/*function getName (ctr) {
+			// 如果要更加严谨，需要判断一下ctr是否是一个函数
+			if(typeof ctr !== "function") {
+				
+				return "";
+			}
+
+			// 再判断 是否支持name属性
+			return ctr.name || /function (.+)\(/.exec(ctr + "")[1];
+		}*/
+
+		// 不做要求
+		function getName (ctr) {
+			return typeof ctr !== "function" 
+					? "" 
+					: (ctr.name || /function (.+)\(/.exec(ctr + "")[1]);
+		}
+
+		var n = getName(p.constructor);
+		console.log("-" + n + "-");
+
+	</script>
+</body>
+</html>

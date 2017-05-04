@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 问题：如果一个函数没有返回值，此时获取函数的返回值是:undefined
+		// 如果是有返回值
+		// 		1 如果return后面什么都有，此时，返回值还是：fundefined
+		// 		2 返回值的类型可以是什么类型？什么类型都可以被返回
+		/*function foo() {
+			return;
+		}
+
+		var n = foo();
+		console.log(n);*/
+
+		/*function foo() {
+			// return 123;
+			// return "abcd";
+			// return false;
+			// return [];
+			// return {};
+			// return function() {};
+			// ..... 
+		}*/
+
+		/*function foo() {
+			var num = 123;
+			return num;
+		}
+
+		var n = foo();
+		// 声明一个函数，然后调用，就相当于直接在全局范围内获取这个值
+		var num = 123;*/
+
+		// 怎么理解函数的返回值？
+		// 为什么返回值？ 就是要获取到函数内部声明的变量
+		// foo();
+		// console.log(num); // 报错
+
+		// var n = foo();
+		// console.log(n);
+
+		var num;
+		function foo() {
+			num = 123;
+		}
+		foo();
+
+		num = "你愁啥";
+
+		console.log(num);
+		// 为什么不在全局环境中声明一个变量，然后在函数内部去修改变量的值
+		// 接着调用函数之后，就能获取到的这个值？
+		// 
+		// 就是因为：在全局中声明的变量，在全局范围内都有效，
+		// 此时就可以随意修改这个值
+		// 
+		// 将变量放到函数内部声明的目的就是为了保护这个变量
+		// 
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 需求
+		// 1 缓存数量要在一定范围内，例如：100条
+		// 2 缓存数据要可控，增删改查
+		// 3 缓存需要被保护
+		
+		var cache = {};
+		function createCache() {
+			// 数据缓存，作用就是用来存储数据
+			// var cache = {};
+
+			// 这个数组就是用来存放存入的数据的key
+			var arr = [];
+
+			// 用来存放缓存中放入了多少条数据
+			// var length = 0;
+
+			return function(key, value) {
+				// 1 
+				// 获取
+				// var temp = cache[key]
+				// return temp;
+				// 
+				// 设置：
+				// cache[key] = value
+
+				// 假设存储的内容都能够转化为 布尔值true
+				if(cache[key]) {
+					// 存在
+					return cache[key];
+				} else {
+					
+					// 只有在数量小于限制数量的时候，才做那个++操作
+					if(arr.length < 3) {
+						// 记录存入的条数
+						// length++;
+
+					} else {
+						// 如果存入数量超过100
+						// 删除最开始方法的数据
+						// arr[0]
+						// 使用 shift 方法，会自动改变数组长度
+						var k = arr.shift();
+						delete cache[k];
+
+						// 长度
+						// length--;
+					}
+
+					// 用来存放 存入数据的key
+					arr.push(key);
+					// 不存在
+					cache[key] = value;
+
+					// // 需要return出来
+					// return value;
+					
+
+					// 缓存数量要在一定范围内，例如：100条
+					// 如果超过限制，就删除删除
+					// 
+					// 假设现在就有100条，然后，又添加了一条，这时候怎么处理？
+					// 要删除数据，问题是:删除哪条数据？ 
+					// 删除最早放入到缓存中的数据。
+					// 
+					// 要知道最早存入缓存中数据，这时候，
+					// 就需要知道缓存存放数据的顺序
+					// var k = arr[0]; 根据这个k 删除 缓存中数据
+					// 
+					// {a: 1, b: 2, c: 3}
+					// {b: 2, c: 3, d: 4}
+				}
+			};
+		}
+
+		// 使用
+		var typeCache = createCache();
+		// var typeCache = fn();
+
+		// 存数据
+		typeCache("name", "jack");
+		typeCache("age", 19);
+		typeCache("gender", "男");
+		typeCache("name1", "jack");
+
+		// 取数据
+		var o = typeCache("name");
+
+
+		// 取数据
+		// typeCache("key")
+		// 
+		// 设置
+		// typeCache("key", "value")
+
+
+		// 实际使用
+		// var typeCache = createCache();
+		// var eventCache = createCache();
+		// var selectorCache = createCache();
+	</script>
+</body>
+</html>

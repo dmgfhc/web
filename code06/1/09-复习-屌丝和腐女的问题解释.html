@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*var o = new Object();
+		// 2 创建一个函数
+		function foo(obj) {
+		    obj.name = "腐女";
+		    
+		    obj = new Object();
+		    obj.name = "屌丝";
+		}
+		// 3 调用函数
+		foo(o);
+		console.log(o.name); // ？？？腐女*/
+
+
+
+		// 简化之后的代码
+		var o = new Object();
+		var obj = o;
+
+		/*console.log(obj);
+		console.log(o);
+		console.log(obj === o); // true*/
+
+		obj.name = "腐女";
+		/*console.log(obj);
+		console.log(o);*/
+
+		obj = new Object();
+
+		/*console.log(obj);
+		console.log(o);*/
+
+		obj.name = "屌丝";
+
+		console.log(o.name); 
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		/*var num = 123;
+
+		function f1() {
+		    console.log(num); // 456
+		}
+
+		f2();
+
+		function f2() {
+		    num = 456;
+		    f1();
+		}
+
+		console.log(num); // 456*/
+
+		var num;
+		function f1() {
+		    console.log(num); // 456
+		}
+		function f2() {
+		    num = 456;
+		    f1(); // 456
+		}
+
+		num = 123;
+		f2();
+		console.log(num); // 456
+	</script>
+</body>
+</html>

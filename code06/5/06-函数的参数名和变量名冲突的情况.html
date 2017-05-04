@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 自调用函数
+		/*(function (a) {
+		    console.log(a);
+		    var a = 10;
+		    function a(){}
+		}( 100 ));*/
+
+		// 变量的情况
+		/*console.log(f); // function f() {}
+		var f = 123;
+		function f() {}
+		console.log(f); // 123*/
+
+		(function (a) { // a => 100
+		    console.log(a);  // function a() {}
+			// var a;
+		    function a(){}
+
+		    // 如果是函数和参数重名了，此时获取到的是 函数的值
+
+		    // console.log(a);  // function a() {}
+		    a = 10;
+		}( 100 ));
+
+		/*// 变式
+		(function (a) { // a => 100
+			var a;
+			// 如果是声明了变量但是没有赋值，反问参数（变量）的值，
+			// 就是传进来的函数参数的值
+			// 
+			// 如果变量但是赋值了，此时，就是赋值之后的结果
+
+		    // console.log(a);  // 100
+		    a = 10;
+		    console.log(a);
+		}( 100 ));*/
+
+		// 自调用函数的写法
+		// (function() {})();
+		// (function(){} ());
+	</script>
+</body>
+</html>

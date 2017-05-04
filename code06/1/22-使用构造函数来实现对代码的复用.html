@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 使用 对象字面量 形式
+		// var person = {
+		// 	name: "qianqian",
+		// 	age: 30,
+		// 	gender: "不详",
+		// 	sayHello: function() {
+		// 		alert(this.name);
+		// 	}
+		// };
+		
+		// 构造函数
+		function Person() {
+			this.name = "qianqian";
+			this.age = 30;
+			this.gender = "不详";
+			this.sayHello = function() {
+				alert(this.name);
+			};
+		}
+
+		var p = new Person();
+		p.sayHello();
+
+		var p1 = new Person();
+		console.log(p1.name);
+
+		var p2 = new Person();
+		console.log(p2.age);
+
+		// 注意点：
+		// 1 构造函数的名字是以大写字母开头（推荐）
+		// 2 使用new来创建一个对象
+		// 3 要给创建出来的对象添加属性，只需要在构造函数内部使用 this 
+		// 		给this添加的属性或者是方法，都会通过新创建出来的对象p体现出来
+	</script>
+</body>
+</html>

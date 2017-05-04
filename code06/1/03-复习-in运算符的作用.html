@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// in 运算符
+		// for - in
+		var obj = {
+			"name": "chuanchuan",
+			"age": 19, 
+			"gender": "male"
+		};
+		
+
+		// 遍历对象
+		/*for(var k in obj) {
+			console.log("key = " + k + ", v = " + obj[k]);
+		}*/
+
+		// in
+		// 作用：判断制定的属性是否存在于被检测的对象中
+		// 语法： key in obj
+		// console.log("age" in obj);
+		console.log("toString" in obj); // toString 是继承来的
+
+		// []
+		var arr = [1, 0];
+		// 对数组来说，索引就是数组的属性
+		console.log(1 in arr); // false
+	</script>
+</body>
+</html>

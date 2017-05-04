@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person() {}
+
+		/*Person.prototype.toString = function() {
+			console.log("这是自己提供的toString方法");
+		};*/
+
+		var p = new Person();
+
+		// toString 是由 Object.prototype 提供
+		p.toString();
+
+
+		var arr = [1, 3, 5, 7];
+
+		// toString 是由 Array.prototype 提供的
+		console.log(arr.toString());
+	</script>
+</body>
+</html>

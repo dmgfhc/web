@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		/*function fn() {
+			var a = b = c = 9;
+			console.log(a);  // 9
+			console.log(b);  // 9
+			console.log(c);  // 9
+		}
+
+		fn(); // 
+
+		console.log(c);  // 9
+		console.log(b);  // 9
+		console.log(a);  // 报错*/
+
+
+		/*// 先把 b = 9 , 然后 拿着 b = 9 这个表达式的值，
+		// 再复制给 a
+		var a = 1, b;
+		// a = b = 9;
+
+		console.log(b = 9);*/
+
+		// 面试题
+		/*var obj = {};
+		// obj.x = obj = {name: "jack"};
+		obj = obj.x = { name: "jack" };
+		console.log(obj.x); // ？？undefined*/
+
+		// 面试题-2
+		var a = {
+	        n: 1
+	    };
+	    var b = a;
+	    a.x = a = {
+	        n: 2
+	    };
+	    console.log(a.x);  // undefined
+	    console.log(b.x);  // {n: 2}
+	</script>
+</body>
+</html>

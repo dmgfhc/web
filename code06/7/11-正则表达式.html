@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 什么叫做 正则表达式？
+		// 在JavaScript中，正则表达式是一个用来 匹配 的 并包含 
+		// 元字符或普通字符 的字符串对象。
+		// 
+		// 在JS中，正则表达式 是一个对象
+		// 
+		// 作用：用来匹配
+		// 元字符：		具有特殊含义的字符（+^$）
+		// 普通字符：	不具有特殊含义的字符 （"aba" "123" "OPOPO"）
+		
+
+		// 创建正则表达式
+		// 1 使用构造函数创建 正则表达式
+		// var r = new RegExp("");
+		// r.test()
+		// r.exec()
+		
+		// 2 使用字面量的方式
+		// var r = /\d+/;
+		// r.exec()
+
+		// var r = new RegExp("123");
+		var r = new RegExp(/123/);
+		var ret = r.test("asdfjaskld123jflkasjdklfjal");
+		console.log(ret);
+	</script>
+</body>
+</html>

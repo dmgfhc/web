@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 案例：写一个对象描述一个人要求有姓名、年龄、性别、sayHello
+		// 使用 对象字面量（直接量） 创建对象
+		/*var person = {};
+		person.name = "qianqian";
+		person.age = 30;
+		person.gender = "男";
+		person.sayHello = function() {
+			alert(this.name);
+		};
+
+
+		person.sayHello();*/
+
+		// 创建对象
+		var person = {
+			name: "qianqian",
+			age: 30,
+			gender: "不详",
+			sayHello: function() {
+				alert(this.name);
+			}
+		};
+
+		person.sayHello();
+
+
+		// 使用对象字面量的方式创建对象的缺点：
+		// 无法复用
+
+		/*var person1 = {
+			name: "qianqian",
+			age: 30,
+			gender: "不详",
+			sayHello: function() {
+				alert(this.name);
+			}
+		};
+
+		var person2 = {
+			name: "qianqian",
+			age: 30,
+			gender: "不详",
+			sayHello: function() {
+				alert(this.name);
+			}
+		};*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		/*var f = 123;
+		function f() {}*/
+
+		// 1 声明了变量但是没有赋值，此时 访问到的都是函数
+		/*console.log(f);
+		var f;
+		function f() {}
+		console.log(f);*/
+
+		// 2 声明了变量并赋值了
+		// 	 情况一：在赋值之前访问，此时就是函数
+		// 	 情况二：在赋值之后访问，此时就是变量的值
+		/*var f = 123;
+		function f() {}*/
+		// console.log(f); // function f() {}
+		// var f;
+		// function f() {}
+		// f = 123;
+
+		// console.log(f); // 123
+
+
+		function f(f) {
+			console.log(f);
+		}
+		f(); // undefined
+	</script>
+</body>
+</html>

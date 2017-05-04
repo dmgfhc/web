@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div, p {
+			height: 50px;
+			width: 300px;
+			margin-bottom: 10px;
+			/*border: 1px solid red;*/
+		}
+	</style>
+</head>
+<body>
+	
+	<div></div>
+	<div id="d1"></div>
+	<div></div>
+	<p></p>
+	<p></p>
+	<p></p>
+
+	<script type="text/javascript">
+		// 案例：给div和p元素添加边框
+		
+		
+		function tag(tagName) {
+			return document.getElementsByTagName(tagName);
+		}
+		
+		// 练习：写一个函数，实现通过id来获取页面中的元素
+		function id(idStr) {
+			return document.getElementById(idStr);
+		}
+
+		function setStyle(elms) {
+			for(var i = 0; i < elms.length; i++) {
+				elms[i].style.border = "1px solid green";
+			}
+		}
+
+		/*var dvs = tag("div");
+		setStyle(dvs);*/
+
+		/*var d = id("d1");
+		d.style.backgroundColor = "pink";*/
+	</script>
+
+	<script type="text/javascript">
+		var dvs = tag("div");
+		setStyle(dvs);
+	</script>
+</body>
+</html>

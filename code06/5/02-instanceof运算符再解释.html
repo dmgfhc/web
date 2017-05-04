@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		 function Foo() {}
+	   var f = new Foo();
+	   // f -> Foo.prototype的值 -> Object.prototype的值 -> null
+	   // f -> Foo.prototype -> Object.prototype -> null
+	   console.log(f instanceof Foo);  // true
+
+	   function Fn() {}
+	   Foo.prototype = new Fn();
+	   var f1 = new Foo();
+	   // f -> Foo.prototype的值（new Fn()） -> Object.prototytpe -> null
+	   // f -> new Fn() -> Object.prototype -> null
+	   console.log(f1 instanceof Foo); // true
+
+
+	   // 如何获取到默认的原型？ 
+	   console.log(f.__proto__ === Foo.prototype);
+	</script>
+</body>
+</html>

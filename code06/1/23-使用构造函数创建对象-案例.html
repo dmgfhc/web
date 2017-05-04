@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 写一个学生 Student, 要求有 姓名 性别 年龄 和 
+		// 课程分数 (语文, 数学, 英语)和 说话的方法   
+		
+		function Student() {
+			this.name = "张三";
+			this.gender = "男";
+			this.age = 18;
+			this.score = {
+				chinese: 99,
+				math: 99,
+				english: 99
+			};
+
+			this.sayHi = function() {
+				alert("你好，我是张三");
+			};
+		}
+
+		var stu = new Student();
+		stu.sayHi();
+	</script>
+</body>
+</html>
