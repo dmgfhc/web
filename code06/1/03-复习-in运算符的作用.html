@@ -17,20 +17,20 @@
 		
 
 		// 遍历对象
-		/*for(var k in obj) {
+		for(var k in obj) {
 			console.log("key = " + k + ", v = " + obj[k]);
-		}*/
+		}
 
 		// in
 		// 作用：判断制定的属性是否存在于被检测的对象中
 		// 语法： key in obj
-		// console.log("age" in obj);
-		console.log("toString" in obj); // toString 是继承来的
+		 console.log("age" in obj);
+		//console.log("toString" in obj); // toString 是继承来的
 
 		// []
-		var arr = [1, 0];
+		var arr = [0, 3];
 		// 对数组来说，索引就是数组的属性
-		console.log(1 in arr); // false
+		console.log(3 in arr); // false
 	</script>
 </body>
 </html>

@@ -9,8 +9,8 @@
 	<script type="text/javascript">
 		// 判断是否存在属性地方法：
 		// 1 in
-		// var obj = {};
-		// console.log("age" in obj);
+//		 var obj = {};
+//		 console.log("age" in obj);
 
 
 		// 2 if
@@ -21,12 +21,12 @@
 		}*/
 
 		// 应用场景：用在浏览器能力检测
-		if(document.getElementsByClassName) {
-			// 如果有，就直接拿过来使用
-			// var dv = document.getElementsByClassName('cls')
-		} else {
-			// 没有这个方法，自己实现类似的功能
-		}
+//		if(document.getElementsByClassName) {
+//			// 如果有，就直接拿过来使用
+//			// var dv = document.getElementsByClassName('cls')
+//		} else {
+//			// 没有这个方法，自己实现类似的功能
+//		}
 
 		/*function aa() {
 			// 代码
@@ -37,21 +37,21 @@
 
 		// 问题：写一个函数，-判断函数有没有参数，如果有，就打印这个参数，
 		// 如果没有，就打印 没有参数
-		/*function foo(str) {
-			// 参数没有传，此时，参数的值为: undefined
-			console.log(str);
-			if(str !== undefined) {
-				console.log(str);
-			} else {
-				console.log("没有参数");
-			}
-		}
-
-		foo();
-		// foo("有参数哦");*/
+//		function foo(str) {
+//			// 参数没有传，此时，参数的值为: undefined
+//			console.log(str);
+//			if(str) {
+//				console.log(str);
+//			} else {
+//				console.log("没有参数");
+//			}
+//		}
+//
+//		foo();
+//		foo("有参数哦");
 
 		// 方式二
-		/*function foo(str) {
+		function foo(str) {
 			// 1 if
 			// 2 三元表达式
 			// var ret = str ? str : "没有参数";
@@ -60,7 +60,7 @@
 		}
 
 		foo();
-		foo("有参数");*/
+		foo("有参数");
 	</script>
 </body>
 </html>
