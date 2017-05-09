@@ -29,25 +29,27 @@
 				alert("你好，呵呵");
 			}
 		};
-		
-		/*// 让 o2 继承自 o1
-		for(var k in o1) {
-			o2[k] = o1[k];			
-		}
 
-		// console.log(o2);
+		
+		// 让 o2 继承自 o1
+//		for(var k in o1) {
+//			o2[k] = o1[k];
+//		}
+//
+//		 console.log(o2);
 
 		// 让 o2 继承自 o3
-		for(var k in o3) {
-			o2[k] = o3[k];
-		}
-		console.log(o2);*/
+//		for(var k in o3) {
+//			o2[k] = o3[k];
+//		}
+//		console.log(o2);
 
 		// 因为o2 可能会继承自很多其他的对象，如果
 		// 都要实现继承，for-in 循环就要写多次
 		// 可以成一个函数
 		// 
 		// extend 扩展
+
 		o2.extend = function(obj) {
 			for(var k in obj) {
 				// this 谁调用这个方法 this 就是谁
@@ -60,8 +62,8 @@
 		// 调用
 		o2.extend(o1);
 		o2.extend(o3);
-		
-		console.log(o2);
+//
+//		console.log(o2);
 	</script>
 </body>
 </html>

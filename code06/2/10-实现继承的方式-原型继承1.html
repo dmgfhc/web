@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+
+		function Person() {
+
+        }
+
+        Person.prototype.run = function () {
+			console.log("come on");
+        };
+
+		Person.prototype.sayHi = function () {
+			console.log("你好啊");
+        };
+
+		var p = new Person();
+
+		p.run();
+
+		p.sayHi();
+
+//		var obj = {};
+//		obj.name = 'rose';
+//		obj.name = 123;
+
+		//方式2
+
+        Person.prototype = {
+            // constructor: Person,
+
+            run: function() {},
+            sayHi: function() {},
+            sing: function() {},
+
+            coding: function() {
+                console.log("hello world");
+            }
+        };
+
+        var p1 =new Person();
+
+        p1.coding();
+
+
+
+	</script>
+</body>
+</html>

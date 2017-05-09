@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function Person() {}
+		var p = new Person();
+
+		/*function PERSON1o23120930jaodkfjoa() {}
+		var p = new PERSON1o23120930jaodkfjoa();*/
+
+		// 通过对象获取到构造函数
+		var ctr = p.constructor; // function Person() {}
+        var strCtr = ctr + "";
+        var r = /function (.+)\(/;
+        var m = r.exec(strCtr);
+        console.log('-'+m[1]+'-');
+		// 将获取到的值 转化为 字符串类型
+		/*var strCtr = ctr + "";
+		
+		// 第二种方式， 使用正则表达式
+		// "function Person() {}"
+		var r = /function (.+)\(/; // [a-z] \[
+		var m = r.exec(strCtr);
+		console.log("-" + m[1] + "-");*/
+
+		// 第三种方式： 使用 name 属性
+		// IE浏览器不支持 name 属性
+		//console.log("-" + ctr.name + "-");
+	</script>
+</body>
+</html>

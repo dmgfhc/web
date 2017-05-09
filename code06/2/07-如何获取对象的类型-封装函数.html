@@ -81,9 +81,11 @@
 
 		// 不做要求
 		function getName (ctr) {
-			return typeof ctr !== "function" 
-					? "" 
-					: (ctr.name || /function (.+)\(/.exec(ctr + "")[1]);
+//			return typeof ctr !== "function"
+//					? ""
+//					: (ctr.name || /function (.+)\(/.exec(ctr + "")[1]);
+
+			return typeof ctr != "function"?"":(ctr.name||/function (.+)\(/.exec(ctr+""));
 		}
 
 		var n = getName(p.constructor);
