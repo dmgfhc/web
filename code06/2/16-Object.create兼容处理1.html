@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 1 创建一个新的函数，在函数内部去处理
+		// 函数作用是什么？？？
+		// 1 创建一个新对象
+		// 2 这个新对象会继承自参数obj
+
+		function create(obj)
+        {
+            if (!Object.create) {
+                function F() {};
+                F.prototype = obj;
+				return new F();
+            }else{
+                return Object.create(obj);
+			}
+        }
+
+//        var o1 ={sayHi:function () {
+//			alert("nihao");
+//
+//        }};
+//
+//		var o2 = Object.create(o1);
+//
+//		o2.sayHi();
+		function create(obj) {
+			if(!Object.create){
+			 	Object.create = function () {
+					function F() {}
+					F.prototype = obj;
+					return new F();
+                };
+			}
+        }
+
+	</script>
+</body>
+</html>
