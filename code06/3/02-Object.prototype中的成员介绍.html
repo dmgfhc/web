@@ -9,14 +9,14 @@
 		// 只看 Object.prototype 中没有__ 前缀的成员
 		// 
 		
-		/*var o = {
+		var o = {
 			name1: "rose"
-		};*/
+		};
 
-		/*// 1 constructor 构造器
-		var o = {}; // 对象字面量
+		// 1 constructor 构造器
+		//var o = {}; // 对象字面量
 		// console.log(o.__proto__ === Object.prototype);
-		console.log(o.constructor === Object); // true*/
+		//console.log(o.constructor === Object); // true
 
 		// 2 hasOwnProperty
 		// 作用：判断属性是不是自己的，
@@ -25,10 +25,12 @@
 		// own 自己的
 		// property 属性
 
-		// var ret = o.hasOwnProperty("name1");
-		// console.log(ret); // true
+		//var avc = o.hasOwnProperty();
 
-		// var ret = o.hasOwnProperty("constructor");
+		 //var ret = o.hasOwnProperty("name1");
+		 //console.log(ret); // true
+
+		 //var ret = o.hasOwnProperty("constructor");
 		// console.log(ret); // false
 		
 		// var ret = o.hasOwnProperty("abcd");
@@ -38,13 +40,13 @@
 		// 3 isPrototypeOf
 		// 对象1.isPrototypeOf(对象2)
 		// 作用：看下对象1是不是对象2的原型对象，或者前者在后者的原型链上
-		// function Person() {}
-		// var p = new Person;
-		
-		// console.log(o.isPrototypeOf(Object.prototype)); // false
-		// console.log(Object.prototype.isPrototypeOf(o)); // true
-
-		// console.log(Object.prototype.isPrototypeOf(p)); // true
+//		 function Person() {}
+//		 var p = new Person;
+//
+//		 console.log(o.isPrototypeOf(Object.prototype)); // false
+//		 console.log(Object.prototype.isPrototypeOf(o)); // true
+//
+//		 console.log(Object.prototype.isPrototypeOf(p)); // true
 		
 
 		// 4 propertyIsEnumerable
@@ -59,19 +61,19 @@
 		
 		// toString 和 toLocaleString
 		// 都是将内容转换为 string 类型
-		// var d = new Date;
-		// console.log(d.toString());
-		// console.log(d.toLocaleString());
+//		 var d = new Date;
+//		 console.log(d.toString());
+//		 console.log(d.toLocaleString());
 
 		// valueOf 求值
-		// console.log(o.valueOf()); // Object {name1: "rose"}
-		// console.log(o.toString()); // [object Object]
+		 //console.log(o.valueOf()); // Object {name1: "rose"}
+		 //console.log(o.toString()); // [object Object]
 		
 		// var o = {
 		// 	name1: "rose"
 		// };
-		// var ret = o + 1;
-		// console.log(ret); // [object Object]1
+		 //var ret = o + 1;
+		 //console.log(ret); // [object Object]1
 
 		var o = {
 			valueOf: function() {
