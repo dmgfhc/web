@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        div {
+            border: 1px solid red;
+        }
+
+        p {
+            border: 1px dotted green;
+        }
+    </style>
+    <script type="text/javascript">
+
+        list = [];
+
+        function getChild(element) {
+            var elmChildren = element.childNodes;
+            for (var i = 0; i < elmChildren.length; i++) {
+                if (elmChildren[i].nodeType === 1) {
+                    list.push(elmChildren[i]);
+                    getChild(elmChildren[i]);
+                }
+            }
+        }
+
+        onload = function () {
+
+            getChild(document.body);
+
+            for (var i = 0; i < list.length; i++) {
+                list[i].style.border = "2px solid black";
+            }
+        };
+
+    </script>
+</head>
+<body>
+<div>
+    <p></p>
+    <p></p>
+    <p>
+    <ul>
+        <li>这是第<span>1</span>个li元素</li>
+        <li>这是第2个li元素</li>
+        <li>这是第3个li元素</li>
+    </ul>
+    </p>
+    <p></p>
+    <p></p>
+</div>
+
+<div>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+
+<div>
+    <div><span>这是span</span></div>
+</div>
+
+
+</body>
+</html>
