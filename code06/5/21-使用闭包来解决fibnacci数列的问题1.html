@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 因为程序不会自动保存每一步计算结果的值
+		// 只能由我们自己创建一个 容器 来保存每次计算的结果
+		// 
+		// 用什么容器可以保存多个结果的值？
+		// 1 数组
+		// 2 对象
+		
+		// 思路：
+		// 计算的时候，先去 容器 里面查询一下有没有这个数字对应的值
+		// 如果有，直接拿过来用
+		// 如果没有，先去计算，计算完成之后要存到 容器 里面去
+		// 
+		// 使用闭包来解决这个问题
+		var count=0;
+		var fib = (function () {
+			var cache = [1,1];
+		    return function (n) {
+		        count++;
+//                if(n === 0 || n === 1) {
+//                    cache[n] = 1;
+//                    return 1;
+//                }
+		        if(cache[n]){
+					return cache[n];
+				}else{
+				 cache[n]=arguments.callee(n-1)+arguments.callee(n-2);
+				 return cache[n];
+				}
+            };
+        })();
+
+		//var n = fib(20);
+		fib(20);
+		console.log(count);
+
+
+	</script>
+</body>
+</html>
