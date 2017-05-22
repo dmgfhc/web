@@ -21,6 +21,8 @@
 			};
 		}
 
+		arr[0].show();
+
 		// [
 		// {name:"", show: function() { console.log(arr[i].name); }}
 		// {name:"", show: func...}
@@ -31,16 +33,17 @@
 		
 		// 根据以上代码分析以下情况的结果：
 		// 情况一：
-		for (var i = 0; i < arr.length; i++) {
-			arr[i].show(); 
-			// 正确的结果
-		}
+//		for (var i = 0; i < arr.length; i++) {
+//			arr[i].show();
+//			// 正确的结果
+//		}
 		// 的执行结果是多少?
 
 		// 情况二：
-		// for (var j = 0; j < arr.length; j++) {
-		// 	arr[j].show(); 
-		// }
+//		arr[0].show();
+//		 for (var j = 0; j < arr.length; j++) {
+//		 	arr[j].show();
+//		 }
 		// 的执行结果是多少?  报错
 	</script>
 </body>

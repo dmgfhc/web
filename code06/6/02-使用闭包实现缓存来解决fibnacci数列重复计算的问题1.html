@@ -40,42 +40,23 @@
 		var fibCache = [];
 
 		function fib(n) {
-			if(n === 1 || n ===0) {
-				fibCache[n] = 1;
-				return 1;
-			}
-			// 用来存放计算结果
-			var temp;
-			// 思路
-			// 1 判断一下缓存中有没有我们需要的数据
-			// 2 如果有，就直接从缓存中取出来
-			// 3 如果没有，先计算，然后，将计算的结果放到缓存
-			
+		 if(n === 1 || n ===0) {
+		 return 1;
+		 }
 
-			// 1 判断一下缓存中有没有我们需要的数据
-			if (fibCache[n]) {
-				// 2 如果有，就直接从缓存中取出来
-				return fibCache[n];
-			} else {
-				// 3 如果没有，先计算，然后，将计算的结果放到缓存
-				temp = arguments.callee(n - 1) + arguments.callee(n - 2);
-				
-				// 问题：为什么此处不用push
-				// fibCache.push(1) => [1] => 
-				// 数组中只有一个元素，这个元素 的索引号是 0
-				// 
-				// 实际上应该是： 索引号为1的 值 为 1
-				// [undefined, 1];
-				// 
-				fibCache[n] = temp;
+		 var temp;
 
-				return temp;
-			}
-
+		 if(fibCache[n]){
+			return fibCache[n];
+		 }
+            temp= arguments.callee(n-1) + arguments.callee(n-2);
+            fibCache[n] = temp;
+            return temp;
 		}
 
-		var n = fib(10);
-		console.log(n);
+		 var n = fib(10);
+		 console.log(n);
+
 	</script>
 </body>
 </html>

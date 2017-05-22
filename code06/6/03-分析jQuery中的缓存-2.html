@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+
+//		var cache = {};
+//
+//		var getCache = function (key) {
+//			return cache[key];
+//        };
+//        var setCache = function (key,value) {
+//			cache[key] = value;
+//        };
+
+	var cache =(function cache() {
+		    var cache = {};
+
+			var getCache = function (key) {
+				return cache[key];
+        	};
+        	var setCache = function (key,value) {
+				cache[key] = value;
+        	};
+        	return{
+        	    get:getCache,
+				set:setCache
+			};
+        	})();
+
+
+        var n = cache.get("n");
+        console.log(n);
+		cache.set("n","jack");
+		var n = cache.get("n");
+		console.log(n);
+
+
+	</script>
+</body>
+</html>

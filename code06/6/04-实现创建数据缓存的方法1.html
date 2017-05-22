@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+
+
+		function createCache() {
+			var cache = {};
+			var arr =[];
+			return function (key,value) {
+//				var temp = cache[key];
+//				return temp;
+				if(cache[key]){
+				    return cache[key];
+				}else{
+
+				    if(arr.length<100){
+
+					}else{
+						//arr[0]
+					var k =	arr.shift();
+					delete cache[k];
+					}
+
+                    arr.push(key);
+                    cache[key] = value;
+
+
+				}
+            };
+        }
+
+        var typeCache = createCache();
+        // var typeCache = fn();
+
+        // 存数据
+        typeCache("name", "jack");
+        typeCache("age", 19);
+        typeCache("gender", "男");
+        typeCache("name1", "jack");
+
+        // 取数据
+        var o = typeCache("name","rose");
+
+        console.log(o);
+
+//        var typeCache = createCache();
+//		var eventCache = createcache();
+//		var selectorCache = createcache();
+
+
+	</script>
+</body>
+</html>
