@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		var cache,arr;
+		var createCache = function () {
+			 cache = {};
+			 arr = [];
+			return function (key,value) {
+				if(value === undefined){
+				return	cache[key];
+				} else{
+				 	if(cache[key]){
+				 	    cache[key] = value;
+					}else{
+						if(arr.length>=100){
+						  var k =  arr.shift();
+						  delete  cache[k];
+						}
+                        cache[key] = value;
+                        arr.push(key);
+					}
+				}
+            };
+        };
+
+		var typeCache = createCache();
+
+		typeCache("name","jack");
+		typeCache("age","19");
+		typeCache("gender","男")
+		typeCache("scroe","99");
+
+		var n = typeCache("name");
+
+
+
+
+	</script>
+</body>
+</html>
