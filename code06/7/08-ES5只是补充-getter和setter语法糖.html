@@ -9,44 +9,56 @@
 	<script type="text/javascript">
 		// getter 和 setter 语法糖
 		
-		/*function fn() {
-			var name;
-			return {
+//		function fn() {
+//			var name;
+//			return {
+//				get name() {
+//					return name;
+//				},
+//				set name(v) {
+//					name = v;
+//				}
+//			};
+//		}
+
+		function fn() {
+		    var name;
+			return{
 				get name() {
-					return name;
+				    return name;
 				},
-				set name(v) {
-					name = v;
+				set name(v){
+				    name = v;
 				}
 			};
-		}
+        }
 
 		var obj = fn();
 		console.log(obj.name);
 
 		obj.name = "jack1";
-		console.log(obj.name);*/
+		console.log(obj.name);
 
 		// 实现只读属性
-		function fn() {
-			var name = "rose";
-			var age = 19;
-			return {
-				get name() {
-					return name;
-				}
-				// name : name
-			};
-		}
-
-		var obj = fn();
-		console.log(obj.name);
-		console.log(obj.age);
-
-		obj.name = "jack1";
-		obj.age = 1900;
-		console.log(obj.name);
-		console.log(obj.age);
+//		function fn() {
+//			var name = "rose";
+//			var age = 19;
+//			return {
+//				get name() {
+//					return name;
+//				}
+//				// name : name
+//			};
+//		}
+//
+//		var obj = fn();
+//		console.log(obj.name);
+//		console.log(obj.age);
+//
+//		obj.name = "jack1";
+//		obj.age = 1900;
+//		console.log(obj.name);
+//		console.log(obj.age);
 
 
 		// function fn() {

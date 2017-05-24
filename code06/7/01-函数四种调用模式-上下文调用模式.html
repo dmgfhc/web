@@ -26,14 +26,20 @@
 		// 	第二个参数：是一个数组（或者是伪数组）类型的，
 		// 			数组里面的每个元素，都会作为 函数fn 的参数来使用
 		// 使用这种方式来调用，实际上还是在调用 函数fn
+
 		// fn(1, 2)
 		// fn.apply(obj, [1, 2])
 		// 
 		// 
 		// 函数.call() 
-		function foo(str) {
-			console.log(str);
-		}
+//		function foo(str) {
+//			console.log(str);
+//		}
+
+		function fn() {
+			console.log("调用");
+			console.log(this);
+        }
 
 
 
@@ -41,30 +47,32 @@
 		// fn();
 		// 以下三种方式都可以来模式 函数调用模式
 		// 此时 this 就是 window
-		// fn.apply(window)
-		// fn.apply(null)       // 一般使用null就行
-		// fn.apply(undefined)
+		 fn.apply(window);
+		 fn.apply(null);    // 一般使用null就行
+		 fn.apply(undefined);
 		
 		// 作为 方法模式来调用
-		/*var obj = {
+		var obj = {
 			name: "jack"
 		};
+
 		// obj.f = fn;
 		// obj.f();
-		fn.apply(obj);*/
+		fn.apply(obj);
 
 
 		// 练习：写一个函数，要求传入什么参数就打印什么参数
 		function foo(str, a) {
 			console.log(str, a);
+			console.log(this);
 		}
 		// 使用 apply 来 分别模拟 函数调用模式 和 方法调用模式
 		// 1 模拟函数调用模式
-		// foo.apply(null, ["abc"]);
+		 foo.apply(null, ["abc","han"]);
 
 		// 2 模式方法调用模式
-		var obj = {};
-		foo.apply(obj, ["def", 123]);
+		//var obj = {};
+		//foo.apply(obj, ["def", 123]);
 	</script>
 </body>
 </html>

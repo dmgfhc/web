@@ -19,23 +19,38 @@
 
 		console.log(maxNum);
 
-		// 有一个函数：fn("a", "b", "c", "d");
 		function fn() {
-			// 函数体内部 打印： "a-b-c-d"
-			var str = "";
-			for(var i = 0; i < arguments.length; i++) {
-				if(i === arguments.length - 1) {
-					str += arguments[i];
-				} else {
 
-					str += arguments[i] + "-";
+		    var str = "";
+			for(var i=0;i<arguments.length;i++){
+			    if(i===arguments.length-1){
+			        str+=arguments[i];
+				}else{
+			        str+=arguments[i]+"-";
 				}
 			}
-
 			console.log(str);
-		}
+        }
 
-		fn("a", "b", "c", "d");
+        fn("a","b","c");
+
+		// 有一个函数：fn("a", "b", "c", "d");
+//		function fn() {
+//			// 函数体内部 打印： "a-b-c-d"
+//			var str = "";
+//			for(var i = 0; i < arguments.length; i++) {
+//				if(i === arguments.length - 1) {
+//					str += arguments[i];
+//				} else {
+//
+//					str += arguments[i] + "-";
+//				}
+//			}
+//
+//			console.log(str);
+//		}
+
+		//fn("a", "b", "c", "d");
 	</script>
 </body>
 </html>

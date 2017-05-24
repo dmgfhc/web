@@ -7,6 +7,16 @@
 <body>
 	
 	<script type="text/javascript">
+
+        var arr = [1, 11, 111, 22, 33, 44];
+
+       // var m = Math.max(arr);
+
+        var m =  Math.max.apply(null,arr);
+
+        console.log(m);
+
+
 		// 上下文调用模式，很重要的一个作用就是 借用方法
 		
 		// 求最大值
@@ -36,10 +46,13 @@
 			// var ret = Array.prototype.join.apply(arguments, ["-"]);
 			// var ret = [].join.apply(arguments, ["-"]);
 			
-			var push = arr.push,
-				join = arr.join;
+//			var push = arr.push,
+//				join = arr.join;
 
-			var ret = join.apply(arguments, ["-"]);
+			var ret =	arr.join.apply(arguments,["-"]);
+
+			//var ret = join.apply(arguments, ["-"]);
+
 			console.log(ret);
 		}
 

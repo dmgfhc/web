@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html" target="_blank">深入理解JavaScript系列</a>
+	<a href="http://www.zhangxinxu.com/wordpress/">张鑫旭 - CSS</a>
+
+	<script type="text/javascript">
+		// 函数的三种调用模式：
+		// 1 函数模式（this -> window）
+		// 2 方法模式（this -> 调用方法的对象）
+		// 3 构造函数模式（this -> new创建的对象）
+		// 
+		// 在查看 this 指向问题，不管函数是怎么来的，
+		// 只需要查看函数是如何被调用的即可
+		// 
+		// fn()
+		// obj.fn()
+		// new Person()
+		
+
+	</script>
+
+	<script type="text/javascript">
+		// 简化缓存
+		var cache, arr;
+		var createCache = function() {
+			cache = {};
+			arr = [];
+
+			return function(key, value) {
+				if(value === undefined) {
+					return cache[key];
+				}
+
+				if(!cache[key]) {
+
+					if(arr.push(key) > 3) {
+						delete cache[arr.shift()];
+					}
+				}
+
+				cache[key] = value;
+			};
+		};
+
+		// 调用
+		var typeCache = createCache();
+		typeCache("name", "jack");
+		var n = typeCache("name");
+		typeCache("age", 19);
+		var a = typeCache("age");
+		typeCache("gender", "男");
+		var g = typeCache("gender");
+
+		typeCache("score", 98);
+
+	</script>
+
+	<script type="text/javascript">
+		/*var createCache = function() {
+			var cache = {};
+			var arr = [];
+
+			return function(key, value) {
+				if(value === undefined) {
+					return cache[key];
+				}
+
+				if(!cache[key]) {
+					if(arr.push(key) > 3) {
+						delete cache[arr.shift()];
+					}
+				}
+
+				cache[key] = value;
+			};
+		};*/
+	</script>
+</body>
+</html>

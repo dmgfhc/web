@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*var length = 10;
+		function fn(){
+		    console.log(this.length);
+		}
+		var obj = {
+		    length: 5,
+		    method: function (a) {
+		        // a();   		    // 10
+		        arguments[0](); // 2
+		    }
+		};
+		obj.method(fn, 123);
+		// obj["method"](fn, 123);*/
+
+
+		// function fn(){
+		//     console.log(this.length);
+		// }
+
+
+		/*// 伪数组
+		// 对象的属性只能是字符串类型的
+		var obj = {
+			0: fn,
+			1: 2,
+			length: 2
+		};
+
+		obj[0]();
+		obj["0"]();
+
+		var obj1 = {};
+		var obj2 = {};
+		console.log(obj2.toString());// "[object Object]"
+		// console.log(arr1 === arr2);
+		obj[obj1] = 123;   // "[object Object]"
+		console.log(obj[obj2] === obj[obj1]);*/
+
+
+
+		// arguments的作用：获取实参（函数在调用的时候传入的参数）列表
+		// arguments只能在函数体内部使用（arguments实际上是要给局部变量）
+		// arguments.length 作用：获取实参的个数
+		// arguments.callee 作用：用来在函数体内部获取当前函数的引用
+
+		// 数组中元素是函数
+		// var arr = [fn, 1];
+		// arr[0]();
+	</script>
+
+
+	<script type="text/javascript">
+		var a = {
+	        n: 1
+	    };
+	    var b = a;
+	    // . 运算符的优先级高于 = 
+	    a.x = a = {
+	        n: 2
+	    };
+	    console.log(a.x);  // undefined
+	    console.log(b.x);  // {n: 2}
+	</script>
+</body>
+</html>

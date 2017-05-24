@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		var arr = [1,3,5,7];
+
+		arr.forEach(function(value,index){
+            console.log("第" + index + "个元素是：" + value);
+		});
+
+		//map
+		var newarr = arr.map(function (value,index) {
+
+		    return value * 10;
+
+        });
+
+	</script>
+</body>
+</html>
