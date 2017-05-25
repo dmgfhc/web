@@ -7,7 +7,7 @@
 <body>
 	
 	<script type="text/javascript">
-		var str = "xxxxxabc";
+		var str = "abcxx";
 		// ^	以什么作为开头
 		// $    以什么作为结尾
 		
@@ -24,16 +24,16 @@
 
 
 		// 限定元字符
-		// var r = /[xyz]+/;  // 匹配任意x或者y或者z 出现1次或者多次
-		// var r = /[xyz]*/;  // 匹配任意x或者y或者z 出现0次或者多次
-		// var r = /[xyz]?/;  // 匹配任意x或者y或者z 出现0次或者1次
+		 //var r = /[xyz]+/;  // 匹配任意x或者y或者z 出现1次或者多次
+		 //var r = /[xyz]*/;  // 匹配任意x或者y或者z 出现0次或者多次
+		 //var r = /[xyz]?/;  // 匹配任意x或者y或者z 出现0次或者1次
 
-		// var r = /x{1,3}/; // 匹配x出现 1次到3次 中间的任意一次都可以
+		//var r = /x{1,3}/; // 匹配x出现 1次到3次 中间的任意一次都可以
 		// var r = /x{0,1}/; //    var r = /x?/   0次或者1次
 		// var r = /x{1,}/; // => var r = /x+/;	  1次以上
-		// var r = /x{0,}/;    // => var r = /x*/;   0次以上
-		// var m = r.exec(str);
-		// console.log(m);
+		 var r = /x{0,}/;    // => var r = /x*/;   0次以上
+		 var m = r.exec(str);
+		 console.log(m);
 
 		// 转义字符
 		// var r = /\./; // 将特殊的 点 转化为 普通点 '1.2'

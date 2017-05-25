@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 案例：解析邮箱字符串："tom@126.com, jerry@163.com, dog@qq.com"
+		// 使用字符串的基本操作可以完成
+		var email = "tom@126.com.cn, jerry@163.com, dog@qq.com";
+
+
+		// 拿到 邮箱名（tom/jerry/dog） 拿到 邮箱类型 （126/163/qq）
+
+		// . 获取除了换行符之外的任意单个字符
+
+		//
+		//var r = /(.+)@(.+)/;
+//		var m = r.exec(email);
+//		console.log(m);
+
+		/*var r = /(.+)@(.+)/;
+		// 第一个分组匹配到的之：tom@126.com, jerry@163.com, dog
+		// 第二个分组匹配到的之：qq.com
+		var m = r.exec(email);
+		console.log(m);*/
+
+		// 1 直接将允许出现的字符串列出来
+		// 允许出现：数字、字母、_、-、.
+		// 2 将不允许出现的字符排除
+
+		// 表示数字的两种方式
+		// [0-9]
+		// \d
+
+		//var r = /([0-9a-zA-Z]+)@([0-9a-zA-Z]+)\.([a-zA-Z]+)/;
+
+		// var r = /([0-9a-zA-Z]+)@([0-9a-zA-Z]+)\.([a-zA-Z]+)/;
+		// 第一个分组匹配到的之：tom@126.com, jerry@163.com, dog
+		// 第二个分组匹配到的之：qq.com
+		 //var m = r.exec(email);
+		 //console.log(m);
+		
+		var r = /([0-9a-zA-Z]+)@([0-9a-zA-Z\.]+)/g;
+        //var m = r.exec(email);
+        //console.log(m);
+		var m;
+		var arr = [];
+
+		while ((m=r.exec(email)) != null){
+		    arr.push({
+				eName:m[1],
+				eLocation:m[2]
+				}
+			);
+		}
+
+		console.log(arr);
+
+
+//		while((m = r.exec(email)) !== null) {
+//			arr.push({
+//				eName: m[1],
+//				eLocation: m[2]
+//			});
+//		}
+//
+//		console.log(arr);
+	</script>
+</body>
+</html>
