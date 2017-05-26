@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="header">
+    <div>h1</div>
+    <div>h2</div>
+</div>
+
+<div class="c1">aaa</div>
+<div>bbb</div>
+<div>ccc</div>
+<div id="d3">
+    <div id="d33">
+        <input type="text">
+    </div>
+    <div class="c1">
+        <input type="text">
+        <span>abcdefg</span>
+    </div>
+    <div class="c1">
+        <input type="text">
+    </div>
+</div>
+<script>
+    var doms=$groupAndLevel("body #header,head title,.c1 input");
+    console.log(doms);
+
+    function getId(idName,context){
+        var tag= document.getElementById(idName);
+
+        if(!context) return tag;
+
+        //判定tag是否在context的下面（子孙元素中）
+        //实现思路：查找tag的父元素，父元素的父元素，父元素的父元素的父元素......document
+        //实现代码：
+        //1、首先查找直接父元素
+        var parent=tag.parentNode;
+        while(parent){
+            if(parent === context){
+                return tag;
+            }
+            parent=parent.parentNode;//查找父元素的父元素
+        }
+        //运行到这一步的情况：1、直接父元素不存在，2、N级父元素不存在
+        return null;
+
+
+    }
+
+    function getClasses(className,context){
+        context=context || document;
+
+        if(context.getElementsByClassName ){
+            return context.getElementsByClassName(className);
+        }else{
+            var result=[];
+
+            var allTags=context.getElementsByTagName("*");
+            for (var i = 0; i < allTags.length; i++) {
+                var tag = allTags[i];
+                var tagClassName=tag.className;
+                var tagClassNameChange=" "+tagClassName+" ";
+                var classNameChange=" "+className+" ";
+                if(tagClassNameChange.indexOf(classNameChange)>=0){
+                    result.push(tag);
+                }
+
+            }
+            return result;
+        }
+    }
+
+    function getTags(tagName,context){
+        context = context || document;
+        return context.getElementsByTagName(tagName);
+    }
+
+    /**
+     *
+     * @param selector id:"#header" class:".tab" tag:"p"
+     * @param context DOM元素/DOM数组
+     */
+    function get(selector,context){
+        var result=[];
+        if(typeof selector !=="string") return result;
+
+        var reg=/^(?:#(\w+)|\.(\w+)|(\w+|\*))$/;
+
+        var regResult=reg.exec(selector);
+        var tempResult;
+
+        //判定参数context是一个DOM元素吗？还是一个DOM数组呢？
+        if(!context){
+            context=[document];
+        }else if(context.nodeType){   //DOM元素
+            context=[context];
+        }else if(typeof context === "string"){ //("#header","body")
+            context=get(context);//get("body")-->[body]
+        }
+
+        //在下面的代码中context就表示为一个DOM数组
+        for (var i = 0; i < context.length; i++) {
+            //每一个查询上下文（是一个DOM元素）
+            var singleContext = context[i];
+            if(tempResult=regResult[1]){
+                var idTag=getId(tempResult,singleContext);
+                if(idTag){//判断指定id的元素是否存在，如果存在将元素插入数组中
+                    result.push(idTag);
+                }
+
+            }else if(tempResult=regResult[2]){
+                result.push.apply(result,getClasses(tempResult,singleContext));
+            }else if(tempResult=regResult[3]){
+                result.push.apply(result,getTags(tempResult,singleContext));
+            }
+        }
+
+
+
+        return result;
+
+    }
+
+    /**
+     *
+     * @param selector 分组选择器："div,input,#header"
+     * @param context
+     */
+    function $group(selector,context){
+        var result=[];
+        //1、先判断selector是否是一个字符串类型的
+        if(typeof selector !=="string") return result;
+        //2、将参数selector用逗号分隔成字符串数组
+        var groups=selector.split(",");//["div","input","#header"]
+        //3、遍历字符串字符串数组
+        for (var i = 0; i < groups.length; i++) {
+            var group = groups[i];//"div"-->"input"-->"#header"
+            //4、将group传入get函数，返回dom数组
+            var singleResult=get(group,context);
+            //5、将singleResult中的DOM元素放进result中
+            result.push.apply(result,singleResult);
+
+        }
+        //6、返回结果数组
+        return result;
+    }
+
+    /**
+     * ("div input","#header")-->"#header div input"
+     * 第一次执行：get("div","#header")
+     * 第二次执行：get("input",第一次的执行结果)
+     * @param selector 后代选择器："body div input"
+     * @param context
+     */
+    function $level(selector,context){
+        //1、判断参数selector是不是一个字符串
+        if(typeof selector !== "string") return [];
+        //2、将selector用空格分割成字符串数组
+        var levels=selector.split(" ");//["body","div","input"]
+        //3、遍历levels
+        for (var i = 0; i < levels.length; i++) {
+            var level = levels[i];//"body"-->"div"-->"input"
+            //4、将level传入get函数
+            context=get(level,context);
+        }
+        //5、最后一次的singleResult也就是最终值
+        return context;
+    }
+
+    /**
+     *
+     * @param selector 分组+后代选择器："div,#header span,p input,body head"
+     * @param context
+     */
+    function $groupAndLevel(selector,context){
+        //1、声明结果数组
+        var result=[];
+        //2、判断参数selector是否是一个字符串
+        if(typeof selector !== "string") return result;
+        //3、将selector用逗号分隔成多组
+        var groups=selector.split(",");
+        //4、遍历groups
+        for (var i = 0; i < groups.length; i++) {
+            var group = groups[i];
+            //5、对group传入$level函数
+            var singleResult=$level(group,context);
+            //6、将singleResult里面的每一个DOM元素遍历添加到result中
+            result.push.apply(result,singleResult);
+        }
+        //7、返回结果数组
+        return result;
+    }
+</script>
+</body>
+</html>

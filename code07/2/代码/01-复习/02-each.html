@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function each(arr,callback){
+        for (var i = 0; i < arr.length; i++) {
+            var result=callback.call(arr[i],i,arr[i]);
+            if(result === false){
+                break;
+            }
+
+        }
+    }
+    var tags=document.getElementsByTagName("*");
+    each(tags,function(i,v){
+        //console.log(this.nodeName);
+
+        console.log(v.nodeName);
+
+    })
+</script>
+</html>

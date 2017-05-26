@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="header">
+    <div>h1</div>
+    <div>h2</div>
+</div>
+
+<div class="c1">aaa</div>
+<div>bbb</div>
+<div>ccc</div>
+<div id="d3">
+    <div id="d33">aaa2</div>
+    <div class="c1">bbb2</div>
+    <div class="c1">ccc2</div>
+</div>
+<script>
+    //获取d3下面的所有的div
+    var d3=document.getElementById("d3");
+    var header=document.getElementById("header");
+    //结果：获取页面中所有的div标签
+    console.log(get("div"));
+    //结果：获取d3元素下面的所有的div标签
+    console.log(get("div",d3));
+    //结果：获取d3下面的div，以及header下面的div
+    console.log(get("div",[d3,header]));
+    //结果：获取id为d3下面的所有的div
+    console.log(get("div","#d3"));//-->"#d3 div"
+
+
+    //预期结果：返回null
+    //console.log(getId("header",d3));//d3下面的id为header的元素
+    //预期结果：返回一个空数组
+    //console.log(get("#header",d3)); //jquery的$("#header",d3)
+    //预期结果：返回一个数组，数组里面有一个DOM元素
+    //console.log(get("#d33",d3));
+
+//    getClasses("c1",d3);//d3下面的所有的class属性值包含c1的元素——>d3.getElmementsByCLassName("c1")
+
+//    getTags("div",d3);//d3下面的所有的div——>d3.getElementsByTagName("div")
+
+//    getId("header");
+
+    function getId(idName,context){
+        var tag= document.getElementById(idName);
+
+        if(!context) return tag;
+
+        //判定tag是否在context的下面（子孙元素中）
+        //实现思路：查找tag的父元素，父元素的父元素，父元素的父元素的父元素......document
+        //实现代码：
+        //1、首先查找直接父元素
+        var parent=tag.parentNode;
+        while(parent){
+            if(parent === context){
+                return tag;
+            }
+            parent=parent.parentNode;//查找父元素的父元素
+        }
+        //运行到这一步的情况：1、直接父元素不存在，2、N级父元素不存在
+        return null;
+
+
+    }
+
+    function getClasses(className,context){
+        context=context || document;
+
+        if(context.getElementsByClassName ){
+            return context.getElementsByClassName(className);
+        }else{
+            var result=[];
+
+            var allTags=context.getElementsByTagName("*");
+            for (var i = 0; i < allTags.length; i++) {
+                var tag = allTags[i];
+                var tagClassName=tag.className;
+                var tagClassNameChange=" "+tagClassName+" ";
+                var classNameChange=" "+className+" ";
+                if(tagClassNameChange.indexOf(classNameChange)>=0){
+                    result.push(tag);
+                }
+
+            }
+            return result;
+        }
+    }
+
+    function getTags(tagName,context){
+        context = context || document;
+        return context.getElementsByTagName(tagName);
+    }
+
+//    get("#header")
+    /**
+     *
+     * @param selector id:"#header" class:".tab" tag:"p"
+     * @param context DOM元素/DOM数组
+     */
+    function get(selector,context){
+        var result=[];
+        if(typeof selector !=="string") return result;
+
+        var reg=/^(?:#(\w+)|\.(\w+)|(\w+|\*))$/;
+
+        var regResult=reg.exec(selector);
+        var tempResult;
+
+        //判定参数context是一个DOM元素吗？还是一个DOM数组呢？
+        if(!context){
+            context=[document];
+        }else if(context.nodeType){   //DOM元素
+            context=[context];
+        }else if(typeof context === "string"){ //("#header","body")
+            context=get(context);//get("body")-->[body]
+        }
+
+        //在下面的代码中context就表示为一个DOM数组
+        for (var i = 0; i < context.length; i++) {
+            //每一个查询上下文（是一个DOM元素）
+            var singleContext = context[i];
+            if(tempResult=regResult[1]){
+                var idTag=getId(tempResult,singleContext);
+                if(idTag){//判断指定id的元素是否存在，如果存在将元素插入数组中
+                    result.push(idTag);
+                }
+
+            }else if(tempResult=regResult[2]){
+                result.push.apply(result,getClasses(tempResult,singleContext));
+            }else if(tempResult=regResult[3]){
+                result.push.apply(result,getTags(tempResult,singleContext));
+            }
+        }
+
+
+
+        return result;
+
+    }
+</script>
+</body>
+</html>

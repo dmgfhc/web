@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="itcast.js"></script>
+    <script>
+        itcast.fn.extend({
+            //将init类型的对象中每一个DOM元素添加到参数(-->dom元素下面)中
+            appendTo:function(selector){//selector参数类型：字符串、dom元素，init类型的对象
+                var $children=this;
+                var $parents=itcast(selector);
+                //将子元素添加到父元素的下面：父元素.appendChild(子元素)
+                $parents.each(function(parentIndex,parentValue){
+                    //获取到每一个父元素（DOM元素）
+                    var parent=this;
+                    //遍历$children来获取每一个子元素
+                    $children.each(function(){
+                        //获取到每一个子元素（DOM元素）
+                        var child=this;
+                        //父元素可能有很多个，一个DOM元素只能有一个父节点，所以需要对子节点进行克隆：
+                        //克隆：如果这个父元素并不是最后一个父元素，就克隆，反之，就不克隆
+                        if(parentIndex!==$parents.length-1){
+                            parent.appendChild(child.cloneNode(true));
+                        }else{
+                            parent.appendChild(child);
+                        }
+
+                    })
+                });
+                return this;
+            }
+        })
+    </script>
+</head>
+<body>
+<div class="parents"></div>
+<div class="parents"></div>
+<div class="parents"></div>
+</body>
+<script>
+    $("<input/><input/>").appendTo(".parents")
+</script>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="d3" style="width:200px;height:100px;background-color: lightseagreen"></div>
+</body>
+<script>
+    /**
+     *
+     * @param dom 运行动画的DOM元素
+     * @param duration 动画运行的总时间
+     * @param styleName 样式的名称
+     * @param targetValue 样式的目标值
+     * @param callback 动画完成之后执行的回调函数
+     */
+    function animate(dom,duration,styleName,targetValue,callback){
+        //动画：dom元素、改变的样式，动画的频率，动画样式的值，总时间1s
+        var domStyles=window.getComputedStyle(dom,null);
+        var domStyle=domStyles[styleName];//获取指定的样式的值，值可能是数字，字符串
+        var startValue=parseFloat(domStyle);
+
+        //总路程
+        var totalDistance=targetValue-startValue;//目标的值-开始值
+        //动画开始时间
+        var startTime=+new Date();
+        var timer=setInterval(function(){
+            //根据时间的变化比值，计算出运行的路程
+
+            //公式1：运行的路程=总路程*运行的时间/总时间
+            //公式2：运行的时间=动画本次运行的时刻-动画开始运行的时刻
+            var nowTime=+new Date();//动画此刻的时间(毫秒数)
+            var timerTween=nowTime-startTime;//动画运行的时间
+
+            //动画的结束条件：动画运行时间已经达到或者超过1s
+            if(timerTween>=duration){   //动画需要结束
+                //停止动画
+                clearInterval(timer);
+                //让元素的宽度跑到指定的位置
+                dom.style[styleName]=targetValue+getUnit(styleName);
+                //动画完成之后执行回调函数
+                if(typeof callback ==="function") callback();
+            }else{                        //动画还需要运行
+                //动画从开始到现在运行的路程=总路程*运行的时间/总时间
+                var distance=totalDistance*timerTween/duration;
+                //此刻元素的宽度值=开始值+动画运行的路程
+                dom.style[styleName]=startValue+distance+getUnit(styleName);
+            }
+
+
+        },20);//20毫秒运行一次
+
+        function getUnit(styleName){
+            //px or 没有单位
+            switch(styleName){
+                case "width":case "height":case "left":case "right":case "top":case "bottom":
+                    return "px";
+                case "opacity":
+                    return "";
+            }
+        }
+    }
+    //animate(document.getElementById("d3"),1000,500,"width");
+    //animate(document.getElementById("d3"),1000,500,"height");
+
+    //实现了元素的透明度从1-0
+    animate(document.getElementById("d3"),1000,"opacity",0 ,function(){
+        //alert("动画结束了");
+
+        //以下代码实现元素的透明度从0-->1
+        //animate(document.getElementById("d3"),1000,"opacity",1);
+    });
+
+    //以下代码会报错，因为没有参数
+    //animate(document.getElementById("d3"),1000,"opacity",0,animate);
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="itcast.js"></script>
+    <script>
+        //事件：1、事件的类型    2、事件的相应函数
+        //事件对象：触发事件的目标元素、阻止冒泡(stopPropagation/cancelBubble=true)、
+        //          阻止默认行为:return false/returnValue=false;
+        //(DOM2)事件流——>addEventListener：冒泡+捕获
+        //        事件流的发生顺序：从最外层元素(window)到目标元素，再从目标元素到最外层元素
+        //        事件流分为3个阶段：事件捕获阶段——>目标元素阶段——>事件冒泡阶段
+    </script>
+</head>
+<body style="padding:50px;background-color: lightgray">
+<div id="d1" style="padding:50px;background-color: lightblue">d1
+    <div id="d2" style="padding:50px;background-color: lightsalmon">d2
+        <div id="d3" style="padding:50px;background-color: lightseagreen">d3</div>
+    </div>
+</div>
+
+</body>
+<script>
+    //DOM2事件绑定
+    document.body.addEventListener("click",function(){
+        alert("body的冒泡阶段");
+    });
+    document.body.addEventListener("click",function(){
+        alert("body的捕获阶段");
+    },true);
+
+    var d1=document.getElementById("d1");
+    d1.addEventListener("click",function(){
+        alert("d1的冒泡阶段");
+    });
+    d1.addEventListener("click",function(){
+        alert("d1的捕获阶段");
+    },true);
+
+    var d2=document.getElementById("d2");
+    d2.addEventListener("click",function(){
+        alert("d2的冒泡阶段");
+    });
+    d2.addEventListener("click",function(){
+        alert("d2的捕获阶段");
+    },true);
+    var d3=document.getElementById("d3");
+    d3.addEventListener("click",function(){
+        alert("d3的冒泡阶段");
+    });
+    d3.addEventListener("click",function(){
+        alert("d3的捕获阶段");
+    },true);
+
+
+    //分析：如果点击了d1，会先后弹出：“冒泡”——>"捕获"
+    //原因是：此时d1作为目标元素，所以此时的d1的两个事件都是在目标元素阶段，
+    //              那么这2个事件会按照事件绑定的先后顺序进行触发
+
+    //分析2：点击了d2，d2就是目标元素，给d2绑定的事件都处于目标元素阶段——>d2.addEventLisnter()
+    //发生顺序：事件捕获——>目标元素——>事件冒泡
+    //（body的捕获，d1的捕获）---->(d2的冒泡--->d2的捕获)——>(d1的冒泡，body的冒泡)
+
+    //一个事件触发的时候，只需要分析目标元素是什么：给这个目标元素绑定的事件都是在(目标元素阶段)
+
+</script>
+</html>

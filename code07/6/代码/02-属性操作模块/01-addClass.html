@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="itcast.js"></script>
+    <script>
+        //扩展属性操作模块
+        itcast.fn.extend({
+            //功能1：获取单个属性
+            //功能2：设置单个属性
+            //功能3：设置多个属性
+            attr:function(){
+                //参数个数为0，什么都不用做
+                if(arguments.length===0) return this;
+                //判断参数的个数为1，参数为字符串：获取(第一个DOM元素的)单个属性
+                var arg0=arguments[0];
+                if(arguments.length===1 && itcast.isString(arg0)){
+                    //获取第一个DOM元素
+                    var firstDom=this[0];
+                    //返回firstDom的指定属性（属性名称为arg0）的值
+                    return firstDom.getAttribute(arg0);
+                }else if(arguments.length ===1){ //参数个数为1，但是arg0不是一个字符串,arg0当成普通对象来处理
+                    //参数个数为1，并且参数是其他情况（当成普通对象来处理），设置多个属性
+                    //设置属性三要素：DOM元素、属性名称、属性值
+                    this.each(function(){
+                        //this:DOM元素
+                        var dom=this;
+
+                        itcast.each(arg0,function(key,value){
+                            dom.setAttribute(key,value);
+                        });
+
+                    });
+                    return this;
+                }else{
+                    //属性的值：attr方法的第二个实参
+                    var arg1=arguments[1];
+                    //参数个数>1，实现设置单个属性的功能
+                    this.each(function(){
+                        //this:DOM元素
+                        //属性名称：attr方法的第一个实参——>arg0
+
+                        //设置DOM元素的指定属性
+                        this.setAttribute(arg0,arg1);
+
+                    });
+                    return this;
+                }
+            },
+
+            //功能：删除1个或者多个属性 $("body").removeAttr("a","b","c")
+            removeAttr:function(){
+                //dom.removeAttribute(属性名称)
+                //arguments存储需要删除的属性
+                var args=arguments;
+
+                this.each(function(){
+                    //this:DOM元素
+                    var dom=this;
+
+                    //value表示每一个属性的名称，比如"a","b","c"
+                    itcast.each(args,function(index,value){
+                        dom.removeAttribute(value);
+                    });
+                });
+                return this;
+            },
+
+            //判断当前对象的DOM元素是否存在className这个类名
+            //只要当前对象有一个DOM元素存在这个类名，就返回true，一个都不存在，就返回false
+            hasClass:function(className){
+                var isExist=false;
+                this.each(function(){
+                    //this:DOM元素
+                    var domClassNameChange=" "+this.className+" ";
+                    var classNameChange=" "+className+" ";
+                    if(domClassNameChange.indexOf(classNameChange)>-1){
+                        isExist=true;
+                        //终止遍历
+                        return false;
+                    }
+                });
+                return isExist;
+            },
+
+            //功能：添加一个或者多个类名 $("body").addClass("a b c")
+            //举例：body本身具有a c这两个类名，通过 $("body").addClass("a b c")
+            //添加结果：body具有3个类名，分别是：a c b
+            addClass:function(){
+                if(arguments.length===0) return this;
+                //1、获取参数
+                var paramClassName=arguments[0];
+                if(!itcast.isString(paramClassName)){
+                    throw new Error("参数必须是一个字符串");
+                }
+
+                //2、遍历init类型的对象里面的DOM元素
+                this.each(function(){
+                    //this-->DOM元素
+                    var dom=this;
+
+                    //3、分割paramClassName变成数组，并遍历其中的每一个元素（类名）
+                    itcast.each(paramClassName.split(" "),function(i,className){
+                        //4、判断DOM元素是否存在某个类名
+                        var isExist=itcast(dom).hasClass(className);
+                        if(!isExist){
+                            //5、拼接DOM元素的原来的class属性的值+新的类名
+                            dom.className=dom.className+" "+className;
+                            //结果如下："context context2"+" "+"a"-->"context context2 a"
+                        }
+                    });
+                    dom.className=dom.className.trim();
+
+                });
+                //实现链式编程
+                return this;
+            },
+
+            //功能：删除一个或者多个类名 $("body").removeClass("a b c")
+            //不传参：删除DOM元素的全部类名
+            //举例：$("body").removeClass("a b c")中如果body本身具有类名"a d"，
+            //结果：body元素上面具有类名：d
+            //----->做法：修改dom元素的class属性的值，" a d "
+            //----------->查找修改后的class属性的值类名" a "的位置，将其替换为单个空格
+            removeClass:function(){
+                if(arguments.length === 0){
+                    //删除全部类名
+                    return this.each(function(){
+                        this.className="";//将DOM元素的类名置空
+                    });
+                }
+                //获取参数：即将需要删除的一个或者多个类名
+                var paramClassName=arguments[0];
+                //判断参数的类型
+                if(!itcast.isString(paramClassName)) throw new Error("参数必须是字符串类型");
+
+                //遍历init类型的对象的每一个DOM元素
+                return this.each(function(){
+                    var dom=this;//"a d c"
+                    var domClassNameChange=" "+dom.className+" ";//" a d c "
+                    //分割paramClassName
+                    itcast.each(paramClassName.split(" "),function(i,className){//"a b d"
+                        //判断dom元素是否含有指定的类名
+                        if(itcast(dom).hasClass(className)){
+                            var classNameChange=" "+className+" ";
+                            //替换domClassNameChange里面的classNameChange为空格
+                            domClassNameChange=domClassNameChange.replace(classNameChange," ");
+                        }
+                    });
+                    //重新设置dom元素的class属性的值为domClassNameChange
+                    dom.className=domClassNameChange;
+                });
+            },
+
+            //功能：切换DOM元素的类名
+            //详细的功能：对init类型的对象中每一个DOM元素判断是否具有指定的类名，
+            //                                  如果有，则移除，如果没有，则添加
+            //举例说明：$("body").toggleClass("c")--->原来body标签具有a c 类名--->结果："a"
+            //$("body").toggleClass("d")--->原来body标签具有a c 类名——>结果："a c d"
+            toggleClass:function(className){
+                if(arguments.length ===0) return this;
+
+                if(!itcast.isString(className)){
+                    throw new Error("参数必须是字符串类型");
+                }
+                //遍历init类型的对象中每一个DOM元素
+                return this.each(function(){
+                    var $dom=itcast(this);
+                    if($dom.hasClass(className)){
+                        $dom.removeClass(className);
+                    }else{
+                        $dom.addClass(className);
+                    }
+                });
+                //return this;
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="content" class="a d c">abc</div>
+</body>
+<script>
+    $("#content").addClass("a b c");//-->class="a d c b"
+
+    //"a d c a b c"——>极其不负责任的添加
+</script>
+</html>

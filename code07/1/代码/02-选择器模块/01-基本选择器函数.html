@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p class="a b ccc">p1</p>
+<p class="a b ccc">p2</p>
+<p class="a b ccc">p3</p>
+</body>
+<script>
+    //id tag class
+
+    function getId(idName){
+        return document.getElementById(idName);
+    }
+    function getClasses(className){
+        if(document.getElementsByClassName){ //支持
+            return document.getElementsByClassName(className);
+        }else{
+            //不支持
+            var result=[];
+
+            //第一步：获取页面中所有的标签元素
+            var allTags=getTags("*");
+            //第二步：遍历allTags
+            for (var i = 0; i < allTags.length; i++) {
+                var tag = allTags[i];
+                //第三步：判断tag具有指定的class：className
+                var tagClassName=tag.className; //"aa bbb cc"-->"bbb"
+                var tagClassNames=tagClassName.split(" ");//["aa","bbb","cc"]
+                for (var j = 0; j < tagClassNames.length; j++) {
+                    var singleClassName = tagClassNames[j];
+                    if(singleClassName === className){
+                        //如果是符合条件的元素，放到结果数组中
+                        result.push(tag);
+                        break;
+                    }
+
+                }
+
+
+            }
+
+            return result;
+        }
+
+
+    }
+    function getTags(tagName){
+        return document.getElementsByTagName(tagName);
+    }
+
+    var tags=getClasses("b");
+    console.log(tags);
+</script>
+</html>

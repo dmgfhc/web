@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="d3" style="width:200px;height:100px;background-color: lightseagreen"></div>
+</body>
+<script>
+    //1s内宽度由200变化到500
+    //动画：dom元素、改变的样式，动画的频率，动画样式的值，总时间1s
+    var d3=document.getElementById("d3");
+    //动画运行的总时间
+    var duration=1000;
+    //总路程
+    var totalDistance=500-200;
+    //动画开始时间
+    var startTime=+new Date();
+    var timer=setInterval(function(){
+        //根据时间的变化比值，计算出运行的路程
+
+        //公式1：运行的路程=总路程*运行的时间/总时间
+        //公式2：运行的时间=动画本次运行的时刻-动画开始运行的时刻
+        var nowTime=+new Date();//动画此刻的时间(毫秒数)
+        var timerTween=nowTime-startTime;
+
+        //动画的结束条件：动画运行时间已经达到或者超过1s
+        if(timerTween>=1000){
+            //停止动画
+            clearInterval(timer);
+            //让元素的宽度跑到指定的位置
+            d3.style.width="500px";
+        }else{
+            //动画从开始到现在运行的路程=总路程*运行的时间/动画运行的总时间
+            var distance=totalDistance*timerTween/duration;
+            //此刻元素的宽度值=开始值+动画从开始到现在运行的路程
+            d3.style.width=200+distance+"px";
+        }
+
+    },20);//20毫秒运行一次
+</script>
+</html>

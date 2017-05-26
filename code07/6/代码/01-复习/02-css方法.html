@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        itcast.fn.extend({
+            //获取单个样式：$("body").css("fontSize")
+            //设置单个样式：$("div").css("color","red")
+            //设置多个样式：$("p").css({color:"blue",backgroundColor:"pink"})
+            css:function(){
+                //参数个数为0：不做任何操作，直接返回this
+                if(arguments.length===0) return this;
+                var arg0=arguments[0];
+                var arg1=arguments[1];
+                //参数个数为1：
+                if(arguments.length===1){
+                    //再次判断参数的类型
+                    if(itcast.isString(arg0)){
+                        //获取第一个DOM元素的单个样式
+                        var firstDom=this[0];
+                        if(!firstDom) return "";
+
+                        //判断浏览器兼容性：能力检测
+                        if(window.getComputedStyle){
+                            return window.getComputedStyle(firstDom,null)[arg0];
+                        }else{
+                            return firstDom.currentStyle[arg0];
+                        }
+                    }else{
+                        //设置多个样式：三要素：dom元素 样式的名称 样式的值-->dom.style.样式名称=样式的值
+                        this.each(function(){
+                            //this:dom元素
+                            var dom=this;
+                            itcast.each(arg0,function(key,value){
+                                dom.style[key]=value;
+                            });
+                        });
+                        return this;
+
+                    }
+                }else{
+                    //设置单个样式
+                    this.each(function(){
+                        //this:dom元素
+                        this.style[arg0]=arg1;
+                    });
+                    return this;
+                }
+            },
+            show:function(){
+                return this.css("display","block");
+            },
+            hide:function(){
+                return this.css("display","none");
+            },
+            //功能：判断对象中每一个DOM元素是否隐藏，
+            //          如果该元素是隐藏的，就显示出来，如果该元素是显示的，就隐藏起来
+            toggle:function(){
+                this.each(function(){
+                    //this:DOM元素
+
+                    //保存init类型的对象，方便后续的调用
+                    var $this=itcast(this);//给itcast传递了一个参数，参数是一个DOM元素，值从this里面获取
+
+                    //判断DOM元素是隐藏的吗？
+                    if($this.css("display")==="none"){
+                        $this.show();
+                    }else{
+                        $this.hide();
+                    }
+                });
+                return this;
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

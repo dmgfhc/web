@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function each(arr,fn) {
+        for (var i = 0; i < arr.length; i++) {
+            var result=fn.apply(arr[i],[i,arr[i]]);
+            if(result === false){
+                break;
+            }
+        }
+    }
+    var arr=[1,3,5,7,9];
+    var index=-1;
+//    each(arr,function(index2,value){
+//        if(value === 5){
+//            index=index2;
+//            return false;
+//        }
+//    });
+
+    each(arr,function(index2){
+        //console.log(this.valueOf());
+        var v=this.valueOf();
+
+        if(v === 5){
+            index=index2;
+            return false;
+        }
+    });
+    alert(index);
+
+</script>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            list-style: none;
+        }
+
+        ul, body {
+            padding: 0;
+            margin: 0;
+        }
+
+        #serachBox {
+            /*border: 1px solid red;*/
+            width: 580px;
+            height: 300px;
+            /*background-color: lightsalmon;*/
+        }
+
+        #serachBox a {
+            text-decoration: none;
+        }
+
+        #serachBox .tab-left {
+            color: #FFFFFF;
+            width: 90px;
+            height: 100%;
+            float: left;
+            background-color: #2577E3;
+        }
+
+        #serachBox .tab-left li {
+            padding: 0 17px 0 13px;
+            cursor: pointer;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        #serachBox .tab-left li b {
+            font-weight: normal;
+            height: 40px;
+            display: block;
+            border-bottom: 1px dashed #aac3f1;
+        }
+
+        #serachBox .tab-right {
+            width: 480px;
+            padding:0 0 0 5px;
+            height: 100%;
+            float: left;
+            background-color: #FFFFFF;
+        }
+
+        #serachBox .tab-right>div{
+            height:100%;
+            clear:both;
+        }
+
+        .tab-current {
+            border-left: 4px solid #ff9915;
+            background-color: #FFFFFF;
+            color: #2577E3;
+        }
+
+        #serachBox .tab-left li.tab-current b {
+            border-bottom: 0;
+        }
+        .tab-right .right-top{
+            margin-top: 10px;
+            border-bottom: 1px solid grey;
+        }
+        .tab-right .right-top li {
+            float: left
+        }
+        .tab-right .right-top li a{
+            color: #666;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 14px;
+            display: inline-block;
+            /*width:56px;*/
+            height:25px;
+        }
+    </style>
+    <script src="js/jquery1.7.js"></script>
+</head>
+<body>
+
+<div id="serachBox">
+    <div class="tab-left">
+        <ul>
+            <li class="tab-current"><b>酒店</b></li>
+            <li><b>机票</b></li>
+            <li><b>自由行</b></li>
+            <li><b>旅游</b></li>
+            <li><b>火车</b></li>
+            <li><b>租车</b></li>
+            <li><b>门票</b></li>
+        </ul>
+    </div>
+    <div class="tab-right">
+        <div class="hotel">
+            <div class="right-top">
+                <ul>
+                    <li><a href="javasript:void(0)">国内酒店</a></li>
+                    <li><a href="javasript:void(0)">国外酒店</a></li>
+                    <li><a href="javasript:void(0)">酒店团购</a></li>
+                    <li><a href="javasript:void(0)">酒店+景点</a></li>
+                    <li><a href="javasript:void(0)">会场+团队房</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="flight"></div>
+        <div class="hotel"></div>
+        <div class="flight"></div>
+        <div class="hotel"></div>
+        <div class="flight"></div>
+        <div class="hotel"></div>
+    </div>
+</div>
+</body>
+<script>
+    $(".tab-left").on("click", "li", function () {
+        $(this).addClass("tab-current").siblings().removeClass("tab-current");
+    }).on("mouseover", "li", function () {
+        $(this).addClass("tab-current").siblings().removeClass("tab-current");
+    });
+</script>
+</html>

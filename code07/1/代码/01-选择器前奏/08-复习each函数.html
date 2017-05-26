@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //遍历数组、伪数组
+    function each(arr,fn){
+        for (var i = 0; i < arr.length; i++) {
+            var result=fn.call(arr[i],i,arr[i]);
+            if( result === false ){
+                break;
+            }
+        }
+    }
+
+    var array=[1,5,7,5,6,8];
+    var index=-1;
+//    each(array,function(index2,value){
+//        if(value === 5){
+//            index=index2;
+//            return false;
+//        }
+//    });
+
+//    each(array,function(index2){
+//       if(this.valueOf() === 5 ){
+//           index=index2;
+//           return false;
+//       }
+//    });
+    alert(index);
+</script>
+</html>

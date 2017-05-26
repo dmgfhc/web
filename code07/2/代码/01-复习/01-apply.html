@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var o={
+        say:function(){
+            console.log(this.name);
+        }
+    };
+    var o2={
+        name:"张三"
+    };
+    //o2实现调用o的say方法——>方法的借用
+    o.say.call(o2);
+
+    //将一个方法的参数以数组的形式传递
+    var result=[];
+    var o1={0:10,1:20,length:2};
+
+    for (var i = 0; i < o1.length; i++) {
+        result.push(o1[i]);
+    }
+
+
+    result.push(10,20);
+    result.push.apply(result,[10,20]);
+    result.push.apply(result,o1);
+</script>
+</html>

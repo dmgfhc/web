@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //函数的形参才是函数里面的局部变量
+    //函数的实参，由实参所在的此法作用域决定（看外围有没有任何function字眼）
+
+
+
+    //对数组、伪数组遍历
+    function each(arr,fn){
+        for (var i = 0; i < arr.length; i++) {
+            var result=fn(i);       //在调用函数的时候，函数的参数叫做实参
+            if(result === false){   //目的：遍历元素的时候，元素的值很少是false
+                            //不用==，而用===：因为==那么""==false
+                                  // false == false 0 ==false undefined==false
+                break;
+            }
+        }
+    }
+
+    var arr=[1,3,5,7,3];
+
+//    //不使用内置方法（max sum )实现
+//    // 1、求和
+//    var sum=0;
+//    each(arr,function(index){//函数声明的时候，参数叫做形参
+//        sum+=arr[index];
+//    });
+//    alert(sum);
+
+    // 2、求最大值
+//    var max=arr[0];
+    //    each(arr,function(index){
+    //        if(arr[index]>max){
+    //            max=arr[index];
+    //        }
+    //    });
+
+//    alert(max);
+
+    // 3、获取第一个数字3的索引
+//    var index=-1;
+//    each(arr,function(index2){
+//        if (arr[index2] === 3) {
+//            index = index2;
+//            //break;//因为break只能出现在循环或者switch语句中
+//
+//            return false;
+//        }
+//    });
+//
+//    alert(index);
+
+    //"".indexOf("") -1不存在
+    //[].indexOf("") -1不存在
+
+    //4、遍历伪数组：
+    var o={0:"张三",1:"李思",2:"小蔡",length:3};
+    each(o,function(index){
+        console.log(o[index]);
+    })
+
+</script>
+</html>

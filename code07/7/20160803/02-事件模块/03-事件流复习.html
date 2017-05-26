@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="d1" style="padding:50px;background-color: lightblue">d1
+    <div id="d2" style="padding:50px;background-color: lightsalmon">d2
+        <div id="d3" style="padding:50px;background-color: lightseagreen">d3</div>
+    </div>
+</div>
+</body>
+<script>
+    var d1=document.getElementById("d1");
+    var d2=document.getElementById("d2");
+    var d3=document.getElementById("d3");
+    d1.addEventListener("click",function(){
+        alert("1-1");
+    });
+    d1.addEventListener("click",function(){
+        alert("1-2");
+    },true);
+    d2.addEventListener("click",function(){
+        alert("2-1");
+    });
+    d2.addEventListener("click",function(){
+        alert("2-2");
+    },true);
+    d3.addEventListener("click",function(){
+        alert("3-1");
+    });
+    d3.addEventListener("click",function(){
+        alert("3-2");
+    },true);
+
+    //点击d1：d1是目标元素——>给d1上面绑定的事件都处于目标元素阶段 d1.addEventListener
+    //—————>d1.addEventListener(xxx,xxx,true)  d1.addEventListener(xxx,xxx,false)性质都是一样的
+
+    //点击d2：d2是目标元素——>d2.addEventLisnter添加的事件都会在目标元素阶段发生
+    //window-->html--->body-->d1的捕获——>(d2的目标元素阶段)——>d1的冒泡——>body-->html-->window
+    //                          1-2——>          2-1,2-2         1-1
+
+    //点击d3：d1的捕获——>d2的捕获——>d3的事件按顺序触发——>d2的冒泡——>d1的冒泡
+    //      1-2            2-2          3-1 3-2             2-1         1-1
+</script>
+</html>

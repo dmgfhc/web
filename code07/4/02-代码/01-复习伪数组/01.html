@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var doms=document.getElementsByTagName("*");
+
+//    var o={length:0};
+//
+//    for (var i = 0; i < doms.length; i++) {
+//        o[i]=doms[i];
+//        o.length++;
+//    }
+
+
+
+    var o={};
+    [].push.apply(o,doms);
+
+
+    Object.defineProperty(doms,"c1",{
+        enumerable:false,//表示这个属性不可被遍历
+        value:"30"
+    });
+    //for...in循环会遍历出这个对象及其所在的原型链中一切可以遍历的属性
+
+    for (var key in doms) {
+        console.log(key);
+    }
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Foo(name){
+        //this.name=name;
+
+        //设置Foo的原型中的name属性
+        Foo.prototype.name=name;
+    }
+    //创建一个Foo类型的对象
+    var f1=new Foo("飞机");//Foo.prototype.name="飞机"
+    //创建一个Foo类型的对象
+    var f2=new Foo("大炮");//Foo.prototype.name="大炮"
+</script>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="aaa">a1</div>
+<div class="aaa">a2</div>
+<div class="aaa">a3</div>
+<div id="content">content</div>
+<input type="text">
+</body>
+<script>
+    function getId(idName){
+        return document.getElementById(idName);
+    }
+
+    /**
+     *
+     * @param className "b"
+     */
+    function getClasses(className){
+        if(document.getElementsByClassName){
+            return document.getElementsByClassName(className);
+        }else{
+            var result=[];
+
+            var allTags=document.getElementsByTagName("*");
+            for (var i = 0; i < allTags.length; i++) {
+                var tag = allTags[i];
+                var tagClassName=tag.className;
+                if((" "+tagClassName+" ").indexOf(" "+className+" ")>=0){
+                    result.push(tag);
+                }
+            }
+            return result;
+        }
+
+    }
+
+    function getTags(tagName){
+        return document.getElementsByTagName(tagName);
+    }
+
+    /**
+     * 根据不同的选择器获取元素
+     * @param selector id选择器："#"开头："#abc"
+     *                 class选择器："."开头：".ccc"
+     *                 其他情况：标签选择器："p"
+     */
+    function get(selector){
+        if(typeof selector !== "string") return [];
+        var result=[];
+//        var idReg=/^#(\w+)$/;
+//        var classReg=/^\.(\w+)$/;
+//        var tagReg=/^(\w+|\*)$/;
+
+        var reg=/^(?:#(\w+)|\.(\w+)|(\w+|\*))$/;
+        var regResult=reg.exec(selector);
+        console.log(regResult);
+        var temp;
+        if(temp=regResult[1]){
+            result.push(getId(temp));
+        }else if(temp=regResult[2]){
+            result.push.apply(result,getClasses(temp));
+        }else if(temp=regResult[3]){
+            result.push.apply(result,getTags(temp));
+        }
+        return result;
+    }
+
+    console.log("====================================")
+    console.log(get("#content"));
+    console.log("====================================")
+    console.log(get(".aaa"));
+    console.log("====================================")
+    console.log(get("input"));
+    console.log("====================================")
+    console.log(get("div"));
+    console.log("====================================")
+    console.log(get("*"));
+
+    //创建正则表达式：
+    var reg1=new RegExp("\d");
+    var reg2=/\s/;
+
+//    .：匹配除了换行符之外的任意单个字符
+//    \d：匹配0-9的一个数字			\D：匹配非数字，——取反\d
+//    \w：匹配字母、数字、下划线		\W：匹配非（字母、数字、下划线）——取反\w
+//    \s：匹配空白字符					\S：匹配非空白字符
+//    \t：匹配制表符
+//    \r：匹配回车
+//    \n：匹配换行
+//            []：匹配括号内的任意单个字符
+//            [^]：匹配不在括号内的任意单个字符 [^abc]
+//    ^：匹配开始的字符，比如：^a：匹配字符串以a开头
+//    $：匹配结束的字符，比如：3$：匹配字符串以3结尾
+//    ()：分组
+//    (?:)：捕获到的结果不会出现在分组元素中
+
+</script>
+</html

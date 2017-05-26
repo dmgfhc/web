@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Foo(name){
+        //this——>指向f1
+        this.name=name;
+    }
+    var f1=new Foo("张三");
+    f1.hi=function(){
+        alert("我叫："+this.name);
+    };
+//    f1.hi();
+
+    var f2=new Foo("蔡国庆");
+    f2.hi=function(){
+        alert("我叫："+this.name);
+    };
+//    f2.hi();
+
+    //构造函数的原型方法：实现通过该构造函数创建的对象所共享
+    Foo.prototype.hi2=function(){
+        alert(this.name);
+    };
+    f1.hi2();//弹出"张三"
+    f2.hi2();//弹出“蔡国庆”
+</script>
+</html>

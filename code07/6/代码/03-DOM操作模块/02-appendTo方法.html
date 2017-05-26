@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="itcast.js"></script>
+    <script>
+        itcast.fn.extend({
+            appendTo: function (selector) {
+                var $parents = itcast(selector);
+
+                //this:-->{0:input,1:input,length:2}
+                return this.each(function () {
+                    var child = this;//子元素
+                    //再遍历父元素
+                    $parents.each(function (parentIndex) {
+                        var parent = this;//父元素
+                        //在父元素中添加子元素——>appendChild
+                        parent.appendChild(child.cloneNode(true));
+
+//以下代码实现对原来节点的利用
+//                        if(parentIndex===$parents.length-1){
+//                            parent.appendChild(child);
+//                        }else{
+//                            parent.appendChild(child.cloneNode(true));
+//                        }
+                    });
+                });
+            },
+            append: function (selector) {
+//                var $children=itcast(selector);
+//                var $parents=this;
+//
+//                $children.appendTo($parents);
+//                return $parents;
+
+                //this：init类型的对象-->itcast(this)-->(this instanceof itcast)-->return this
+                itcast(selector).appendTo(this);
+                return this;
+            },
+            //移除子元素，及其自身
+            //$("")
+            remove: function () {
+                //原生JS移除子元素：父元素.removeChild(子元素)
+
+                //遍历
+                return this.each(function () {
+                    var child = this;//即将删除的子元素   child=d3
+                    //获取child的父元素：parentNode
+                    var parent = child.parentNode;//parent=body
+                    //删除元素
+                    parent.removeChild(child);
+                });
+
+            }
+        })
+    </script>
+</head>
+<body>
+<div id="header1">
+    <div id="dd3" class="d3" style="background-color: lightblue"></div>
+    <div class="d3" style="background-color: lightcoral"></div>
+    <div class="d3" style="background-color: lightgoldenrodyellow"></div>
+</div>
+<div id="header2">
+
+</div>
+</body>
+<script>
+    //    $("<input /><input/>").appendTo("body")
+
+    //页面中一个DOM元素只能有一个父节点
+    //    $("<input /><input/>").appendTo(".d3");
+
+    $(".d3").append("<input /><input/>");
+    var $d3=$(".d3").remove();
+
+    //$(".d3").remove().appendTo("#header2")
+</script>
+</html>

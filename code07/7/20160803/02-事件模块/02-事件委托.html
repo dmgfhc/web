@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="d1" style="padding:50px;background-color: lightsalmon"></div>
+<div id="d2" style="padding:50px;background-color: lightseagreen"></div>
+</body>
+<script>
+    //事件委托——>尽可能少绑定事件的个数（绑定了一个事件就会进入js引擎的事件队列中）
+    document.body.addEventListener("click",function(e){
+        if(e.target.id==="d1"){
+            //d1的单击操作
+        }else if(e.target.id==="d2"){
+            //d2的单击操作
+        }
+    });
+</script>
+</html>

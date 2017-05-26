@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="">
+    <style>
+        /*在style属性里面编写的样式属于内嵌（内联）样式*/
+        #header{
+            font-size: 30px;
+            text-align: center;
+
+        }
+        .red,.green{
+            float: left;
+            width:100px;
+            height:100px;
+            border-radius: 50%;
+        }
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+            display: none;
+        }
+
+    </style>
+    <script src="itcast.js"></script>
+    <script>
+        //扩展css方法：操作init类型的对象中保存的DOM元素
+        itcast.fn.extend({
+            //功能：1、设置一个样式 $("div").css("color","red")
+            //      2、设置多个样式 $("div").css({color:"red",backgroundColor:"gray"})
+            //      3、获取单个样式 var color=$("div").css("color")
+            css:function(){
+                //0、参数个数为0，没有意义
+                if(arguments.length===0) return this;//init类型的对象
+
+                var arg0=arguments[0];//css方法的第一个参数
+                //1、参数个数为1：字符串，对象
+                if(arguments.length===1){
+                    if(itcast.isString(arg0)){
+                        //1.1、参数是一个字符串类型的：获取单个样式，只能获取第一个DOM元素的单个样式
+                        //a、获取当前对象的第一个DOM元素
+                        var firstDom=this[0];
+                        //b、如果firstDom不存在，当前对象中就没有DOM元素，就直接返回空字符串
+                        if(!firstDom) return "";
+                        //c、返回firstDom的样式名称为arg0的样式的值
+                        //c.1、判断浏览器是否支持window.getComputedStyle方法（IE9+）
+                        if(window.getComputedStyle){
+                            //方法的参数：参数1：DOM元素，参数2：伪类元素
+                            return window.getComputedStyle(firstDom,null)[arg0];
+                        }else{
+                            return firstDom.currentStyle[arg0];
+                        }
+                    }else{
+                        //1.2、$("body").css({color:"red",fontSize:"30px"}) 参数是一个对象类型的：设置多个样式：
+                        //                   遍历当前对象的所有DOM元素，对每一个DOM元素进行2次遍历，从而添加多个样式
+                        //  var f={ 0:body,length:1 }
+                        this.each(function(){
+                            //this：每一个DOM元素
+                            var dom=this;
+                            itcast.each(arg0,function(key,value){
+                                //设置DOM元素的样式名称为key的样式值为value
+                                //          this;value所对应的String类型的对象
+                                dom.style[key]=value;
+                            });
+                        });
+                        //实现链式编程
+                        return this;
+                    }
+
+
+
+
+
+                }else{
+
+                    var arg1=arguments[1];//样式的值 css方法的第二个参数
+                    //2、参数个数为2：设置一个样式：遍历当前对象的每一个DOM元素，对DOM元素设置样式
+                    //DOM元素，样式的名称，样式的值
+                    //this:init类型的对象
+                    this.each(function(){
+                        //this:DOM元素
+
+                        //设置样式
+                        this.style[arg0]=arg1;
+                    });
+                    return this;
+                }
+
+
+
+
+            },
+            //功能：让(当前对象的每一个)DOM元素显示出来
+            show:function(){
+//                return this.each(function(){
+//                    this.style["display"]="block";
+//                });
+                //return this;
+
+                return this.css("display","block");
+            },
+            hide:function(){
+                return this.css("display","none");
+            },
+            //功能：判断DOM元素是显示的还是隐藏的？如果显示就隐藏，如果隐藏就显示
+            toggle:function(){
+                //this:init类型的对象
+                this.each(function(){
+                    //this:DOM元素
+                    var $this=itcast(this);//产生一个init类型的对象，对象中有一个DOM元素
+                    //this：DOM元素
+                    //判断DOM元素的display样式的值是否是"none"，如果是none表示这个元素是隐藏的
+                    if($this.css("display")==="none"){
+                        //让这个DOM元素显示出来
+                        $this.show();
+                    }else{
+                        //让这个dom元素隐藏起来
+                        $this.hide();
+                    }
+                });
+                //实现链式编程
+                return this;
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="header" style="color:red">红色的字体</div>
+<div class="light">
+    <div class="red"></div>
+    <div class="green"></div>
+</div>
+</body>
+<script>
+    var header=document.getElementById("header");
+    //console.log(header.style.fontSize);//获取一个DOM元素的不存在于行内样式中的一个样式，会返回空字符串
+    //可以获取到header的所有的样式——>IE9+
+    //var headerStyles=window.getComputedStyle(header,null);
+
+//    var headerStyles=header.currentStyle;
+
+//    alert($("#header").css("color"));
+
+//    $("#header").css("color").css();//会报错
+
+//    $("#header").css({color:"blue",fontSize:"50px"})
+
+//    $("#header").css("color","blue");
+
+    setInterval(function(){
+        $(".red,.green").toggle();
+    },300)
+</script>
+</html>

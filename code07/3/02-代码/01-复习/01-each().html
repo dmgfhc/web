@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function each(arr,fn){
+        for (var i = 0; i < arr.length; i++) {
+            var result=fn.call(arr[i],i,arr[i]);
+            if(result === false){
+                break;
+            }
+
+        }
+    }
+    // 伪代码：并不能真正执行，只是演示它的功能
+    // var o={0:body,1:head,2:title,length:3};
+    // each(o,function(i,v){});
+
+    each(document.getElementsByTagName("*"),function(){
+        console.log(this.nodeName);//返回标签名的大写格式
+    })
+
+
+</script>
+</html>

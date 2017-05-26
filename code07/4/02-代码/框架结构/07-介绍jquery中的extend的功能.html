@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery1.7.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    //$.extend()--->
+    $.ajax
+    $.get
+    $.post
+    $.isFunction
+    $.isString
+
+    //$.fn.extend()--->
+    $().css()
+    $().show()
+    $().attr()
+
+    //1、$.extend()
+    //  a、参数个数为1：遍历参数的属性、方法，将他们添加到$对象中
+    //$.extend({a:10,b:20,c:30});-->$.a=10 $.b=20 $.c=30
+    //  b、参数个数>1，将第一个参数作为目标对象，后面的参数作为原数据，
+    //                  将这些原数据对象中的属性、方法插入到第一个参数中
+//    var o={};
+//    $.extend( o,{name:"张三",age:30},{gender:"未知"},{width:"200cm",f1:function(){
+//        alert(10);
+//    }});
+    //2、$.fn.extend()-->itcast.prototype.extend
+    //  a、参数个数为1：遍历参数的属性，方法，到当前调用的对象中
+    // $.fn.extend({custom:"自定义属性",customFn:function(){}})
+    //相当于：
+    // $.fn.custom="自定义属性"
+    // $.fn.customFn=function(){}
+
+//    var $body=$("body");
+//    $body.extend({body:"body",bodyFn:function(){}})
+
+    //  b、参数个数>1，将第一个参数作为目标对象，后面的参数作为原数据，
+    //                      将这些原数据对象中的属性、方法插入到第一个参数中
+    //var o2={};
+    //$.fn.extend(o2,{p1:"p1",p2:"p2",p3:"p3"},{p5:"p5",p6:"p6",p7:"p7"});
+</script>
+</html>

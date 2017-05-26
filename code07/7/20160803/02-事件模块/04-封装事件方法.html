@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="itcast.js"></script>
+    <script>
+        var support = {addEventListener: false};
+        (function () {
+            if (document.addEventListener) {
+                support.addEventListener = true;//支持这个方法
+            }
+        }());
+        itcast.fn.extend({
+            //功能：对事件的绑定 addEventListener/attachEvent(IE6-8)
+            on: function (type, fn) {
+                //需要：a、dom元素，b、事件类型 c、事件响应函数
+                return this.each(function () {
+                    var dom = this;
+                    //浏览器能力检测：先检测是否支持新特性、新方法
+                    if (support.addEventListener) {
+                        dom.addEventListener(type, fn);
+                    } else {//(IE6-8)
+                        dom.attachEvent("on" + type, fn);
+
+                    }
+                });
+
+
+            },
+            //功能：解除事件的绑定：removeEventListener/detachEvent(IE6-8)
+            off: function (type, fn) {
+                return this.each(function () {
+                    var dom = this;
+                    if (document.removeEventListener) {
+                        dom.removeEventListener(type, fn);
+                    } else {//IE6-8
+                        dom.detachEvent("on" + type, fn);
+                    }
+                });
+            },
+            //鼠标进入触发第一个回调函数，鼠标移出触发第二个回调函数
+            hover: function (fn1, fn2) {
+//                this.mouseenter(fn1);
+//                this.mouseleave(fn2);
+//                return this;
+
+                return this.mouseenter(fn1).mouseleave(fn2);
+            }
+        });
+        //封装一系列操作事件的方法：$("body").click $("body").mouseover $("body").keyup
+        var eventTypes = "click dblclick mouseover mouseout mouseenter mouseleave keyup keydown load".split(" ");
+        //遍历字符串数组，获取每一个表示事件类型的字符串
+        itcast.each(eventTypes, function (i, type) {
+            //给itcast的原型添加了一个新的方法
+            itcast.fn[type] = function (callback) {
+                //this:init类型的对象
+                return this.on(type, callback);
+            };
+        });
+        //上面的每一次遍历相当于：
+        //        itcast.fn.click2=function(callback){
+        //            return this.on("click",callback);
+        //        };
+
+        //itcast.fn.on=function(){}
+        //itcast.fn.off=function(){}
+    </script>
+</head>
+<body>
+<div class="d3" style="padding:50px;background-color: lightsalmon">
+    <input type="text">
+    <input type="text"/>
+</div>
+<div class="d5">
+    <span>爱我中华！中华雄姿英发</span>
+</div>
+</body>
+<script>
+    //    $(".d3,.d5").on("click",function(){
+    //        alert(this.className);
+    //    });
+
+//        $(".d3").hover(function () {
+//            console.log("进入");
+//        }, function () {
+//            console.log("移出");
+//        });
+
+//    var d3 = document.getElementsByClassName("d3")[0];
+//    d3.onmouseover = function () {
+//        console.log("进入");
+//    };
+//    d3.onmouseout = function () {
+//        console.log("移出");
+//    };
+</script>
+</html>
