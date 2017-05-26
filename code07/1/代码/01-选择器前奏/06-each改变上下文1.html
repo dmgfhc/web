@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    //对数组、伪数组遍历
+    function each(arr,fn){
+        for(var i=0;i<arr.length;i++){
+            //var result = fn.apply(arr[i],[i]);
+            var result = fn.apply(arr[i],[i,arr[i]]);
+            if(result === false){
+                break;
+            }
+        }
+    }
+
+    var arr=[1,3,5,7,3];
+
+    // 2、求最大值
+        var max=arr[0];
+        each(arr,function(index,v){
+            console.log(v);
+            if(this>max){
+                max=this.valueOf();
+            }
+        });
+
+        console.log(max);
+
+
+
+
+
+    //    //不使用内置方法（max sum )实现
+    //    // 1、求和
+//    var sum=0;
+//    each(arr,function(index,v){//函数声明的时候，参数叫做形参
+//        //console.log(this.valueOf());//this一定是一个对象，如果是由基本数据类型会转换为基本包装类型
+//        //此时是一个Number类型的对象
+//        sum+=this;//sum=sum+this;
+//        console.log(v);
+//        //加法运算符运算规则：a、一个数字和对象求和的时候，会把对象转换为数字
+//        //                   b、一个数字和字符串求和，会把数字转换为字符串
+//    });
+//    alert(sum);
+
+    // 2、求最大值
+    //    var max=arr[0];
+    //    each(arr,function(index){
+    //        if(arr[index]>max){
+    //            max=arr[index];
+    //        }
+    //    });
+
+    //    alert(max);
+
+    // 3、获取第一个数字3的索引
+    //    var index=-1;
+    //    each(arr,function(index2){
+    //        if (arr[index2] === 3) {
+    //            index = index2;
+    //            //break;//因为break只能出现在循环或者switch语句中
+    //
+    //            return false;
+    //        }
+    //    });
+    //
+    //    alert(index);
+
+
+    //4、遍历伪数组：
+//    var o={0:"张三",1:"李思",2:"小蔡",length:3};
+//    each(o,function(index){
+//        console.log(o[index]);
+//    })
+
+</script>
+</html>

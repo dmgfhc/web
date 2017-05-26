@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    var arr=[1,3,5,7,3];
+    var sum = 0;
+    var max = 1;
+    var index = 0;
+
+    function each(arr,fn){
+        for(var i=0;i<arr.length;i++){
+          var result = fn(i);
+          if(result === false){
+              break;
+          }
+        }
+    }
+
+    each(arr,function (i) {
+        sum+=arr[i];
+    });
+
+    each(arr,function(index){
+                if(arr[index]>max){
+                    max=arr[index];
+                }
+            });
+
+    each(arr,function(index){
+        if(arr[index]>max){
+            max=arr[index];
+        }
+    });
+
+    each(arr,function (i) {
+        if (arr[i] === 3) {
+            index = i;
+            return false;
+        }
+    });
+
+    console.log(sum);
+    console.log(max);
+    console.log(index);
+
+</script>
+</html>

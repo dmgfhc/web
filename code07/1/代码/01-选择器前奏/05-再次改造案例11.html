@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>aaa</div>
+<div>bbb</div>
+<div>ccc</div>
+<p>p1</p>
+<p>p2</p>
+</body>
+<script>
+
+    function each(arr,fn){
+        for (var i = 0; i < arr.length; i++) {
+            var result=fn.apply(arr[i],[i,arr[i]]);       //在调用函数的时候，函数的参数叫做实参
+            if(result === false){   //目的：遍历元素的时候，元素的值很少是false
+                //不用==，而用===：因为==那么""==false
+                // false == false 0 ==false undefined==false
+                break;
+            }
+        }
+    }
+
+    /**
+     * 根据标签获取元素
+     */
+    function getTags(tagName){
+        return document.getElementsByTagName(tagName);
+    }
+    /**
+     * 设置dom数组的指定样式为指定的值
+     * 有2步：1、遍历dom数组（伪数组）    2、设置dom元素的指定样式
+     */
+    function setDomsStyle(doms,styleName,styleValue){
+        each(doms,function(){
+            this.style[styleName]=styleValue;
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    function each(arr,fn){
+        for (var i = 0; i < arr.length; i++) {
+            var result=fn.apply(arr[i],[i,arr[i]]);       //在调用函数的时候，函数的参数叫做实参
+            if(result === false){   //目的：遍历元素的时候，元素的值很少是false
+                //不用==，而用===：因为==那么""==false
+                // false == false 0 ==false undefined==false
+                break;
+            }
+        }
+    }
+
+    /**
+     * 根据标签获取元素
+     */
+    function getTags(tagName){
+        return document.getElementsByTagName(tagName);
+    }
+    /**
+     * 设置dom数组的指定样式为指定的值
+     * 有2步：1、遍历dom数组（伪数组）    2、设置dom元素的指定样式
+     */
+    function setDomsStyle(doms,styleName,styleValue){
+        each(doms,function(){
+            this.style[styleName]=styleValue;
+        });
+    }
+
+
+    var divs,
+            ps;
+    //1、获取div和p元素
+    divs=getTags("div");
+    ps=getTags("p");
+    //2、给divs和ps设置背景色
+    setDomsStyle(divs,"backgroundColor","lightblue");
+    setDomsStyle(ps,"backgroundColor","lightblue");
+    setDomsStyle(ps,"fontSize","30px");
+
+</script>
+</html>
