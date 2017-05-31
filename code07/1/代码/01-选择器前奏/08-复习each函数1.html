@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function each(arr,fn) {
+        for(var i =0;i<arr.length;i++){
+          var result =  fn.call(arr[i],i,arr[i]);
+           // fn.apply(arr[i],[i,arr[i]]);
+            if(result === false){
+                break;
+            }
+        }
+    }
+    var index = -1;
+    each([1,6,7,5,6,8],function (index2) {
+       if(this.valueOf() == 5){
+          index = index2;
+          return false
+       }
+    });
+
+    console.log(index);
+
+
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="a bbb c">d1</div> " a bbb c "-->" b "
+<div class="a bbb c">d2</div> " a bbb c "-->" bbb "
+<input type="text" class="a b c"> " a b c "-->" b "
+<input type="text" class="a b c"> " a b c "-->" bbb "
+<input type="text" class="a b c">
+<input type="text" class="b"> " b "-->" b "
+<input type="text" class="bbb">" bbb "-->" b "
+</body>
+<script>
+
+    function getClasses(className) {
+        var result = [];
+        var allTags = document.getElementsByTagName('*');
+        for(var i =0;i<allTags.length;i++){
+            var tag = allTags[i];
+            var tagClassName = tag.className;
+
+            var tagClassNameChange = " " + tagClassName + " ";
+
+            var paramClassNameChange = " " + className + " ";
+
+            if(tagClassNameChange.indexOf(paramClassNameChange)>=0){
+                result.push(tag);
+            }
+
+        }
+    }
+
+    var bs = getClasses('b');
+    console.log(bs);
+
+</script>
+</html>

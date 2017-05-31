@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    Array.prototype.push2=function(){
+        for (var i = 0; i < arguments.length; i++) {
+            var arg = arguments[i];
+            this[this.length]=arg;//arr[arr.length]=arg
+        }
+    };
+    var arr=[];
+    //arr.push2(1,2,3);
+    [].push2.apply(arr,document.getElementsByTagName("*"));
+//    [].push2(html,head,title,meta,script,body);
+    console.log(arr);
+</script>
+</html>

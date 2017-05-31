@@ -15,7 +15,24 @@
     }
     
     function getClasses(className) {
-        return document.getElementsByClassName(className);
+        if(document.getElementsByClassName(className)){
+            return document.getElementsByClassName(className)
+        }else{
+            var result = [];
+            var allTags = getTags('*');
+            for(var i=0;i<allTags.length;i++){
+                var tag = allTags[i];
+                var tagClassName = tag.className;
+                var tagClassNames = tagClassName.split(" ");
+                for (var j = 0; j < tagClassNames.length; j++) {
+                    var singleClassName = tagClassNames[j];
+                    if(singleClassName === className){
+                        //如果是符合条件的元素，放到结果数组中
+                        result.push(tag);
+                        break;
+                    }
+            }
+        }
     }
 
     function getTags(tagName) {

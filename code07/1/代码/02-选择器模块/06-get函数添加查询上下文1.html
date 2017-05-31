@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="aaa">a1</div>
+<div class="aaa">a2</div>
+<div class="aaa">a3</div>
+<div id="d3">
+    <input type="text" class="aaa">
+    <input type="text" class="aaa">
+    <input type="text" class="aaa">
+    <input type="text" class="aaa">
+    <input type="text" class="aaa">
+</div>
+<div id="content">content</div>
+<input type="text">
+</body>
+<script>
+    function getId(idName,context){
+        return document.getElementById(idName);
+    }
+
+    /**
+     *
+     * @param className "b"
+     * @param context：查找context下面的指定元素
+     */
+    function getClasses(className,context){
+        context = context||document;
+        if(document.getElementsByClassName){
+            return context.getElementsByClassName(className);
+        }else{
+            var result=[];
+
+            var allTags=context.getElementsByTagName("*");
+            for (var i = 0; i < allTags.length; i++) {
+                var tag = allTags[i];
+                var tagClassName=tag.className;
+                if((" "+tagClassName+" ").indexOf(" "+className+" ")>=0){
+                    result.push(tag);
+                }
+            }
+            return result;
+        }
+
+    }
+
+    function getTags(tagName,context){
+        context=context || document;
+        return context.getElementsByTagName(tagName);
+    }
+
+    /**
+     * 根据不同的选择器获取元素
+     * @param selector id选择器："#"开头："#abc"
+     *                 class选择器："."开头：".ccc"
+     *                 其他情况：标签选择器："p"
+     * @param context 查找context下面的符合条件的元素
+     */
+    function get(selector,context){
+        if(typeof selector !== "string") return [];
+        var result=[];
+
+        var reg=/^(?:#(\w+)|\.(\w+)|(\w+|\*))$/;
+        var regResult=reg.exec(selector);
+
+        var temp;
+        if(temp=regResult[1]){
+            result.push(getId(temp));
+        }else if(temp=regResult[2]){
+            result.push.apply(result,getClasses(temp,context));
+        }else if(temp=regResult[3]){
+            result.push.apply(result,getTags(temp,context));
+        }
+        return result;
+    }
+
+    console.log("====================================")
+    console.log(get("#content",d3));
+    console.log("====================================")
+    console.log(get(".aaa",d3));
+    console.log("====================================")
+    console.log(get("input"));
+    console.log("====================================")
+    console.log(get("div"));
+    console.log("====================================")
+    console.log(get("*"));
+
+
+</script>
+</html>

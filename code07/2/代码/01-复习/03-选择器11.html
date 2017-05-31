@@ -46,13 +46,13 @@
 //    getId("header");
 
     function getId(idName,context){
-
         var tag= document.getElementById(idName);
 
         if(!context) return tag;
 
         //判定tag是否在context的下面（子孙元素中）
         //实现思路：查找tag的父元素，父元素的父元素，父元素的父元素的父元素......document
+        //实现代码：
         //1、首先查找直接父元素
         var parent=tag.parentNode;
         while(parent){
@@ -63,46 +63,36 @@
         }
         //运行到这一步的情况：1、直接父元素不存在，2、N级父元素不存在
         return null;
+
+
     }
 
+    function getClasses(className,context) {
 
-    function getClasses(className,context){
+        context = context || document;
 
-        context=context || document;
+        if (document.getElementsByClassName) {
 
-        if(context.getElementsByClassName ){
             return context.getElementsByClassName(className);
-        }else{
-            var result=[];
+        } else {
 
-            var allTags=context.getElementsByTagName("*");
+            var result = [];
+
+            var allTags = context.getElementsByTagName('*');
             for (var i = 0; i < allTags.length; i++) {
                 var tag = allTags[i];
-                var tagClassName=tag.className;
-                var tagClassNameChange=" "+tagClassName+" ";
-                var classNameChange=" "+className+" ";
-                if(tagClassNameChange.indexOf(classNameChange)>=0){
+                var tagClassName = tag.className;
+                var tagClassNameChange = " " + tagClassName + " ";
+                var classNameChange = " " + className + " ";
+                if (tagClassNameChange.indexOf(classNameChange) >= 0) {
                     result.push(tag);
                 }
-
             }
             return result;
         }
     }
 
-    function getTags(tagName,context){
-        context = context || document;
-        return context.getElementsByTagName(tagName);
-    }
-
-//    get("#header")
-    /**
-     *
-     * @param selector id:"#header" class:".tab" tag:"p"
-     * @param context DOM元素/DOM数组
-     */
     function get(selector,context){
-
         var result=[];
         if(typeof selector !=="string") return result;
 
@@ -129,12 +119,87 @@
                 if(idTag){//判断指定id的元素是否存在，如果存在将元素插入数组中
                     result.push(idTag);
                 }
+
             }else if(tempResult=regResult[2]){
                 result.push.apply(result,getClasses(tempResult,singleContext));
             }else if(tempResult=regResult[3]){
                 result.push.apply(result,getTags(tempResult,singleContext));
             }
         }
+        return result;
+
+    }
+
+
+
+//        if(context.getElementsByClassName ){
+//            return context.getElementsByClassName(className);
+//        }else{
+//            var result=[];
+//
+//            var allTags=context.getElementsByTagName("*");
+//            for (var i = 0; i < allTags.length; i++) {
+//                var tag = allTags[i];
+//                var tagClassName=tag.className;
+//                var tagClassNameChange=" "+tagClassName+" ";
+//                var classNameChange=" "+className+" ";
+//                if(tagClassNameChange.indexOf(classNameChange)>=0){
+//                    result.push(tag);
+//                }
+//
+//            }
+//            return result;
+//        }
+//    }
+
+    function getTags(tagName,context){
+        context = context || document;
+        return context.getElementsByTagName(tagName);
+    }
+
+//    get("#header")
+    /**
+     *
+     * @param selector id:"#header" class:".tab" tag:"p"
+     * @param context DOM元素/DOM数组
+     */
+    function get(selector,context){
+        var result=[];
+        if(typeof selector !=="string") return result;
+
+        var reg=/^(?:#(\w+)|\.(\w+)|(\w+|\*))$/;
+
+        var regResult=reg.exec(selector);
+        var tempResult;
+
+        //判定参数context是一个DOM元素吗？还是一个DOM数组呢？
+        if(!context){
+            context=[document];
+        }else if(context.nodeType){   //DOM元素
+            context=[context];
+        }else if(typeof context === "string"){ //("#header","body")
+            context=get(context);//get("body")-->[body]
+        }
+
+        //在下面的代码中context就表示为一个DOM数组
+        for (var i = 0; i < context.length; i++) {
+            //每一个查询上下文（是一个DOM元素）
+            var singleContext = context[i];
+            if(tempResult=regResult[1]){
+                var idTag=getId(tempResult,singleContext);
+                if(idTag){//判断指定id的元素是否存在，如果存在将元素插入数组中
+                    result.push(idTag);
+                }
+
+            }else if(tempResult=regResult[2]){
+                result.push.apply(result,getClasses(tempResult,singleContext));
+            }else if(tempResult=regResult[3]){
+                result.push.apply(result,getTags(tempResult,singleContext));
+            }
+        }
+
+
+
         return result;
 
     }
