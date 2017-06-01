@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="header">
+    <div>h1</div>
+    <div>h2</div>
+</div>
+
+<div class="c1">aaa</div>
+<div>bbb</div>
+<div>ccc</div>
+<div id="d3">
+    <div id="d33">aaa2</div>
+    <div class="c1">bbb2</div>
+    <div class="c1">ccc2</div>
+</div>
+<script>
+
+    //获取d3下面的所有的div
+    var d3=document.getElementById("d3");
+    var header=document.getElementById("header");
+    //结果：获取页面中所有的div标签
+    console.log(get("div"));
+//    //结果：获取d3元素下面的所有的div标签
+    console.log(get("div",d3));
+//    //结果：获取d3下面的div，以及header下面的div
+    console.log(get("div",[d3,header]));
+//    //结果：获取id为d3下面的所有的div
+    console.log(get("div","#d3"));//-->"#d3 div"
+
+    function getId(idName,context) {
+
+        var tag = document.getElementById(idName);
+
+        if(!context) return tag;
+
+        var parent = tag.parentNode;
+
+        while(parent){
+            if(parent === context){
+                return tag;
+            }
+            parent = parent.parentNode;
+        }
+        return null;
+    }
+
+    function getClasses(className,context) {
+
+        context = context||document;
+
+        if(context.getElementsByClassName){
+            return context.getElementsByClassName(className);
+        }else{
+            var result = [];
+            var allTags = context.getElementsByTagName('*');
+            for(var i =0;i<allTags.length;i++){
+                var tag = allTags[i];
+                var tagClassName = tag.className();
+                var tagClassNameChange = " " + tagClassName + " ";
+                var classNameChange = " " + className + " ";
+                if(tagClassNameChange.indexOf(classNameChange)>=0){
+                    result.push(tag);
+                }
+            }
+            return result;
+        }
+    }
+
+    function getTags(tagName,context) {
+        context = context||document;
+        return context.getElementsByTagName(tagName);
+    }
+
+    function get(selector,context) {
+
+        var result = [];
+
+        if(typeof selector !== "string") return result;
+
+        var reg = /^(?:#(\w+)|\.(\w+)|(\w+|\*))$/;
+
+        var regResult = reg.exec(selector);
+
+        var tempResult;
+
+        if(!context){
+            context = [document];
+        }
+        else if(context.nodeType) {
+            context = [context];
+        }
+        else if(typeof context === 'string'){
+            context = get(context);
+        }
+
+        for(var i =0;i<context.length;i++){
+            var singleContext = context[i];
+            if(tempResult=regResult[1]){
+                var idTag = getId(tempResult,singleContext);
+                if(idTag){
+                    result.push(idTag);
+                }
+            } else if(tempResult = regResult[2]){
+                result.push.apply(result,getClasses(tempResult,singleContext));
+            }else if(tempResult = regResult[3]){
+                result.push.apply(result,getTags(tempResult,singleContext));
+            }
+        }
+
+        return result;
+    }
+</script>
+</body>
+</html>

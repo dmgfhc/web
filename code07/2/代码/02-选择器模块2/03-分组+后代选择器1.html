@@ -14,45 +14,29 @@
 <div>bbb</div>
 <div>ccc</div>
 <div id="d3">
-    <div id="d33">aaa2</div>
-    <div class="c1">bbb2</div>
-    <div class="c1">ccc2</div>
+    <div id="d33">
+        <input type="text">
+    </div>
+    <div class="c1">
+        <input type="text">
+        <span>abcdefg</span>
+    </div>
+    <div class="c1">
+        <input type="text">
+    </div>
 </div>
 <script>
-    //获取d3下面的所有的div
-    var d3=document.getElementById("d3");
-    var header=document.getElementById("header");
-    //结果：获取页面中所有的div标签
-    console.log(get("div"));
-    //结果：获取d3元素下面的所有的div标签
-    console.log(get("div",d3));
-    //结果：获取d3下面的div，以及header下面的div
-    console.log(get("div",[d3,header]));
-    //结果：获取id为d3下面的所有的div
-    console.log(get("div","#d3"));//-->"#d3 div"
-
-
-    //预期结果：返回null
-    //console.log(getId("header",d3));//d3下面的id为header的元素
-    //预期结果：返回一个空数组
-    //console.log(get("#header",d3)); //jquery的$("#header",d3)
-    //预期结果：返回一个数组，数组里面有一个DOM元素
-    //console.log(get("#d33",d3));
-
-//    getClasses("c1",d3);//d3下面的所有的class属性值包含c1的元素——>d3.getElmementsByCLassName("c1")
-
-//    getTags("div",d3);//d3下面的所有的div——>d3.getElementsByTagName("div")
-
-//    getId("header");
+    var doms=$groupAndLevel("body #header,head title,.c1 input");
+    console.log(doms);
 
     function getId(idName,context){
-
         var tag= document.getElementById(idName);
 
         if(!context) return tag;
 
         //判定tag是否在context的下面（子孙元素中）
         //实现思路：查找tag的父元素，父元素的父元素，父元素的父元素的父元素......document
+        //实现代码：
         //1、首先查找直接父元素
         var parent=tag.parentNode;
         while(parent){
@@ -63,11 +47,11 @@
         }
         //运行到这一步的情况：1、直接父元素不存在，2、N级父元素不存在
         return null;
+
+
     }
 
-
     function getClasses(className,context){
-
         context=context || document;
 
         if(context.getElementsByClassName ){
@@ -95,14 +79,12 @@
         return context.getElementsByTagName(tagName);
     }
 
-//    get("#header")
     /**
      *
      * @param selector id:"#header" class:".tab" tag:"p"
      * @param context DOM元素/DOM数组
      */
     function get(selector,context){
-
         var result=[];
         if(typeof selector !=="string") return result;
 
@@ -129,13 +111,89 @@
                 if(idTag){//判断指定id的元素是否存在，如果存在将元素插入数组中
                     result.push(idTag);
                 }
+
             }else if(tempResult=regResult[2]){
                 result.push.apply(result,getClasses(tempResult,singleContext));
             }else if(tempResult=regResult[3]){
                 result.push.apply(result,getTags(tempResult,singleContext));
             }
         }
+
+
+
         return result;
+
+    }
+
+    /**
+     *
+     * @param selector 分组选择器："div,input,#header"
+     * @param context
+     */
+    function $group(selector,context){
+        var result=[];
+        //1、先判断selector是否是一个字符串类型的
+        if(typeof selector !=="string") return result;
+        //2、将参数selector用逗号分隔成字符串数组
+        var groups=selector.split(",");//["div","input","#header"]
+        //3、遍历字符串字符串数组
+        for (var i = 0; i < groups.length; i++) {
+            var group = groups[i];//"div"-->"input"-->"#header"
+            //4、将group传入get函数，返回dom数组
+            var singleResult=get(group,context);
+            //5、将singleResult中的DOM元素放进result中
+            result.push.apply(result,singleResult);
+
+        }
+        //6、返回结果数组
+        return result;
+    }
+
+    /**
+     * ("div input","#header")-->"#header div input"
+     * 第一次执行：get("div","#header")
+     * 第二次执行：get("input",第一次的执行结果)
+     * @param selector 后代选择器："body div input"
+     * @param context
+     */
+    function $level(selector,context){
+        //1、判断参数selector是不是一个字符串
+        if(typeof selector !== "string") return [];
+        //2、将selector用空格分割成字符串数组
+        var levels=selector.split(" ");//["body","div","input"]
+        //3、遍历levels
+        for (var i = 0; i < levels.length; i++) {
+            var level = levels[i];//"body"-->"div"-->"input"
+            //4、将level传入get函数
+            context=get(level,context);
+        }
+        //5、最后一次的singleResult也就是最终值
+        return context;
+    }
+
+    /**
+     *
+     * @param selector 分组+后代选择器："div,#header span,p input,body head"
+     * @param context
+     */
+    function $groupAndLevel(selector,context){
+
+        var result = [];
+
+        if(typeof selector !== 'string') return result;
+
+        var groups = selector.split(',');
+
+        for(var i=0;i<groups.length;i++){
+
+            var group = groups[i];
+
+            var singleResult = $level(group,context);
+
+            result.apply(result,singleResult);
+
+        }
+            return result;
     }
 </script>
 </body>

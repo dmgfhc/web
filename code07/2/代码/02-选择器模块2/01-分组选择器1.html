@@ -19,40 +19,14 @@
     <div class="c1">ccc2</div>
 </div>
 <script>
-    //获取d3下面的所有的div
-    var d3=document.getElementById("d3");
-    var header=document.getElementById("header");
-    //结果：获取页面中所有的div标签
-    console.log(get("div"));
-    //结果：获取d3元素下面的所有的div标签
-    console.log(get("div",d3));
-    //结果：获取d3下面的div，以及header下面的div
-    console.log(get("div",[d3,header]));
-    //结果：获取id为d3下面的所有的div
-    console.log(get("div","#d3"));//-->"#d3 div"
-
-
-    //预期结果：返回null
-    //console.log(getId("header",d3));//d3下面的id为header的元素
-    //预期结果：返回一个空数组
-    //console.log(get("#header",d3)); //jquery的$("#header",d3)
-    //预期结果：返回一个数组，数组里面有一个DOM元素
-    //console.log(get("#d33",d3));
-
-//    getClasses("c1",d3);//d3下面的所有的class属性值包含c1的元素——>d3.getElmementsByCLassName("c1")
-
-//    getTags("div",d3);//d3下面的所有的div——>d3.getElementsByTagName("div")
-
-//    getId("header");
-
     function getId(idName,context){
-
         var tag= document.getElementById(idName);
 
         if(!context) return tag;
 
         //判定tag是否在context的下面（子孙元素中）
         //实现思路：查找tag的父元素，父元素的父元素，父元素的父元素的父元素......document
+        //实现代码：
         //1、首先查找直接父元素
         var parent=tag.parentNode;
         while(parent){
@@ -63,11 +37,11 @@
         }
         //运行到这一步的情况：1、直接父元素不存在，2、N级父元素不存在
         return null;
+
+
     }
 
-
     function getClasses(className,context){
-
         context=context || document;
 
         if(context.getElementsByClassName ){
@@ -95,14 +69,12 @@
         return context.getElementsByTagName(tagName);
     }
 
-//    get("#header")
     /**
      *
      * @param selector id:"#header" class:".tab" tag:"p"
      * @param context DOM元素/DOM数组
      */
     function get(selector,context){
-
         var result=[];
         if(typeof selector !=="string") return result;
 
@@ -129,14 +101,50 @@
                 if(idTag){//判断指定id的元素是否存在，如果存在将元素插入数组中
                     result.push(idTag);
                 }
+
             }else if(tempResult=regResult[2]){
                 result.push.apply(result,getClasses(tempResult,singleContext));
             }else if(tempResult=regResult[3]){
                 result.push.apply(result,getTags(tempResult,singleContext));
             }
         }
+
+
+
+        return result;
+
+    }
+
+    /**
+     *
+     * @param selector 分组选择器："div,input,#header"
+     * @param context
+     */
+
+    function $group(selector,context) {
+
+        var result = [];
+
+        if(typeof selector !== 'string') return result;
+
+        var groups = selector.split(',');
+
+        for(var i=0;i<groups.length;i++){
+
+            var group = groups[i];
+
+            var singleResult = get(group,context);
+
+            result.push.apply(result,singleResult);
+
+        }
         return result;
     }
+
+    var doms=$group("#header,.c1","#d3");
+
+    console.log(doms);
+
 </script>
 </body>
 </html>
