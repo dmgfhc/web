@@ -21,81 +21,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="03-选择器1.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code07/2/代码/01-复习/03-选择器1.html">
+      <file leaf-file-name="01-each().html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code07/3/02-代码/01-复习/01-each().html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2106">
-              <caret line="123" column="36" lean-forward="true" selection-start-line="123" selection-start-column="36" selection-end-line="123" selection-end-column="36" />
+            <state relative-caret-position="338">
+              <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="03-选择器111.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code07/2/代码/01-复习/03-选择器111.html">
+      <file leaf-file-name="01-each()1.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code07/3/02-代码/01-复习/01-each()1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="650">
-              <caret line="67" column="17" lean-forward="true" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+            <state relative-caret-position="182">
+              <caret line="13" column="26" lean-forward="false" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="01-分组选择器.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/01-分组选择器.html">
+      <file leaf-file-name="02-复习选择器模块.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code07/3/02-代码/01-复习/02-复习选择器模块.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-54">
-              <caret line="119" column="38" lean-forward="true" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="01-分组选择器1.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/01-分组选择器1.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="141" column="5" lean-forward="true" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="02-后代选择器.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/02-后代选择器.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-182">
-              <caret line="170" column="23" lean-forward="true" selection-start-line="159" selection-start-column="8" selection-end-line="170" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="02-后代选择器1.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/02-后代选择器1.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="184" column="32" lean-forward="false" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="03-分组+后代选择器.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/03-分组+后代选择器.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="-4680">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="03-分组+后代选择器1.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/03-分组+后代选择器1.html">
+      <file leaf-file-name="02-复习选择器模块2.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code07/3/02-代码/01-复习/02-复习选择器模块2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="195" column="26" lean-forward="false" selection-start-line="195" selection-start-column="26" selection-end-line="195" selection-end-column="26" />
+            <state relative-caret-position="1000">
+              <caret line="178" column="23" lean-forward="true" selection-start-line="178" selection-start-column="23" selection-end-line="178" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -104,18 +64,18 @@
       <file leaf-file-name="04-沙箱模式包装选择器模块.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/04-沙箱模式包装选择器模块.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5408">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-442">
+              <caret line="146" column="46" lean-forward="false" selection-start-line="146" selection-start-column="46" selection-end-line="146" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="04-沙箱模式包装选择器模块1.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="04-沙箱模式包装选择器模块1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/04-沙箱模式包装选择器模块1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="29" column="11" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+            <state relative-caret-position="4316">
+              <caret line="188" column="57" lean-forward="true" selection-start-line="188" selection-start-column="57" selection-end-line="188" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -147,9 +107,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/code06/6/02-使用闭包实现缓存来解决fibnacci数列重复计算的问题.html" />
-        <option value="$PROJECT_DIR$/code06/6/02-使用闭包实现缓存来解决fibnacci数列重复计算的问题1.html" />
-        <option value="$PROJECT_DIR$/code06/6/03-分析jQuery中的缓存-2.html" />
         <option value="$PROJECT_DIR$/code06/6/04-实现创建数据缓存的方法1.html" />
         <option value="$PROJECT_DIR$/code06/6/04-实现创建数据缓存的方法.html" />
         <option value="$PROJECT_DIR$/code06/6/05-中午复习-实现创建缓存的函数1.html" />
@@ -198,6 +155,9 @@
         <option value="$PROJECT_DIR$/code07/2/代码/02-选择器模块2/01-分组选择器1.html" />
         <option value="$PROJECT_DIR$/code07/2/代码/02-选择器模块2/02-后代选择器1.html" />
         <option value="$PROJECT_DIR$/code07/2/代码/02-选择器模块2/03-分组+后代选择器1.html" />
+        <option value="$PROJECT_DIR$/code07/3/02-代码/01-复习/01-each().html" />
+        <option value="$PROJECT_DIR$/code07/3/02-代码/01-复习/01-each()1.html" />
+        <option value="$PROJECT_DIR$/code07/3/02-代码/01-复习/02-复习选择器模块2.html" />
       </list>
     </option>
   </component>
@@ -355,62 +315,6 @@
               <option name="myItemId" value="代码" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="01-复习" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code07" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="代码" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="02-选择器模块" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code07" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="代码" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="01-选择器前奏" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -428,11 +332,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\web\code07\3\02-代码\01-复习" />
       <recent name="D:\github\web\code07\2\代码\02-选择器模块2" />
       <recent name="D:\github\web\code07\2\代码\01-复习" />
       <recent name="D:\github\web\code07\1\代码\02-选择器模块" />
       <recent name="D:\github\web\code07\1\代码\01-选择器前奏" />
-      <recent name="D:\github\web\code06\7" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -560,11 +464,12 @@
       <workItem from="1496195863464" duration="8151000" />
       <workItem from="1496214368640" duration="5745000" />
       <workItem from="1496278397579" duration="17324000" />
+      <workItem from="1496369567622" duration="12692000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="280308000" />
+    <option name="totallyTimeSpent" value="293000000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -607,34 +512,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/code06/7/20-分组不捕获.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code06/7/20-分组不捕获1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1378">
-          <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code06/7/21-正则的其他字符.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="910">
-          <caret line="35" column="24" lean-forward="false" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code06/7/22-贪婪模式.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code06/7/23-替换.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
@@ -835,7 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -843,7 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
           <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -851,7 +726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="21" column="26" lean-forward="false" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -859,7 +733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -867,7 +740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="676">
           <caret line="26" column="6" lean-forward="false" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -875,7 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -883,7 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -891,7 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="547">
           <caret line="96" column="54" lean-forward="true" selection-start-line="96" selection-start-column="54" selection-end-line="96" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -899,37 +768,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code07/2/代码/01-复习/03-选择器1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2106">
-          <caret line="123" column="36" lean-forward="true" selection-start-line="123" selection-start-column="36" selection-end-line="123" selection-end-column="36" />
+        <state relative-caret-position="3198">
+          <caret line="123" column="36" lean-forward="false" selection-start-line="123" selection-start-column="36" selection-end-line="123" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code07/2/代码/01-复习/03-选择器111.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="67" column="17" lean-forward="true" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+        <state relative-caret-position="1742">
+          <caret line="67" column="17" lean-forward="false" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/01-分组选择器.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54">
-          <caret line="119" column="38" lean-forward="true" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
+        <state relative-caret-position="3094">
+          <caret line="119" column="38" lean-forward="false" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/02-后代选择器.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-182">
+        <state relative-caret-position="4420">
           <caret line="170" column="23" lean-forward="true" selection-start-line="159" selection-start-column="8" selection-end-line="170" selection-end-column="23" />
           <folding />
         </state>
@@ -937,7 +805,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/01-分组选择器1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
+        <state relative-caret-position="3666">
           <caret line="141" column="5" lean-forward="true" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
           <folding />
         </state>
@@ -945,7 +813,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/02-后代选择器1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
+        <state relative-caret-position="4784">
           <caret line="184" column="32" lean-forward="false" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="32" />
           <folding />
         </state>
@@ -961,7 +829,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/03-分组+后代选择器1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
+        <state relative-caret-position="5070">
           <caret line="195" column="26" lean-forward="false" selection-start-line="195" selection-start-column="26" selection-end-line="195" selection-end-column="26" />
           <folding />
         </state>
@@ -969,7 +837,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/04-沙箱模式包装选择器模块.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5408">
+        <state relative-caret-position="-442">
+          <caret line="146" column="46" lean-forward="false" selection-start-line="146" selection-start-column="46" selection-end-line="146" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code07/3/02-代码/01-复习/01-each().html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code07/3/02-代码/01-复习/01-each()1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="13" column="26" lean-forward="false" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code07/3/02-代码/01-复习/02-复习选择器模块.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4680">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -977,8 +869,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code07/2/代码/02-选择器模块2/04-沙箱模式包装选择器模块1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="29" column="11" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+        <state relative-caret-position="4316">
+          <caret line="188" column="57" lean-forward="true" selection-start-line="188" selection-start-column="57" selection-end-line="188" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code07/3/02-代码/01-复习/02-复习选择器模块2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="178" column="23" lean-forward="true" selection-start-line="178" selection-start-column="23" selection-end-line="178" selection-end-column="23" />
           <folding />
         </state>
       </provider>
