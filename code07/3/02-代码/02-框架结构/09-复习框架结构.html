@@ -248,6 +248,7 @@
                 for (var i = 0; i < this.elements.length; i++) {
                     var dom = this.elements[i];
                     dom.innerText = v;
+                    console.log(this);
                 }
                 //实现链式编程
                 return this;//返回的是一个F类型的对象
@@ -266,7 +267,7 @@
     //$("body").css();
 
     //保证整条链只存在一个F类型的对象
-    $("#content").css("div").F("title").css("自定义标题").F(".header").css("header");//后面的代码是操作head标签，这样势必要重新获取DOM元素
+    $("#content").css("div").init("title").css("自定义标题").init(".header").css("header");//后面的代码是操作head标签，这样势必要重新获取DOM元素
 
     //$("body").css();
     //创建了一个F类型的对象

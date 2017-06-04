@@ -211,6 +211,7 @@
                 var dom = this.elements[i];
 
             }
+            console.log(this);
         };
 
         /**
@@ -227,13 +228,13 @@
         window.$=window.itcast=itcast;
     }(window));
 
-    var result=itcast("body").css===itcast("head").css;
-    console.log(result);
+    //var result=itcast("body").css===itcast("head").css;
+    //console.log(result);
 
     //var f1=itcast("body")-->new F("body")
 
-    var $body=$("body");
-    var $head=$("head");
+    var $body=$("body").css();
+    var $head=$("head").css();
 
     //$.ajax $.post $.get $.each $.isFunction $.isString
 

@@ -193,90 +193,55 @@
             return $groupAndLevel;
         }());
 
-//        function F(selector,context){
-//            this.elements=select(selector,context);
-//        }
-//        F.prototype.css=function(){};
-
-        function itcast(selector, context) {
+        function itcast(selector,context) {
             var Fn = itcast.fn.init;
-            return new Fn(selector, context);
+            return new Fn(selector,context);
         }
 
-        //工具类方法
+        //工具类
         itcast.ajax = function () {
+
         };
 
        // itcast.fn = itcast.prototype;
 
-//        itcast.fn.F = function (selector, context) {
-//            this.elements = select(selector, context);
-//            //两个目的：1、F当成构造函数来使用，返回的就是新创建的对象f1
-//            //          2、F当成普通函数来使用，返回的还是那个对象(f1)，为了实现链式编程
-//            return this;
-//        };
+        var arr = [];
+        var splice = arr.splice;
+        var push = arr.push;
 
-//        //扩展一个show方法
-//        itcast.fn.show = function () {
-//            return this;
-//        };
-//        //扩展css方法
-//        itcast.fn.css = function (v) {
-//            for (var i = 0; i < this.elements.length; i++) {
-//                var dom = this.elements[i];
-//                dom.innerText = v;
-//            }
-//            //实现链式编程
-//            return this;//返回的是一个F类型的对象
-//        };
-
-        var arr=[];
-        var push=arr.push;
-        var splice=arr.splice;
-
-        //覆盖原型对象实现继承
         itcast.fn = {
-            constructor: itcast,
-
-            //f1={elements:[div,p,input]}->f1={0:div,1:p,2:input,length:3}
-            init: function (selector, context) {
-                //清空之前的DOM元素——>借用数组的splice()
+            constructor:itcast,
+            init:function (selector,context) {
                 splice.apply(this,[0,this.length]);
-
-                var doms = select(selector, context);
-                //将doms里面的每一个DOM元素遍历添加到当前对象中
+                var doms = select(selector,context);
                 push.apply(this,doms);
-
-                //两个目的：1、F当成构造函数来使用，返回的就是新创建的对象f1
-                //          2、F当成普通函数来使用，返回的还是那个对象(f1)，为了实现链式编程
+                return this;
+                //this.elements = select(selector,context);
+                //return this;
+            },
+            show:function () {
                 return this;
             },
-
-            show: function () {
-                return this;
-            },
-            css: function (v) {
-                for (var i = 0; i < this.length; i++) {
+            css:function (v) {
+                for(var i=0;i<this.length;i++){
                     var dom = this[i];
                     dom.innerText = v;
+                    console.log(this);
                 }
-                //实现链式编程
-                return this;//返回的是一个F类型的对象
+                return this;
             }
-
         };
 
-
-        //让F的原型继承自itcast的原型
         itcast.fn.init.prototype = itcast.fn;
 
-        window.$ = window.itcast = itcast;
+        window.$ =window.itcast=itcast;
+
     }(window));
 
     //$.ajax();
     //$("body").css();
 
-    //保证整条链只存在一个init类型的对象
+    //保证整条链只存在一个F类型的对象
     $("#content").css("div").init("title").css("自定义标题").init(".header").css("header");//后面的代码是操作head标签，这样势必要重新获取DOM元素
 
     //$("body").css();
@@ -289,21 +254,21 @@
     //$.fn.tab=function(){}
 
     //用户中心模块：
-    //    var userCenter=(function(){
-    //        var name="张三";
-    //        var age=10;
-    //        return {
-    //            getAge:function(){
-    //                alert(age);
-    //            }
-    //        }
-    //    }());
-    //    userCenter.getAge=20;
+//    var userCenter=(function(){
+//        var name="张三";
+//        var age=10;
+//        return {
+//            getAge:function(){
+//                alert(age);
+//            }
+//        }
+//    }());
+//    userCenter.getAge=20;
 
-    //    var o={0:10,1:20,2:30,length:3};
-    //    for (var i = 0; i < o.length; i++) {
-    //        var obj = o[i];
-    //
-    //    }
+//    var o={0:10,1:20,2:30,length:3};
+//    for (var i = 0; i < o.length; i++) {
+//        var obj = o[i];
+//
+//    }
 </script>
 </html>

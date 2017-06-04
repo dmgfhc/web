@@ -199,18 +199,20 @@
          * @param context
          * @constructor
          */
-        function F(selector,context){
+        itcast.prototype.F =  function (selector,context){
             //设置了对象的自有属性elements（通过选择器模块来获取元素——>DOM数组）
             //只属于新创建的那个对象
             this.elements=select(selector,context);
         }
+
         //给F的原型添加了一个方法，这个方法是所有的F类型的对象所共享的
-        F.prototype.css=function(){
+        itcast.prototype.css=function(){
             //遍历当前对象（哪个对象调用）的elements属性
             for (var i = 0; i < this.elements.length; i++) {
                 var dom = this.elements[i];
 
             }
+            console.log(this);
         };
 
         /**
@@ -222,9 +224,18 @@
         function itcast(selector,context){
             return new itcast.prototype.F(selector,context);
         }
-        itcast.ajax=function(){
-            console.log("ajax");
-        };
+
+        //console.log(itcast.prototype.F.prototype);
+
+       // console.log(itcast.prototype);
+//        itcast.ajax=function(){
+//            console.log("ajax");
+//        };
+
+        //让F类型的对象继承自itcast.prototype
+        itcast.prototype.F.prototype=itcast.prototype;
+
+
         //把F构造函数成为itcast.prototype的中一个属性
         itcast.prototype.F=function (selector,context){
             //设置了对象的自有属性elements（通过选择器模块来获取元素——>DOM数组）
@@ -232,21 +243,20 @@
             this.elements=select(selector,context);
         };
         //把操作DOM的方法都放在itcast的原型中
-        itcast.prototype.hasClass = function () {
+//        itcast.prototype.hasClass = function () {
+//
+//        };
 
-        };
-        //让F类型的对象继承自itcast.prototype
-        itcast.prototype.F.prototype=itcast.prototype;
-
+        window.$=window.itcast=itcast;
 
         //往window对象添加了两个属性：$ itcast——>添加了2个全局变量
-        window.$=window.itcast=itcast;
+
     }(window));
 
 
 
-    var $body=$("body");
-    var $head=$("head");
+    var $body=$("body").css();
+    var $head=$("head").css();
 
     //jquery不仅仅有操作DOM元素的方法，比如css，attr show hide hasClass removeClass toggleClass
     //还有一个方法，跟操作DOM不是直接挂钩的，这样的方法称之为工具类方法，如下：
