@@ -181,31 +181,50 @@
         return $groupAndLevel;
     }());
 
-    function F(selector, context) {
-        this.elements = document.querySelectorAll(selector);
-    }
-    F.prototype.css = function() {};
-    F.prototype.show = function() {};
-    F.prototype.hide = function() {};
 
     function itcast(selector, context) {
-        return new F(selector, context);
+        return new itcast.fn.F(selector, context);
     }
+    itcast.fn = itcast.prototype = {
+        //F作为构造函数来使用：1、创建一个新的F类型的对象，并设置对象的elements属性，返回这个新对象
+        //F作为普通函数来使用：1、设置了调用的对象的elements属性，并返回调用的那个对象
+        //               $("").F()-->(new F()).F()
+        F: function(selector, context) {
+            this.elements = select(selector);
+            return this;
+        },
+        css: function() {
+            return this;
+        },
+        show: function() {
+            return this;
+        },
+        hide: function() {
+            return this;
+        }
+    };
+
+    //让F的原型继承自itcast的原型
+    itcast.fn.F.prototype = itcast.fn;
     window.$ = window.itcast = itcast;
 
 }(window));
 
+//伪数组：拥有一个数字属性，以及length属性，从而方便我们使用for循环遍历
+// var o={ 0:10,1:50,2:100,length:3};
+// for (var i = 0; i < o.length; i++) {
+//     var obj = o[i];
+// }
 
-//存在的缺点：
-//  如果用户想要扩展一个操作DOM的方法，比如编写插件
-//      方式1：直接修改框架的源文件，不合适，会造成源文件的污染，也可能是造成源文件太过庞大
-//      方法2：在框架外部扩展操作DOM的方法，获取不到函数F
-//                  $("body").constructor.prototype.tab=function(){} 这样做也太麻烦了
+//F类型的对象结构：var f={ 0:div,1:p,length:2}
 
-//解决方法：只要把css、show、hide方法放在itcast的原型中
-//用户想要扩展，就直接通过itcast.prototype添加方法
-//也就是通过$.prototype(也就是后面的$.fn)
 
-//还存在问题：css/show/hide方法是在itcast原型中，F类型的对象是访问不到的（不在不存在原型链上面的联系）
-//解决方法：能不能把F类型的对象跟itcast.prototype联系起来——>让F.prototype指向itcast.prototype
-//从而让F类型的对象都可以访问到itcast.prototype上面的属性or方法
+function Person(name){
+    this.name=name;
+    //构造函数都有一个默认的返回值，就是这个新创建的对象，也就是this
+
+    //构造函数如果手动返回了一个对象类型的数据，就会替换原来的返回值
+    //不过这里的return this跟默认的返回值是一个值，所以说具有一样的返回值
+    return this;
+}
+var p1=new Person("张三");
