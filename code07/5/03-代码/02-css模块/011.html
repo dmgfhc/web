@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="">
+    <style>
+        /*在style属性里面编写的样式属于内嵌（内联）样式*/
+        #header{
+            font-size: 30px;
+            text-align: center;
+
+        }
+        .red,.green{
+            float: left;
+            width:100px;
+            height:100px;
+            border-radius: 50%;
+        }
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+            display: none;
+        }
+
+    </style>
+    <script src="itcast.js"></script>
+    <script>
+        itcast.fn.extend(
+            {
+                css:function () {
+                    if (itcast.isString(arg0)) {
+                        //1.1、参数是一个字符串类型的：获取单个样式，只能获取第一个DOM元素的单个样式
+                        //a、获取当前对象的第一个DOM元素
+                        var firstDom = this[0];
+                        //b、如果firstDom不存在，当前对象中就没有DOM元素，就直接返回空字符串
+                        if (!firstDom) return "";
+                        //c、返回firstDom的样式名称为arg0的样式的值
+                        //c.1、判断浏览器是否支持window.getComputedStyle方法（IE9+）
+                        if (window.getComputedStyle) {
+                            //方法的参数：参数1：DOM元素，参数2：伪类元素
+                            return window.getComputedStyle(firstDom, null)[arg0];
+                        } else {
+                            return firstDom.currentStyle[arg0];
+                        }
+                    }
+                    else {
+
+
+                    }
+
+                }
+                });
+
+    </script>
+</head>
+<body>
+<div id="header" style="color:red">红色的字体</div>
+<div class="light">
+    <div class="red"></div>
+    <div class="green"></div>
+</div>
+</body>
+<script>
+    var header=document.getElementById("header");
+    //console.log(header.style.fontSize);//获取一个DOM元素的不存在于行内样式中的一个样式，会返回空字符串
+    //可以获取到header的所有的样式——>IE9+
+    //var headerStyles=window.getComputedStyle(header,null);
+
+//    var headerStyles=header.currentStyle;
+
+//    alert($("#header").css("color"));
+
+//    $("#header").css("color").css();//会报错
+
+//    $("#header").css({color:"blue",fontSize:"50px"})
+
+//    $("#header").css("color","blue");
+
+    setInterval(function(){
+        $(".red,.green").toggle();
+    },300)
+</script>
+</html>
