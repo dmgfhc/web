@@ -22,11 +22,8 @@
                         dom.addEventListener(type, fn);
                     } else {//(IE6-8)
                         dom.attachEvent("on" + type, fn);
-
                     }
                 });
-
-
             },
             //功能：解除事件的绑定：removeEventListener/detachEvent(IE6-8)
             off: function (type, fn) {

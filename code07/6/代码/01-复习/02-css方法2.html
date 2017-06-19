@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        itcast.fn.extend({
+
+            css:function () {
+                if(arguments.length===0) return this;
+                var arg0 = arguments[0];
+                var arg1 = arguments[1];
+                if(arguments.length===1){
+                    if(itcast.isString(arg0)){
+                        var firstDom = this[0];
+                        if(!firstDom) return '';
+                        if(window.getComputedStyle){
+                            return window.getComputedStyle(firstDom,null)[arg0];
+                        }else{
+                            return firstDom.currentStyle[arg0];
+                        }
+                    }
+                    else{
+                        this.each(function () {
+                            var dom = this;
+                            itcast.each(arg0,function (key,value) {
+                                dom.style[key] = value;
+                            });
+                        });
+                        return this;
+                    }
+                }else{
+                    this.each(function () {
+                        this.style[arg0] = arg1;
+                    });
+                }
+
+                return this;
+            },
+            show:function () {
+               return this.css('display','block');
+            },
+            hide:function () {
+                return this.css('display','none');
+            },
+            toggle:function () {
+                this.each(function () {
+                    if(itcast(this).css('display') === 'none'){
+                        itcast(this).show();
+                    }else{
+                        itcast(this).hide();
+                    }
+                });
+                return this;
+            }
+
+
+        });
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

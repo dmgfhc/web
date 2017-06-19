@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="itcast.js"></script>
+    <script>
+       itcast.fn.extend({
+           attr:function () {
+               if(arguments.length ===0) return this;
+               var arg0 = arguments0;
+               if(arguments.length ===1&&itcast.isString(arg0)){
+                   var firstDom = this[0];
+                   return firstDom.getAttribute('arg0');
+               }else if(arguments.length ===1){
+                   this.each(function () {
+                       var dom = this;
+                       itcast.each(arg0,function (key,value) {
+                          dom.setAttribute(key,value);
+                       });
+                   });
+                   return this;
+               }else{
+                   var arg1 = arguments[1];
+                   this.each(function () {
+                        this.setAttribute(arg0,arg1);
+                   });
+                   return this;
+               }
+
+           },
+           removeAttr:function () {
+               var args = arguments;
+               this.each(function () {
+                   var dom = this;
+                   itcast.each(args,function (index,value) {
+                        dom.removeAttribute(value);
+                   });
+               });
+                return this;
+           },
+           hasClass:function (className) {
+
+               var isExist = false;
+
+               this.each(function () {
+
+                   var dom = this;
+
+                   var domClassName = dom.className;
+
+                   var domClassNameChange = " " + domClassName + " ";
+
+                   var paramClassNameChange = " " + className + " ";
+
+                   if(domClassNameChange.indexOf(paramClassNameChange)>-1){
+                       isExist = true;
+                       return false;
+                   }
+               });
+               return isExist;
+           }
+       });
+    </script>
+</head>
+<body>
+<div id="header" a="10" b="20" c="30">
+    abc
+</div>
+</body>
+<script>
+    $("#header").removeAttr("a","b")
+</script>
+</html>
