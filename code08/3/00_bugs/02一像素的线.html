@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="800" height="600"></canvas>
+<script>
+    var cvs = document.getElementById('cvs');
+    var ctx = cvs.getContext('2d');
+
+    ctx.lineWidth = 1;
+
+    // 记得看资料图片
+    // 线压在两个像素之间，所以绘制了一根2像素的灰色的线
+    ctx.moveTo(0, 100);
+    ctx.lineTo(100, 100);
+
+    // 线正好压在一个像素上，所以绘制了一根1像素的黑线
+    ctx.moveTo(0, 200.5);
+    ctx.lineTo(100, 200.5);
+
+
+    ctx.stroke();
+
+</script>
+</body>
+</html>

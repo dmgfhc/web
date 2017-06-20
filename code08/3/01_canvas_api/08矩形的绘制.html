@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--1. 创建画布（创建一个Canvas标签，并为其指定宽高，我们就可以在Canvas标签包裹的范围内用JavaScript绘图了）-->
+<canvas id="cvs" width="800" height="600"
+        style="border:1px solid black;"
+></canvas>
+
+<script>
+    //2. 选择绘制工具（我们要学的是绘制路径，所以选了钢笔）
+    var cvs = document.getElementById('cvs');
+    // context：上下文，我们获取的其实是canvas绘图上下文
+    // 传入的2d代表了我们要用2d绘图上下文来绘制。传入"webgl"得到的是webgl绘图上下文。
+    var ctx = cvs.getContext('2d');
+
+    ctx.rect(100,100,100,200);// 在路径上画了一个矩形
+
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 5;
+    ctx.strokeRect(50,50,50,50);// 直接绘制到画布上了，没有画路径
+
+    ctx.fillStyle = 'lightgreen';
+    ctx.fillRect(0,0,50,50);// 直接绘制到画布上了，没有画路径
+
+    ctx.fillStyle = 'lightblue';
+    ctx.fill(); //描边
+//    ctx.fill();
+</script>
+</body>
+</html>

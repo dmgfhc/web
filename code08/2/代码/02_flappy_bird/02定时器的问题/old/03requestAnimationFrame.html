@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="800" height="600"></canvas>
+<script>
+
+    //    var loopFn = function(){
+    //        var nowTime = Date.now();
+    //        console.log(nowTime);
+    //        // 每当一帧执行完毕之后，请求绘制下一帧
+    //        requestAnimationFrame(loopFn);
+    //    };
+    // 其实requestAnimationFrame就是浏览器自己决定时间间隔版本的setTimeout
+    //    requestAnimationFrame(loopFn)
+
+    var loopFn = function () {
+        var nowTime = Date.now();
+        console.log(nowTime);
+
+        //todo： 每一帧要做的事情
+
+
+
+        // 每当一帧执行完毕之后，请求绘制下一帧
+        setTimeout(function () {
+            loopFn();
+        }, 16.67);
+    };
+
+    loopFn();
+
+</script>
+</body>
+</html>

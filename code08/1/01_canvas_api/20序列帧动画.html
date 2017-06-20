@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--1. 创建画布（创建一个Canvas标签，并为其指定宽高，我们就可以在Canvas标签包裹的范围内用JavaScript绘图了）-->
+<canvas id="cvs" width="800" height="600"
+        style="border:1px solid black;"
+></canvas>
+
+<script>
+
+
+    //2. 选择绘制工具（我们要学的是绘制路径，所以选了钢笔）
+    var cvs = document.getElementById('cvs');
+    // context：上下文，我们获取的其实是canvas绘图上下文
+    // 传入的2d代表了我们要用2d绘图上下文来绘制。传入"webgl"得到的是webgl绘图上下文。
+    var ctx = cvs.getContext('2d');
+
+    // 可以用这种方式来创建Image标签
+    var img = new Image();
+    img.src = '../res/estell.png';
+
+    // 1 图片的加载
+    img.addEventListener('load', function () {
+
+        var currentIndex = 0;
+        // 2 要做动画，必须要有定时器
+        setInterval(function () {
+            ctx.clearRect(0, 0, 800, 600);
+            ctx.drawImage(img,
+                    256 * currentIndex, 0, 256, 256,
+                    0, 0, 256, 256
+            );
+            // 绘图结束之后，当前帧的序号发生改变
+            currentIndex++;
+            if (currentIndex > 7) {
+                // 如果走完了所有帧，就回到第0帧
+                currentIndex = 0;
+            }
+        }, 100)
+
+    });
+
+
+</script>
+</body>
+</html>

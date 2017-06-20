@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var lastTime = Date.now();
+    function mainLoop() {
+        // 获取两帧之间的时间间隔
+        var nowTime = Date.now();
+        var dt = nowTime - lastTime;
+        lastTime = nowTime; // 供下一帧执行时来求得两帧间隔
+
+        // TODO：在这里做动画
+
+        // rAF函数的功能：浏览器来决定下一帧的执行时间
+        requestAnimationFrame(function () {
+            mainLoop(); // 每一帧绘制完毕之后，执行下一帧
+        })
+    }
+
+    mainLoop();
+
+</script>
+</body>
+</html>

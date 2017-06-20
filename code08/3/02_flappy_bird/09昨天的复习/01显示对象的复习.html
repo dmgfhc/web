@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="800" height="600"></canvas>
+<script>
+    var cvs = document.getElementById('cvs');
+    var ctx = cvs.getContext('2d');
+
+    /**
+     * 显示对象分为三个部分：
+     *  用于绘制显示对象所必须的数据。
+     *  根据数据绘制的draw函数。
+     *  根据时间变化去更新的update函数。
+     * @constructor
+     */
+    function Rect(x, y, w, h, color, ctx) {
+        // 矩形对象的数据
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.color = color;
+        this.ctx = ctx;
+    }
+
+    Rect.prototype.draw = function () {
+        this.ctx.fillStyle = this.color;
+        this.ctx.fillRect(this.x, this.y, this.w, this.h);
+    };
+
+    Rect.prototype.update = function (dt) {
+        this.x = this.x + dt * 0.2; // 0.2是写死的速度
+    };
+
+    // rect存储了我们绘制一个矩形的全部数据
+    var rect = new Rect(50, 50, 50, 50, 'lightblue', ctx);
+    var rect2 = new Rect(50, 150, 50, 50, 'lightgreen', ctx);
+    //
+    //    //    调用rect.draw来绘制这个矩形
+    //    rect.draw();
+
+    var lastTime = Date.now();
+    function loop() {
+        // 拿到间隔时间
+        var nowTime = Date.now();
+        var dt = nowTime - lastTime;
+        lastTime = nowTime;
+
+        // 清理画布
+        ctx.clearRect(0, 0, 800, 600);
+
+        rect.draw();
+        rect.update(dt);
+        rect2.draw();
+        rect2.update(dt);
+
+        requestAnimationFrame(function () {
+            loop();
+        })
+    }
+
+    loop();
+
+</script>
+</body>
+</html>

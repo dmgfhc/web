@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 获取上一帧的时间
+    var lastTime = Date.now();
+    setInterval(function(){
+        // 获取当前帧时间
+        var nowTime = Date.now();
+        // 间隔时间
+        var dt = nowTime - lastTime;
+        lastTime = nowTime;
+
+        console.log(dt);
+
+    },16.67);
+
+    /*
+    * 通过控制台的输出，我们能看到：定时器是不稳定的！
+    * 所以，如果执行的函数，所消耗的时间，超过30毫秒了呢？
+    * 我的定时器，是不是误差就会越来越大
+    * 我的动画，原本设置5秒钟能够完成，现在就需要二三十秒甚至更多
+    * 这就造成了，我们程序的不稳定。
+    *
+    * 解决问题的方法？
+    * 做动画时，定义动画的速度，然后根据两帧间隔的时间乘以速度，来得到新一帧所走的路程
+    * 这样的话，我们的动画就始终是稳定的了
+    * */
+</script>
+</body>
+</html>

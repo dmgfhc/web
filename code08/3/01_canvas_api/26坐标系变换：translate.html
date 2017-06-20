@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--1. 创建画布（创建一个Canvas标签，并为其指定宽高，我们就可以在Canvas标签包裹的范围内用JavaScript绘图了）-->
+<canvas id="cvs" width="800" height="600"
+        style="border:1px solid black;"
+></canvas>
+
+<script>
+    //2. 选择绘制工具（我们要学的是绘制路径，所以选了钢笔）
+    var cvs = document.getElementById('cvs');
+    // context：上下文，我们获取的其实是canvas绘图上下文
+    // 传入的2d代表了我们要用2d绘图上下文来绘制。传入"webgl"得到的是webgl绘图上下文。
+    var ctx = cvs.getContext('2d');
+
+    // 先画第一个矩形：这个时候原点在0,0上
+    ctx.fillStyle = 'lightgreen';
+    ctx.fillRect(0, 0, 50, 50);
+
+    // translate函数可以：把Canvas坐标系的原点移动。
+    // 这个时候：Cavnas坐标系的原点在50,50上
+    ctx.translate(50, 50);
+    ctx.fillStyle = 'pink';
+    ctx.fillRect(0, 0, 50, 50);
+
+
+    // 这个50，50代表的是一个二维向量，而不是一个坐标点（或者说，每一次变换都是在前一次变换的基础上做的）
+    // canvas坐标系的原点在100,100上
+    ctx.translate(50, 50);
+    ctx.fillStyle = 'lightblue';
+    ctx.fillRect(0, 0, 50, 50);
+
+
+</script>
+</body>
+</html>

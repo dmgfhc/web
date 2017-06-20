@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--1. 创建画布（创建一个Canvas标签，并为其指定宽高，我们就可以在Canvas标签包裹的范围内用JavaScript绘图了）-->
+<canvas id="cvs" width="800" height="600"
+        style="border:1px solid black;"
+></canvas>
+
+<script>
+
+    var data = [
+        {name: 'ie', percent: 0.2, color: 'red'},
+        {name: 'chrome', percent: 0.3, color: 'lightgreen'},
+        {name: 'firefox', percent: 0.5, color: 'lightblue'},
+    ];
+
+
+    //2. 选择绘制工具（我们要学的是绘制路径，所以选了钢笔）
+    var cvs = document.getElementById('cvs');
+    // context：上下文，我们获取的其实是canvas绘图上下文
+    // 传入的2d代表了我们要用2d绘图上下文来绘制。传入"webgl"得到的是webgl绘图上下文。
+    var ctx = cvs.getContext('2d');
+
+    /**
+     * 饼图的对象：
+     *  需要的参数：
+     *      饼图圆心，半径
+     *      要绘制成饼图的数据
+     *      Cavnas的绘图上下文
+     */
+    function Pan(x, y, r, data, ctx) {
+        this.currentAngle = -0.25; // 回转90度
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.data = data;
+        this.ctx = ctx;
+    }
+    // 调用draw函数把饼图绘制到屏幕上
+    Pan.prototype.draw = function () {
+        for (var i = 0; i < this.data.length; i++) {
+            var target = this.data[i];
+            var nextAngle = this.currentAngle + target.percent;
+            this.ctx.moveTo(this.x, this.y);
+            // 绘制路径
+            this.ctx.arc(this.x, this.y, this.r, this.currentAngle * 2 * Math.PI, nextAngle * 2 * Math.PI);
+            this.ctx.closePath();
+            // 填充
+            this.ctx.fillStyle = target.color;
+            this.ctx.fill();
+            // 收尾工作
+            this.currentAngle = nextAngle;
+            this.ctx.beginPath();
+        }
+    };
+
+
+    // 我们以后再想绘制饼图，就可以直接new一个pan对象，然后就能绘制饼图了
+    var pan = new Pan(200,200,100,data,ctx);
+    pan.draw();
+
+
+</script>
+</body>
+</html>

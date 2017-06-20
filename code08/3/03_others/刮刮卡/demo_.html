@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="image.jpg">
+<canvas id="cvs" height="600" width="800"
+        style="position: absolute;left: 100px;top:150px"
+></canvas>
+<script>
+    var cvs = document.getElementById('cvs');
+    var ctx = cvs.getContext('2d');
+
+    // 目标图像：以及绘制到画布上的图像
+    ctx.fillRect(0, 0, 800, 600);
+    // destination-out：在目标图像上画什么就是在擦什么
+    ctx.globalCompositeOperation = 'destination-out';
+    // 改一下线宽
+    ctx.lineWidth = '45';
+    ctx.lineCap = "round"; // 设置圆形线帽
+
+    var x = 0, y = 0;
+    // 监听三个事件： 按下、移动、离开
+    cvs.addEventListener('mousedown', function (evt) {
+        x = evt.layerX;
+        y = evt.layerY;
+        ctx.moveTo(x, y);
+    });
+
+    cvs.addEventListener('mousemove', function (evt) {
+        x = evt.layerX;
+        y = evt.layerY;
+        // evt.which存储了鼠标按键的点击状态：1 为鼠标左键被点击
+        if (evt.which == 1) {
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            // 清理路径 （原因：每次mousemove都会给路径新增一段，久而久之就会卡起来）
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+    });
+
+    cvs.addEventListener('mouseup', function (evt) {
+        // 当鼠标左键抬起时，做什么？
+        // 获取像素数据
+        var imageData = ctx.getImageData(0, 0, 800, 600);
+        // 统计所有不透明的像素点
+        var count = 0;
+        for (var i = 3; i < imageData.data.length; i += 4) {
+            var a = imageData.data[i];
+            if (a >= 255) { // 不透明
+                count++;
+            }
+        }
+        // 求得比值，判断是不是要擦除全部
+
+        var temp = count / (800 * 600) ;
+        console.log(temp );
+        if (temp< 0.4) {
+            ctx.fillRect(0, 0, 800, 600); // 相当于擦掉了全屏幕的内容
+        }
+
+    });
+
+    // touchbegin touchmove
+
+</script>
+</body>
+</html>

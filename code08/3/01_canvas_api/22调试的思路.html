@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+<canvas id="cvs" width="800" height="600" style="border: 1px solid black">
+</canvas>
+<script type="text/javascript">
+    var cvs = document.getElementById("cvs");
+    var cxt = cvs.getContext('2d');
+    var img = new Image();
+    img.src = "estell.png";
+    // var currentIndex = 0;
+    // img.addEventListener("load", function() {
+    //     setInterval(function() {
+    //         cxt.clearRect(0, 0, 256, 256);
+    //         cxt.drawImage(img,
+    //             256 * currentIndex, 0, 256, 256,
+    //             0, 0, 256, 256
+    //         );
+    //         currentIndex++;
+    //         if (currentIndex > 7) {
+    //             currentIndex = 0;
+    //         }
+    //     }, 100);
+    // });
+
+
+    /**
+     * [Sprite description]
+     * 序列帧动画对象需要的字段
+     *  动画播放的位置：一个矩形
+     *  当前帧的序号
+     *  图片的元素
+     *  绘图上下文
+     *  小图怎样截取：数组 [[0,0,256,256],[256,0,256,256] .... ]
+     *
+     *
+     */
+    function Sprite(x, y, w, h, img, context, array) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.img = img;
+        this.array = array;
+        this.context = context;
+        this.currentIndex = 0;
+    }
+
+    Sprite.prototype.draw = function () {
+        var littleimg = this.array[this.currentIndex];
+//        console.log(this.img,
+//                littleimg[1], littleimg[2], littleimg[3], littleimg[4],
+//                this.x, this.y, this.w, this.h);
+        this.context.drawImage(this.img,
+                littleimg[0],littleimg[1], littleimg[2], littleimg[3],
+                this.x, this.y, this.w, this.h
+        );
+    };
+
+    Sprite.prototype.update = function () {
+        this.currentIndex++;
+        if (this.currentIndex > 7) {
+            this.currentIndex = 0;
+        }
+    };
+
+
+    var array = [];
+    for (var i = 0; i < 8; i++) {
+        array.push([256 * i, 0, 256, 256]);
+    }
+    console.log(array);
+
+
+    var sprite = new Sprite(0, 0, 256, 256, img, cxt, array);
+    img.addEventListener("load", function () {
+        setInterval(function () {
+            cxt.clearRect(0, 0, 256, 256);
+            sprite.draw();
+            sprite.update();
+        }, 100);
+    });
+</script>
+</body>
+
+</html>

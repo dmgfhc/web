@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--1. 创建画布（创建一个Canvas标签，并为其指定宽高，我们就可以在Canvas标签包裹的范围内用JavaScript绘图了）-->
+<canvas id="cvs" width="800" height="600"
+        style="border:1px solid black;"
+></canvas>
+
+<script>
+
+    var data = [
+        {name: 'ie', percent: 0.2, color: 'red'},
+        {name: 'chrome', percent: 0.3, color: 'lightgreen'},
+        {name: 'firefox', percent: 0.5, color: 'lightblue'},
+    ];
+
+
+    //2. 选择绘制工具（我们要学的是绘制路径，所以选了钢笔）
+    var cvs = document.getElementById('cvs');
+    // context：上下文，我们获取的其实是canvas绘图上下文
+    // 传入的2d代表了我们要用2d绘图上下文来绘制。传入"webgl"得到的是webgl绘图上下文。
+    var ctx = cvs.getContext('2d');
+
+
+    var x = 400, y = 400;
+
+    // 绘制十字线用于定位x,y的点
+    ctx.moveTo(-800, y);
+    ctx.lineTo(800, y);
+
+    ctx.moveTo(x, -600);
+    ctx.lineTo(x, 600);
+
+    ctx.stroke();
+
+    ctx.font = '40px 微软雅黑';
+
+    ctx.fillStyle = 'lightblue';
+    ctx.strokeStyle = 'lightgreen';
+
+    // 直接在屏幕上绘制一串文本
+    ctx.fillText('hello world', x, y);
+    //    ctx.strokeText('hello world', x, y);
+
+</script>
+</body>
+</html>

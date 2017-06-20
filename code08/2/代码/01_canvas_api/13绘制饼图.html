@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--1. 创建画布（创建一个Canvas标签，并为其指定宽高，我们就可以在Canvas标签包裹的范围内用JavaScript绘图了）-->
+<canvas id="cvs" width="800" height="600"
+        style="border:1px solid black;"
+></canvas>
+
+<script>
+
+    var data = [
+        {name: 'ie', percent: 0.2, color: 'red'},
+        {name: 'chrome', percent: 0.3, color: 'lightgreen'},
+        {name: 'firefox', percent: 0.5, color: 'lightblue'},
+    ];
+
+
+    //2. 选择绘制工具（我们要学的是绘制路径，所以选了钢笔）
+    var cvs = document.getElementById('cvs');
+    // context：上下文，我们获取的其实是canvas绘图上下文
+    // 传入的2d代表了我们要用2d绘图上下文来绘制。传入"webgl"得到的是webgl绘图上下文。
+    var ctx = cvs.getContext('2d');
+
+    // 创建一个变量，记录当前绘制到的角度
+    var currentAngle = -0.25;
+    // 用变量记录圆形坐标
+    var x = 200, y = 200, r = 100;
+
+    for (var i = 0; i < data.length; i++) {
+        var target = data[i];
+        var nextAngle = currentAngle + target.percent;
+        ctx.moveTo(x, y);
+        // 绘制路径
+        ctx.arc(x, y, r, currentAngle * 2 * Math.PI, nextAngle * 2 * Math.PI);
+        ctx.closePath();
+        // 填充
+        ctx.fillStyle = target.color;
+        ctx.fill();
+        // 收尾工作
+        currentAngle = nextAngle;
+        ctx.beginPath();
+    }
+
+
+</script>
+</body>
+</html>

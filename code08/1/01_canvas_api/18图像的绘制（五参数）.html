@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--1. 创建画布（创建一个Canvas标签，并为其指定宽高，我们就可以在Canvas标签包裹的范围内用JavaScript绘图了）-->
+<canvas id="cvs" width="800" height="600"
+        style="border:1px solid black;"
+></canvas>
+
+<script>
+
+    var data = [
+        {name: 'ie', percent: 0.2, color: 'red'},
+        {name: 'chrome', percent: 0.3, color: 'lightgreen'},
+        {name: 'firefox', percent: 0.5, color: 'lightblue'},
+    ];
+
+
+    //2. 选择绘制工具（我们要学的是绘制路径，所以选了钢笔）
+    var cvs = document.getElementById('cvs');
+    // context：上下文，我们获取的其实是canvas绘图上下文
+    // 传入的2d代表了我们要用2d绘图上下文来绘制。传入"webgl"得到的是webgl绘图上下文。
+    var ctx = cvs.getContext('2d');
+
+    // 可以用这种方式来创建Image标签
+    var img = new Image();
+    img.src = '../res/funny.jpg';
+
+    img.addEventListener('load', function () {
+        // 三参数用法：把图形绘制到x,y的点，至于宽高：使用图像本身的宽高
+        ctx.drawImage(img, 0, 0,100,100);
+    });
+
+
+</script>
+</body>
+</html>

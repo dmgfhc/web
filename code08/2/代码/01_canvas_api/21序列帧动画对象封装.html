@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--1. 创建画布（创建一个Canvas标签，并为其指定宽高，我们就可以在Canvas标签包裹的范围内用JavaScript绘图了）-->
+<canvas id="cvs" width="800" height="600"
+        style="border:1px solid black;"
+></canvas>
+
+<script>
+
+
+    //2. 选择绘制工具（我们要学的是绘制路径，所以选了钢笔）
+    var cvs = document.getElementById('cvs');
+    // context：上下文，我们获取的其实是canvas绘图上下文
+    // 传入的2d代表了我们要用2d绘图上下文来绘制。传入"webgl"得到的是webgl绘图上下文。
+    var ctx = cvs.getContext('2d');
+
+    // 可以用这种方式来创建Image标签
+    var img = new Image();
+    img.src = '../res/estell.png';
+
+
+    /**
+     *  序列帧动画对象需要的字段
+     *  动画播放的位置：一个矩形
+     *  当前帧的序号
+     *  图片的元素
+     *  绘图上下文
+     *  小图怎样截取：数组 [[0,0,256,256],[256,0,256,256] .... ]
+     */
+    function Sprite(x, y, w, h, img, ctx, array) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.img = img;
+        this.ctx = ctx;
+        this.array = array;
+        this.currentIndex = 0; // 当前帧默认创建时就应该是0;
+    }
+    // 绘制函数:根据对象自身的字段，把对象绘制到屏幕上
+    Sprite.prototype.draw = function () {
+        // 先拿到小图的矩形
+        var littlePic = this.array[this.currentIndex];
+        this.ctx.drawImage(this.img,
+                littlePic[0], littlePic[1], littlePic[2], littlePic[3],
+                this.x, this.y, this.w, this.h
+        );
+    };
+    // 更新函数：根据时间变化，更新对象的各种属性（当前帧）
+    Sprite.prototype.update = function () {
+        // 更新当前帧的序号
+        this.currentIndex++;
+        if (this.currentIndex > 7) {
+            this.currentIndex = 0;
+        }
+
+        // 让小人往左走动
+        this.x = this.x - 1;
+    };
+
+
+    // 1 图片的加载
+    img.addEventListener('load', function () {
+        // 创建小图数组
+        var array = [];
+        for (var i = 0; i < 8; i++) {
+            array.push([256 * i, 0, 256, 256]);
+        }
+
+        var sprite = new Sprite(700, 0, 256, 256, img, ctx, array);
+        sprite.currentIndex = 3;
+
+        setInterval(function () {
+            // 每一帧开始时，先清空上一帧的画面
+            ctx.clearRect(0, 0, 800, 600);
+            // 先绘制，再更新。（其实反过来也行）
+            sprite.draw();
+            sprite.update();
+
+        }, 20);
+
+
+    });
+
+
+</script>
+</body>
+</html>

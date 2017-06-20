@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script src="loadimgs.js"></script>
+
+<script>
+    // 存储了图片路径的对象
+    var imgUrls = {
+        bird: "../res/birds.png",
+        land: "../res/land.png",
+        pipe1: "../res/pipe1.png",
+        pipe2: "../res/pipe2.png",
+        sky: "../res/sky.png",
+    };
+
+    var temp = loadImgs(imgUrls, function main(imgElems) {
+        console.log('所有图片加载完成');
+        console.log(imgElems);
+    })
+
+
+</script>
+</body>
+</html>

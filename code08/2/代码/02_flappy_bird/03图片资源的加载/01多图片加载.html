@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas id="cvs" width="800" height="600"></canvas>
+<script>
+    var imgUrls = {
+        bird: "../res/birds.png",
+        land: "../res/land.png",
+        pipe1: "../res/pipe1.png",
+        pipe2: "../res/pipe2.png",
+        sky: "../res/sky.png",
+    };
+
+    // 所有图片加载完成之后，执行函数
+    function main() {
+        console.log('图片加载完成，主函数开始执行');
+        console.log(imgElems);
+    }
+
+    var imgElems = {}; // 存储图片标签的对象
+    var count = 0; // 图片计数器，记录有多少张图片正在加载之中
+    for (var img in imgUrls) {
+
+        // 循环创建图片标签，并设置src让它开始加载。
+        var imgElem = new Image();
+        imgElem.src = imgUrls[img];
+        // 把说标签放到imgElems对象里存储起来
+        imgElems[img] = imgElem;
+        count += 1; //计数器加一：表示多了一张图片正在加载之中
+
+        // 设置加载事件的监听：当这张图片加载完成之后执行
+        imgElem.addEventListener('load', function () {
+            count -= 1;
+            if (count == 0) {
+                // 当计数器归于0的时候，执行主函数
+                // 因为for循环创建图片标签的过程执行完毕之后，图片的加载事件才会陆陆续续的发生，
+                // 所以不需要担心只创建一个图片标签后立刻加载完成的bug，不会发生这种事情
+                main();
+            }
+        })
+
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" height="600" width="800"
+></canvas>
+<script>
+    var cvs = document.getElementById('cvs');
+    var ctx = cvs.getContext('2d');
+
+    ctx.fillRect(0, 0, 800, 600);
+
+    ctx.fillStyle = 'rgb(255,0,0)';
+    ctx.fillRect(0, 0, 1, 1);
+
+    ctx.fillStyle = 'rgb(0,255,0)';
+    ctx.fillRect(1, 0, 1, 1);
+
+
+    ctx.fillStyle = 'rgb(0,0,255)';
+    ctx.fillRect(0, 1, 1, 1);
+
+
+    ctx.fillStyle = 'rgb(155,155,0)';
+    ctx.fillRect(1, 1, 1, 1);
+
+    var imgData = ctx.getImageData(0, 0, 2, 2);
+    console.log(imgData);
+
+</script>
+</body>
+</html>

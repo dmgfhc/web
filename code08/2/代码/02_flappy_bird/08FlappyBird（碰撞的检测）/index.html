@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="800" height="600"></canvas>
+
+<script src="loadimgs.js"></script>
+<script src="bird.js"></script>
+<script src="pipe.js"></script>
+<script>
+    var cvs = document.getElementById('cvs');
+    var ctx = cvs.getContext('2d');
+    // 存储了图片路径的对象
+    var imgUrls = {
+        bird: "../res/birds.png",
+        land: "../res/land.png",
+        pipe1: "../res/pipe1.png",
+        pipe2: "../res/pipe2.png",
+        sky: "../res/sky.png",
+    };
+
+    loadImgs(imgUrls, function main(imgElems) {
+        // 主函数
+        var animationArray = [
+            [0, 0, 52, 45],
+            [52, 0, 52, 45],
+            [104, 0, 52, 45],
+        ];
+
+        var bird = new Bird(150, 150, imgElems['bird'], ctx, animationArray, 0.0005, 0.3);
+        cvs.addEventListener('click', function () {
+            bird.speed = -0.3;
+        });
+
+
+        Pipe.PIPE_COUNT = 5;
+        Pipe.PIPE_GAP = 200;
+        var pipe1 = new Pipe(800, imgElems['pipe2'], imgElems['pipe1'], ctx, -0.1);
+        var pipe2 = new Pipe(1000, imgElems['pipe2'], imgElems['pipe1'], ctx, -0.1);
+        var pipe3 = new Pipe(1200, imgElems['pipe2'], imgElems['pipe1'], ctx, -0.1);
+        var pipe4 = new Pipe(1400, imgElems['pipe2'], imgElems['pipe1'], ctx, -0.1);
+        var pipe5 = new Pipe(1600, imgElems['pipe2'], imgElems['pipe1'], ctx, -0.1);
+
+
+        var lastTime = Date.now();
+
+        function mainLoop() {
+            // 1. 求本帧和上一帧之间的间隔时间
+            var nowTime = Date.now();
+            var dt = nowTime - lastTime;
+            lastTime = nowTime;
+
+            // 清理画布
+            ctx.clearRect(0, 0, 800, 600);
+
+            pipe1.draw();
+            pipe2.draw();
+            pipe3.draw();
+            pipe4.draw();
+            pipe5.draw();
+            bird.draw();
+            pipe1.update(dt);
+            pipe2.update(dt);
+            pipe3.update(dt);
+            pipe4.update(dt);
+            pipe5.update(dt);
+            bird.update(dt);
+
+            ctx.stroke();
+            var isBirdHitPipe = ctx.isPointInPath(bird.x + 40,bird.y);
+            ctx.beginPath();
+
+
+            if(isBirdHitPipe){
+                return;
+            }
+            // 定时绘制下一帧
+            requestAnimationFrame(function () {
+                // 最后绘制下一帧，由浏览器来定时
+                mainLoop();
+            })
+        }
+
+
+        // 第一次调用主循环函数
+        mainLoop();
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="800" height="600"></canvas>
+<script>
+    var cvs = document.getElementById('cvs');
+    var ctx = cvs.getContext('2d');
+
+    ctx.rect(50, 0, 52, 300);
+    ctx.rect(250, 0, 52, 250);
+    ctx.rect(450, 0, 52, 30);
+    ctx.rect(650, 0, 52, 100);
+    ctx.fill();
+
+    cvs.addEventListener('click', function (evt) {
+//        console.log(evt);
+        var x = evt.layerX;
+        var y = evt.layerY;
+
+        console.log(ctx.isPointInPath(x, y));
+    })
+</script>
+</body>
+</html>

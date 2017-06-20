@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="800" height="600"></canvas>
+<script>
+    var cvs = document.getElementById('cvs');
+    var ctx = cvs.getContext('2d');
+
+    // 矩形的显示对象
+    function Rect(x, y, w, h, speed, ctx) {
+        // 显示一个矩形所需要的数据
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.speed = speed;
+        this.ctx = ctx;
+    }
+
+    // 矩形的绘制函数:根据数据来绘制显示对象到Canvas上
+    Rect.prototype.draw = function () {
+        this.ctx.fillRect(this.x, this.y, this.w, this.h);
+    };
+
+    // 矩形的更新函数：根据时间变化来更新数据
+    Rect.prototype.update = function (dt) {
+        // 路程= 速度*时间
+        // 位置 = 原来位置 + 路程
+        this.x = this.x + this.speed * dt;
+    };
+
+    var rect = new Rect(50, 50, 50, 50, 0.1, ctx);
+
+
+    // 获取1970-1-1到现在的毫秒数
+    var lastTime = Date.now();
+    // 做动画
+    setInterval(function () {
+        var nowTime = Date.now();
+        var dt = nowTime - lastTime;
+        lastTime = nowTime;
+
+
+        console.log(dt);
+
+        ctx.clearRect(0, 0, 800, 600);
+
+        ctx.fillText(dt + '', 20, 20);
+        rect.draw();
+        rect.update(16.67);
+
+    }, 16.67)
+
+
+</script>
+</body>
+</html>
